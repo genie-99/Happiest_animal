@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quokka Smile Project</title>
+
+  <!-- Vanilla HTML/CSS/JS only -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --yellow: #FFD86B;
+      --brown: #A9784B;
+      --cream: #FFF7E8;
+      --deep-brown: #4B3423;
+      --soft-orange: #FFB85C;
+      --white: #FFFFFF;
+      --shadow: 0 18px 45px rgba(75, 52, 35, 0.14);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Gowun Dodum", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--deep-brown);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 247, 232, 0.78);
+      border-bottom: 1px solid rgba(169, 120, 75, 0.12);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Jua", sans-serif;
+      font-size: 24px;
+      color: var(--brown);
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 8px 20px rgba(255, 184, 92, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 15px;
+      color: rgba(75, 52, 35, 0.78);
+    }
+
+    .nav-links a:hover {
+      color: var(--brown);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 56px;
+      padding: 76px 0 90px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255, 216, 107, 0.48);
+      color: var(--brown);
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: "Jua", sans-serif;
+      font-size: clamp(46px, 7vw, 82px);
+      line-height: 0.98;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--brown);
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .hero h1 span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 7px;
+      width: 100%;
+      height: 16px;
+      background: rgba(255, 216, 107, 0.8);
+      z-index: -1;
+      border-radius: 999px;
+    }
+
+    .hero-desc {
+      max-width: 570px;
+      font-size: 19px;
+      color: rgba(75, 52, 35, 0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 15px 24px;
+      font-size: 16px;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--brown);
+      color: var(--white);
+      box-shadow: 0 14px 28px rgba(169, 120, 75, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 35px rgba(169, 120, 75, 0.35);
+    }
+
+    .btn-soft {
+      background: var(--white);
+      color: var(--brown);
+      border: 1px solid rgba(169, 120, 75, 0.18);
+    }
+
+    .btn-soft:hover {
+      transform: translateY(-3px);
+      background: #fffaf0;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
+
+    .sun-circle {
+      position: absolute;
+      width: min(440px, 82vw);
+      height: min(440px, 82vw);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #fff4c0 0 20%, transparent 21%),
+        linear-gradient(135deg, var(--yellow), #ffc76a);
+      box-shadow: var(--shadow);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .quokka-card {
+      position: relative;
+      width: min(370px, 86vw);
+      padding: 32px;
+      border-radius: 38px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      text-align: center;
+      transform: rotate(-2deg);
+    }
+
+    .quokka-face {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 22px;
+      background: var(--brown);
+      border-radius: 48% 48% 44% 44%;
+      box-shadow: inset -10px -14px 0 rgba(75, 52, 35, 0.12);
+    }
+
+    .ear {
+      position: absolute;
+      top: -28px;
+      width: 72px;
+      height: 82px;
+      border-radius: 50%;
+      background: var(--brown);
+      z-index: -1;
+    }
+
+    .ear.left {
+      left: 24px;
+      transform: rotate(-18deg);
+    }
+
+    .ear.right {
+      right: 24px;
+      transform: rotate(18deg);
+    }
+
+    .inner-ear {
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      background: #d8a06f;
+    }
+
+    .eye {
+      position: absolute;
+      top: 86px;
+      width: 18px;
+      height: 24px;
+      border-radius: 50%;
+      background: #2e2018;
+    }
+
+    .eye.left {
+      left: 68px;
+    }
+
+    .eye.right {
+      right: 68px;
+    }
+
+    .nose {
+      position: absolute;
+      top: 118px;
+      left: 50%;
+      width: 34px;
+      height: 24px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: #2e2018;
+    }
+
+    .smile {
+      position: absolute;
+      top: 132px;
+      left: 50%;
+      width: 82px;
+      height: 42px;
+      transform: translateX(-50%);
+      border-bottom: 6px solid #2e2018;
+      border-radius: 0 0 80px 80px;
+    }
+
+    .cheek {
+      position: absolute;
+      top: 128px;
+      width: 26px;
+      height: 15px;
+      border-radius: 50%;
+      background: rgba(255, 216, 107, 0.72);
+    }
+
+    .cheek.left {
+      left: 42px;
+    }
+
+    .cheek.right {
+      right: 42px;
+    }
+
+    .quokka-card h2 {
+      font-family: "Jua", sans-serif;
+      font-size: 30px;
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+
+    .quokka-card p {
+      color: rgba(75, 52, 35, 0.76);
+      font-size: 16px;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 10px 25px rgba(75, 52, 35, 0.1);
+      padding: 10px 16px;
+      font-family: "Jua", sans-serif;
+      color: var(--brown);
+      animation: pop 4s ease-in-out infinite;
+    }
+
+    .bubble.one {
+      top: 70px;
+      left: 10px;
+    }
+
+    .bubble.two {
+      right: 0;
+      bottom: 110px;
+      animation-delay: 0.8s;
+    }
+
+    /* Sections */
+    section {
+      padding: 96px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 48px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-family: "Jua", sans-serif;
+      color: var(--brown);
+      font-size: 20px;
+    }
+
+    .section-head h2 {
+      font-family: "Jua", sans-serif;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      color: rgba(75, 52, 35, 0.76);
+      font-size: 18px;
+    }
+
+    /* Intro */
+    .intro-box {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 34px;
+      align-items: center;
+      padding: 38px;
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .intro-quote {
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--yellow), #fff1ad);
+      padding: 34px;
+    }
+
+    .intro-quote strong {
+      display: block;
+      font-family: "Jua", sans-serif;
+      font-size: 36px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .intro-quote span {
+      color: rgba(75, 52, 35, 0.75);
+    }
+
+    .intro-text p {
+      margin-bottom: 16px;
+      font-size: 18px;
+      color: rgba(75, 52, 35, 0.84);
+    }
+
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .mini-tags span {
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255, 216, 107, 0.34);
+      color: var(--brown);
+      font-size: 14px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 255px;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(75, 52, 35, 0.09);
+      border: 1px solid rgba(169, 120, 75, 0.08);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 36px rgba(75, 52, 35, 0.14);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      background: rgba(255, 216, 107, 0.45);
+      font-size: 24px;
+    }
+
+    .card h3 {
+      font-family: "Jua", sans-serif;
+      font-size: 23px;
+      margin-bottom: 10px;
+      color: var(--brown);
+    }
+
+    .card p {
+      font-size: 15.5px;
+      color: rgba(75, 52, 35, 0.74);
+    }
+
+    /* CTA */
+    .cta {
+      padding-bottom: 110px;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 38px;
+      padding: 58px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.55), transparent 30%),
+        linear-gradient(135deg, var(--brown), #c58c53);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box::after {
+      content: "☺";
+      position: absolute;
+      right: 36px;
+      bottom: -60px;
+      font-family: "Jua", sans-serif;
+      font-size: 230px;
+      color: rgba(255, 255, 255, 0.11);
+      line-height: 1;
+    }
+
+    .cta-box h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      font-family: "Jua", sans-serif;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .cta-box p {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--brown);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-outline:hover,
+    .btn-light:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 36px 0;
+      border-top: 1px solid rgba(169, 120, 75, 0.14);
+      color: rgba(75, 52, 35, 0.66);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) translateY(20px);
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: var(--deep-brown);
+      color: var(--white);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+      z-index: 100;
+      font-size: 14px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    @keyframes pop {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-10px) scale(1.03);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 58px;
+      }
+
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .intro-box {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        height: 64px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 46px 0 70px;
+      }
+
+      .hero-visual {
+        min-height: 380px;
+      }
+
+      .sun-circle {
+        width: 310px;
+        height: 310px;
+      }
+
+      .quokka-card {
+        width: 300px;
+        padding: 24px;
+      }
+
+      .quokka-face {
+        width: 180px;
+        height: 180px;
+      }
+
+      .ear {
+        width: 58px;
+        height: 66px;
+      }
+
+      .eye {
+        top: 70px;
+      }
+
+      .eye.left {
+        left: 55px;
+      }
+
+      .eye.right {
+        right: 55px;
+      }
+
+      .nose {
+        top: 98px;
+      }
+
+      .smile {
+        top: 110px;
+      }
+
+      .cheek {
+        top: 108px;
+      }
+
+      .cheek.left {
+        left: 34px;
+      }
+
+      .cheek.right {
+        right: 34px;
+      }
+
+      .bubble {
+        display: none;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .intro-box,
+      .cta-box {
+        padding: 26px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="page nav">
+      <a href="#" class="logo" aria-label="Quokka Smile Project 홈">
+        <span class="logo-mark">☺</span>
+        Quokka Smile
+      </a>
+
+      <div class="nav-links">
+        <a href="#intro">소개</a>
+        <a href="#charm">매력</a>
+        <a href="#protect">함께하기</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="page hero">
+      <div class="hero-content">
+        <div class="badge">🌞 행복을 전하는 작은 친구</div>
+
+        <h1>
+          세상에 행복을 전하는<br />
+          작은 미소, <span>쿼카</span>
+        </h1>
+
+        <p class="hero-desc">
+          쿼카는 웃는 듯한 얼굴로 사람들에게 따뜻한 기분을 전합니다.
+          이 작은 미소가 단순한 귀여움을 넘어, 행복과 보호의 메시지로 이어지도록
+          Quokka Smile Project를 시작합니다.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#intro" class="btn btn-primary">쿼카 만나기</a>
+          <button class="btn btn-soft" id="shareBtn">행복 공유하기</button>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="귀여운 쿼카 일러스트">
+        <div class="sun-circle"></div>
+
+        <div class="bubble one">따뜻한 ☀</div>
+        <div class="bubble two">희망적인 🌱</div>
+
+        <div class="quokka-card">
+          <div class="quokka-face">
+            <div class="ear left"><div class="inner-ear"></div></div>
+            <div class="ear right"><div class="inner-ear"></div></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="nose"></div>
+            <div class="smile"></div>
+            <div class="cheek left"></div>
+            <div class="cheek right"></div>
+          </div>
+
+          <h2>Smile Keeper</h2>
+          <p>웃음을 지키는 가장 귀여운 자원</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Intro -->
+    <section id="intro">
+      <div class="page">
+        <div class="section-head">
+          <span class="section-label">첫 만남</span>
+          <h2>세상에서 가장 행복해 보이는 동물, 쿼카를 아시나요?</h2>
+          <p>
+            쿼카는 귀여움으로 시선을 끌고, 따뜻한 이야기로 마음에 남는 동물입니다.
+          </p>
+        </div>
+
+        <div class="intro-box">
+          <div class="intro-quote">
+            <strong>행복은 쿼카처럼 작고 따뜻하게 번집니다.</strong>
+            <span>
+              작은 미소 하나가 누군가의 하루를 바꿀 수 있다면,
+              쿼카는 그 메시지를 가장 사랑스럽게 전하는 상징이 될 수 있습니다.
+            </span>
+          </div>
+
+          <div class="intro-text">
+            <p>
+              쿼카의 가장 큰 매력은 웃는 듯한 얼굴입니다.
+              입꼬리가 올라간 듯한 인상은 보는 사람에게 밝고 긍정적인 느낌을 줍니다.
+            </p>
+
+            <p>
+              하지만 쿼카를 단순히 귀여운 동물로만 소비해서는 안 됩니다.
+              쿼카가 계속 웃을 수 있으려면 서식지와 생태계를 함께 지키는 마음이 필요합니다.
+            </p>
+
+            <div class="mini-tags">
+              <span>#귀여움</span>
+              <span>#힐링</span>
+              <span>#굿즈</span>
+              <span>#보호</span>
+              <span>#행복캠페인</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Charm Cards -->
+    <section id="charm">
+      <div class="page">
+        <div class="section-head">
+          <span class="section-label">매력 포인트</span>
+          <h2>쿼카가 특별한 이유</h2>
+          <p>
+            귀여움으로 들어와서, 행복과 보호의 가치를 느끼고,
+            함께 행동하게 만드는 브랜드 경험을 설계합니다.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">☺</div>
+            <h3>웃는 듯한 얼굴</h3>
+            <p>
+              입꼬리가 올라간 듯한 인상은 사람들에게 밝고 긍정적인 첫인상을 줍니다.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🐾</div>
+            <h3>작고 동글동글함</h3>
+            <p>
+              둥근 얼굴과 작은 몸집은 캐릭터, 스티커, 인형, 굿즈로 확장하기 좋습니다.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🌞</div>
+            <h3>행복의 상징</h3>
+            <p>
+              쿼카는 단순한 동물 소개를 넘어 “행복을 전하는 존재”라는 메시지로 확장됩니다.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🌱</div>
+            <h3>보호해야 할 가치</h3>
+            <p>
+              귀여움을 소비하는 데서 끝나지 않고, 서식지와 생태를 지키자는 메시지를 담습니다.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🌍</div>
+            <h3>글로벌 확장성</h3>
+            <p>
+              사진, 밈, 캐릭터, 굿즈, 캠페인으로 전 세계에 쉽게 전달될 수 있습니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CTA -->
+    <section id="protect" class="cta">
+      <div class="page">
+        <div class="cta-box">
+          <h2>나도 행복을 퍼뜨리는 사람이 될 수 있어요.</h2>
+          <p>
+            쿼카의 미소를 좋아하는 마음에서 시작해,
+            굿즈, 캠페인, 공유하기를 통해 더 많은 사람에게 따뜻한 행복을 전해보세요.
+            작은 관심이 쿼카를 지키는 큰 움직임이 됩니다.
+          </p>
+
+          <div class="cta-actions">
+            <button class="btn btn-light" id="campaignBtn">캠페인 참여하기</button>
+            <button class="btn btn-outline" id="goodsBtn">굿즈 아이디어 보기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 5. Footer -->
+  <footer class="footer">
+    <div class="page footer-inner">
+      <p>© 2026 Quokka Smile Project</p>
+      <p>따뜻한 / 귀여운 / 희망적인 브랜드 경험</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">메시지가 준비됐어요 ☺</div>
+
+  <script>
+    const toast = document.querySelector("#toast");
+    const shareBtn = document.querySelector("#shareBtn");
+    const campaignBtn = document.querySelector("#campaignBtn");
+    const goodsBtn = document.querySelector("#goodsBtn");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    shareBtn.addEventListener("click", async () => {
+      const shareData = {
+        title: "Quokka Smile Project",
+        text: "행복은 쿼카처럼 작고 따뜻하게 번집니다 ☺",
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await navigator.clipboard.writeText(shareData.text);
+          showToast("공유 문구가 복사됐어요 ☺");
+        }
+      } catch (error) {
+        showToast("공유를 취소했어요");
+      }
+    });
+
+    campaignBtn.addEventListener("click", () => {
+      showToast("캠페인 섹션은 다음 단계에서 연결하면 좋아요 🌱");
+    });
+
+    goodsBtn.addEventListener("click", () => {
+      showToast("스티커, 인형, 키링, 엽서 굿즈로 확장 가능해요 🐾");
+    });
+  </script>
+</body>
+</html>
