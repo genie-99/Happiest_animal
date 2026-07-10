@@ -17,7 +17,6 @@
       --yellow-light: #FFF1AF;
       --brown: #A9784B;
       --brown-dark: #4B3423;
-      --brown-soft: #D7A06C;
       --cream: #FFF7E8;
       --white: #FFFFFF;
 
@@ -49,6 +48,11 @@
       overflow-x: hidden;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -63,9 +67,7 @@
       margin: 0 auto;
     }
 
-    /* =========================
-       Header
-    ========================= */
+    /* Header */
 
     .header {
       position: sticky;
@@ -158,9 +160,7 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* =========================
-       Hero
-    ========================= */
+    /* Hero */
 
     .hero {
       min-height: calc(100vh - 72px);
@@ -261,10 +261,7 @@
       background: #fffaf0;
     }
 
-    /* =========================
-       Hero Visual
-       여기서 레이어를 다시 정리함
-    ========================= */
+    /* Hero Visual */
 
     .hero-visual {
       position: relative;
@@ -331,97 +328,74 @@
       animation-delay: 0.8s;
     }
 
-    .quokka-face {
+    /* 쿼카 사진 영역 */
+
+    .quokka-photo-wrap {
       position: relative;
-      width: min(220px, 58vw);
+      width: min(235px, 58vw);
       aspect-ratio: 1 / 1;
       margin: 0 auto 22px;
-      border-radius: 48% 48% 44% 44%;
-      background: var(--brown);
-      box-shadow: inset -10px -14px 0 rgba(75, 52, 35, 0.13);
+      border-radius: 34px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--yellow-light), var(--cream));
+      box-shadow:
+        0 16px 32px rgba(75, 52, 35, 0.16),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.75);
     }
 
-    .ear {
+    .quokka-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.88;
+
+      /*
+        너무 선명하게 튀지 않게:
+        - sepia: 따뜻한 색감
+        - saturate: 색 과함 줄이기
+        - contrast: 대비 낮추기
+        - brightness: 살짝 밝게
+      */
+      filter: sepia(0.16) saturate(0.86) contrast(0.9) brightness(1.04);
+
+      /*
+        모서리로 갈수록 점점 투명해지는 효과
+      */
+      -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        black 50%,
+        rgba(0, 0, 0, 0.82) 66%,
+        rgba(0, 0, 0, 0.42) 82%,
+        transparent 100%
+      );
+      mask-image: radial-gradient(
+        ellipse at center,
+        black 50%,
+        rgba(0, 0, 0, 0.82) 66%,
+        rgba(0, 0, 0, 0.42) 82%,
+        transparent 100%
+      );
+    }
+
+    .quokka-photo-wrap::after {
+      content: "";
       position: absolute;
-      top: -13%;
-      width: 33%;
-      height: 37%;
-      border-radius: 50%;
-      background: var(--brown);
-      z-index: -1;
-    }
-
-    .ear.left {
-      left: 11%;
-      transform: rotate(-18deg);
-    }
-
-    .ear.right {
-      right: 11%;
-      transform: rotate(18deg);
-    }
-
-    .inner-ear {
-      position: absolute;
-      inset: 24%;
-      border-radius: 50%;
-      background: var(--brown-soft);
-    }
-
-    .eye {
-      position: absolute;
-      top: 39%;
-      width: 8%;
-      height: 11%;
-      border-radius: 50%;
-      background: #2E2018;
-    }
-
-    .eye.left {
-      left: 31%;
-    }
-
-    .eye.right {
-      right: 31%;
-    }
-
-    .nose {
-      position: absolute;
-      top: 54%;
-      left: 50%;
-      width: 15%;
-      height: 11%;
-      transform: translateX(-50%);
-      border-radius: 50%;
-      background: #2E2018;
-    }
-
-    .smile {
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      width: 38%;
-      height: 19%;
-      transform: translateX(-50%);
-      border-bottom: 6px solid #2E2018;
-      border-radius: 0 0 80px 80px;
-    }
-
-    .cheek {
-      position: absolute;
-      top: 58%;
-      width: 12%;
-      height: 7%;
-      border-radius: 50%;
-      background: rgba(255, 216, 107, 0.78);
-    }
-
-    .cheek.left {
-      left: 19%;
-    }
-
-    .cheek.right {
-      right: 19%;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          circle at center,
+          transparent 42%,
+          rgba(255, 247, 232, 0.38) 76%,
+          rgba(255, 216, 107, 0.56) 100%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(255, 216, 107, 0.2),
+          rgba(169, 120, 75, 0.18)
+        );
     }
 
     .quokka-card h2 {
@@ -436,9 +410,7 @@
       color: rgba(75, 52, 35, 0.76);
     }
 
-    /* =========================
-       Sections Common
-    ========================= */
+    /* Sections Common */
 
     section {
       padding: clamp(72px, 10vw, 96px) 0;
@@ -472,9 +444,7 @@
       word-break: keep-all;
     }
 
-    /* =========================
-       Intro
-    ========================= */
+    /* Intro */
 
     .intro-box {
       display: grid;
@@ -529,9 +499,7 @@
       font-size: 14px;
     }
 
-    /* =========================
-       Cards
-    ========================= */
+    /* Cards */
 
     .cards {
       display: grid;
@@ -579,9 +547,7 @@
       word-break: keep-all;
     }
 
-    /* =========================
-       CTA
-    ========================= */
+    /* CTA */
 
     .cta {
       padding-bottom: clamp(82px, 12vw, 112px);
@@ -655,9 +621,7 @@
       transform: translateY(-3px);
     }
 
-    /* =========================
-       Footer
-    ========================= */
+    /* Footer */
 
     .footer {
       padding: 36px 0;
@@ -673,9 +637,7 @@
       font-size: 14px;
     }
 
-    /* =========================
-       Toast
-    ========================= */
+    /* Toast */
 
     .toast {
       position: fixed;
@@ -701,9 +663,7 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* =========================
-       Animation
-    ========================= */
+    /* Animation */
 
     @keyframes float {
       0%, 100% {
@@ -725,9 +685,7 @@
       }
     }
 
-    /* =========================
-       Tablet
-    ========================= */
+    /* Tablet */
 
     @media (max-width: 1024px) {
       .hero {
@@ -757,9 +715,7 @@
       }
     }
 
-    /* =========================
-       Mobile
-    ========================= */
+    /* Mobile */
 
     @media (max-width: 700px) {
       .page {
@@ -837,6 +793,11 @@
         border-radius: 30px;
       }
 
+      .quokka-photo-wrap {
+        width: min(205px, 58vw);
+        border-radius: 28px;
+      }
+
       .bubble {
         min-height: 38px;
         padding: 8px 13px;
@@ -892,9 +853,7 @@
       }
     }
 
-    /* =========================
-       Small Mobile
-    ========================= */
+    /* Small Mobile */
 
     @media (max-width: 430px) {
       .page {
@@ -913,6 +872,11 @@
       .quokka-card {
         width: min(286px, 84vw);
         padding: 22px;
+      }
+
+      .quokka-photo-wrap {
+        width: min(190px, 58vw);
+        border-radius: 24px;
       }
 
       .bubble {
@@ -1000,28 +964,19 @@
         </div>
       </div>
 
-      <div class="hero-visual" aria-label="귀여운 쿼카 일러스트">
+      <div class="hero-visual" aria-label="쿼카 사진이 들어간 Smile Keeper 카드">
         <div class="sun-circle"></div>
 
         <div class="bubble one">따뜻한 ☀</div>
         <div class="bubble two">희망적인 🌱</div>
 
         <div class="quokka-card">
-          <div class="quokka-face">
-            <div class="ear left">
-              <div class="inner-ear"></div>
-            </div>
-
-            <div class="ear right">
-              <div class="inner-ear"></div>
-            </div>
-
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-            <div class="nose"></div>
-            <div class="smile"></div>
-            <div class="cheek left"></div>
-            <div class="cheek right"></div>
+          <div class="quokka-photo-wrap">
+            <img
+              class="quokka-photo"
+              src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTJfNjEg/MDAxNDg5MjgzMzk0NzAy.D9qlh_kTlXpH34lAHxjiVieyxWoj3FazBsGIhGz8Q4wg.B2pcp5-kx_dJvbh7cCTxcCmU-Oj36ES_hvGRSoMuTRkg.JPEG.astaldo/1a.jpg?type=w800"
+              alt="웃는 듯한 얼굴의 쿼카 사진"
+            />
           </div>
 
           <h2>Smile Keeper</h2>
@@ -1227,7 +1182,7 @@
     });
 
     goodsBtn.addEventListener("click", () => {
-      showToast("스티커, 인형, 키링, 엽서 굿즈로 확장 가능해요 🐾");
+    window.location.href = "./goods.html";
     });
   </script>
 </body>
