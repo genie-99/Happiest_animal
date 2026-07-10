@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Quokka Smile Project</title>
 
   <!-- Vanilla HTML/CSS/JS only -->
@@ -13,21 +14,27 @@
   <style>
     :root {
       --yellow: #FFD86B;
+      --yellow-light: #FFF1AF;
       --brown: #A9784B;
+      --brown-dark: #4B3423;
+      --brown-soft: #D7A06C;
       --cream: #FFF7E8;
-      --deep-brown: #4B3423;
-      --soft-orange: #FFB85C;
       --white: #FFFFFF;
-      --shadow: 0 18px 45px rgba(75, 52, 35, 0.14);
+
+      --shadow-soft: 0 14px 35px rgba(75, 52, 35, 0.12);
+      --shadow-strong: 0 22px 55px rgba(75, 52, 35, 0.18);
+
+      --radius-xl: 36px;
       --radius-lg: 28px;
       --radius-md: 20px;
-      --page-width: 1120px;
+
+      --container: 1120px;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -35,17 +42,11 @@
     }
 
     body {
-      font-family: "Gowun Dodum", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Gowun Dodum", system-ui, sans-serif;
       background: var(--cream);
-      color: var(--deep-brown);
+      color: var(--brown-dark);
       line-height: 1.7;
       overflow-x: hidden;
-    }
-
-    img,
-    svg {
-      max-width: 100%;
-      display: block;
     }
 
     a {
@@ -58,18 +59,21 @@
     }
 
     .page {
-      width: min(var(--page-width), calc(100% - 40px));
+      width: min(var(--container), calc(100% - 40px));
       margin: 0 auto;
     }
 
-    /* Header */
+    /* =========================
+       Header
+    ========================= */
+
     .header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 247, 232, 0.86);
+      background: rgba(255, 247, 232, 0.9);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(169, 120, 75, 0.12);
+      border-bottom: 1px solid rgba(169, 120, 75, 0.14);
     }
 
     .nav {
@@ -77,8 +81,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
       position: relative;
+      gap: 20px;
     }
 
     .logo {
@@ -86,20 +90,19 @@
       align-items: center;
       gap: 10px;
       font-family: "Jua", sans-serif;
-      font-size: clamp(21px, 4vw, 25px);
+      font-size: clamp(22px, 3vw, 26px);
       color: var(--brown);
       z-index: 120;
     }
 
     .logo-mark {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
       border-radius: 50%;
       background: var(--yellow);
-      box-shadow: 0 8px 20px rgba(255, 184, 92, 0.35);
-      flex: 0 0 auto;
+      box-shadow: 0 8px 20px rgba(255, 216, 107, 0.45);
     }
 
     .nav-links {
@@ -114,6 +117,7 @@
       min-height: 44px;
       display: flex;
       align-items: center;
+      transition: 0.2s ease;
     }
 
     .nav-links a:hover {
@@ -124,12 +128,11 @@
       display: none;
       width: 44px;
       height: 44px;
-      border: 0;
+      border: none;
       border-radius: 14px;
       background: var(--white);
-      color: var(--brown);
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(75, 52, 35, 0.08);
+      box-shadow: var(--shadow-soft);
       z-index: 120;
     }
 
@@ -138,8 +141,8 @@
       width: 20px;
       height: 2px;
       margin: 5px auto;
-      background: var(--brown);
       border-radius: 999px;
+      background: var(--brown);
       transition: 0.25s ease;
     }
 
@@ -155,14 +158,17 @@
       transform: translateY(-7px) rotate(-45deg);
     }
 
-    /* Hero */
+    /* =========================
+       Hero
+    ========================= */
+
     .hero {
       min-height: calc(100vh - 72px);
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      grid-template-columns: 1.05fr 0.95fr;
       align-items: center;
-      gap: clamp(32px, 6vw, 64px);
-      padding: clamp(56px, 8vw, 86px) 0 clamp(70px, 9vw, 100px);
+      gap: clamp(36px, 6vw, 70px);
+      padding: clamp(52px, 8vw, 90px) 0 clamp(70px, 8vw, 100px);
     }
 
     .badge {
@@ -170,67 +176,66 @@
       align-items: center;
       gap: 8px;
       padding: 9px 15px;
-      border-radius: 999px;
-      background: rgba(255, 216, 107, 0.48);
-      color: var(--brown);
-      font-size: clamp(14px, 2.5vw, 15px);
       margin-bottom: 22px;
+      border-radius: 999px;
+      background: rgba(255, 216, 107, 0.5);
+      color: var(--brown);
+      font-size: 15px;
     }
 
-    .hero h1 {
+    .hero-title {
       font-family: "Jua", sans-serif;
-      font-size: clamp(42px, 8vw, 82px);
+      font-size: clamp(42px, 7vw, 82px);
       line-height: 0.98;
       letter-spacing: -1px;
       margin-bottom: 24px;
       word-break: keep-all;
     }
 
-    .hero h1 span {
-      color: var(--brown);
+    .hero-title span {
       position: relative;
+      color: var(--brown);
       white-space: nowrap;
     }
 
-    .hero h1 span::after {
+    .hero-title span::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: 7px;
       width: 100%;
       height: 16px;
-      background: rgba(255, 216, 107, 0.8);
-      z-index: -1;
       border-radius: 999px;
+      background: rgba(255, 216, 107, 0.82);
+      z-index: -1;
     }
 
     .hero-desc {
       max-width: 570px;
-      font-size: clamp(16px, 2.5vw, 19px);
-      color: rgba(75, 52, 35, 0.82);
       margin-bottom: 34px;
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: rgba(75, 52, 35, 0.82);
       word-break: keep-all;
     }
 
-    .hero-actions,
-    .cta-actions {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
       align-items: center;
+      gap: 14px;
     }
 
     .btn {
-      border: 0;
-      cursor: pointer;
-      border-radius: 999px;
-      padding: 15px 24px;
-      min-height: 48px;
-      font-size: 16px;
-      transition: 0.25s ease;
+      min-height: 50px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      padding: 15px 24px;
+      border: none;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.25s ease;
       text-align: center;
     }
 
@@ -242,7 +247,7 @@
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 35px rgba(169, 120, 75, 0.35);
+      box-shadow: 0 18px 36px rgba(169, 120, 75, 0.36);
     }
 
     .btn-soft {
@@ -256,38 +261,74 @@
       background: #fffaf0;
     }
 
+    /* =========================
+       Hero Visual
+       여기서 레이어를 다시 정리함
+    ========================= */
+
     .hero-visual {
       position: relative;
-      min-height: clamp(360px, 50vw, 520px);
+      min-height: clamp(390px, 48vw, 540px);
       display: grid;
       place-items: center;
+      overflow: visible;
       isolation: isolate;
     }
 
     .sun-circle {
       position: absolute;
+      z-index: 1;
       width: min(440px, 82vw);
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       background:
-        radial-gradient(circle at 35% 30%, #fff4c0 0 20%, transparent 21%),
-        linear-gradient(135deg, var(--yellow), #ffc76a);
-      box-shadow: var(--shadow);
+        radial-gradient(circle at 34% 30%, #fff6c7 0 18%, transparent 19%),
+        linear-gradient(135deg, var(--yellow), #ffc46a);
+      box-shadow: var(--shadow-strong);
       animation: float 5s ease-in-out infinite;
-      z-index: -1;
     }
 
     .quokka-card {
       position: relative;
-      width: min(370px, 88vw);
-      padding: clamp(24px, 5vw, 32px);
+      z-index: 3;
+      width: min(370px, 86vw);
+      padding: clamp(24px, 4vw, 32px);
       border-radius: 38px;
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-strong);
       backdrop-filter: blur(16px);
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255, 255, 255, 0.8);
       text-align: center;
       transform: rotate(-2deg);
+    }
+
+    .bubble {
+      position: absolute;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 17px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 2px solid rgba(169, 120, 75, 0.32);
+      box-shadow: 0 12px 28px rgba(75, 52, 35, 0.16);
+      font-family: "Jua", sans-serif;
+      color: var(--brown);
+      white-space: nowrap;
+      animation: pop 4s ease-in-out infinite;
+    }
+
+    .bubble.one {
+      top: 13%;
+      left: 3%;
+    }
+
+    .bubble.two {
+      right: 2%;
+      bottom: 18%;
+      animation-delay: 0.8s;
     }
 
     .quokka-face {
@@ -295,9 +336,9 @@
       width: min(220px, 58vw);
       aspect-ratio: 1 / 1;
       margin: 0 auto 22px;
-      background: var(--brown);
       border-radius: 48% 48% 44% 44%;
-      box-shadow: inset -10px -14px 0 rgba(75, 52, 35, 0.12);
+      background: var(--brown);
+      box-shadow: inset -10px -14px 0 rgba(75, 52, 35, 0.13);
     }
 
     .ear {
@@ -324,7 +365,7 @@
       position: absolute;
       inset: 24%;
       border-radius: 50%;
-      background: #d8a06f;
+      background: var(--brown-soft);
     }
 
     .eye {
@@ -333,7 +374,7 @@
       width: 8%;
       height: 11%;
       border-radius: 50%;
-      background: #2e2018;
+      background: #2E2018;
     }
 
     .eye.left {
@@ -352,7 +393,7 @@
       height: 11%;
       transform: translateX(-50%);
       border-radius: 50%;
-      background: #2e2018;
+      background: #2E2018;
     }
 
     .smile {
@@ -362,7 +403,7 @@
       width: 38%;
       height: 19%;
       transform: translateX(-50%);
-      border-bottom: 6px solid #2e2018;
+      border-bottom: 6px solid #2E2018;
       border-radius: 0 0 80px 80px;
     }
 
@@ -372,7 +413,7 @@
       width: 12%;
       height: 7%;
       border-radius: 50%;
-      background: rgba(255, 216, 107, 0.72);
+      background: rgba(255, 216, 107, 0.78);
     }
 
     .cheek.left {
@@ -384,108 +425,91 @@
     }
 
     .quokka-card h2 {
-      font-family: "Jua", sans-serif;
-      font-size: clamp(26px, 5vw, 30px);
-      color: var(--brown);
       margin-bottom: 8px;
+      font-family: "Jua", sans-serif;
+      font-size: clamp(27px, 4vw, 31px);
+      color: var(--brown);
     }
 
     .quokka-card p {
+      font-size: clamp(15px, 2.5vw, 16px);
       color: rgba(75, 52, 35, 0.76);
-      font-size: clamp(15px, 3vw, 16px);
     }
 
-    .bubble {
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 10px 25px rgba(75, 52, 35, 0.1);
-      padding: 10px 16px;
-      font-family: "Jua", sans-serif;
-      color: var(--brown);
-      animation: pop 4s ease-in-out infinite;
-      white-space: nowrap;
-    }
+    /* =========================
+       Sections Common
+    ========================= */
 
-    .bubble.one {
-      top: 14%;
-      left: 0;
-    }
-
-    .bubble.two {
-      right: 0;
-      bottom: 18%;
-      animation-delay: 0.8s;
-    }
-
-    /* Sections */
     section {
-      padding: clamp(70px, 10vw, 96px) 0;
+      padding: clamp(72px, 10vw, 96px) 0;
     }
 
     .section-head {
+      max-width: 740px;
+      margin: 0 auto clamp(36px, 6vw, 50px);
       text-align: center;
-      max-width: 720px;
-      margin: 0 auto clamp(34px, 6vw, 48px);
     }
 
     .section-label {
       display: inline-block;
       margin-bottom: 12px;
       font-family: "Jua", sans-serif;
-      color: var(--brown);
       font-size: clamp(18px, 3vw, 20px);
+      color: var(--brown);
     }
 
     .section-head h2 {
-      font-family: "Jua", sans-serif;
-      font-size: clamp(32px, 6vw, 54px);
-      line-height: 1.08;
       margin-bottom: 18px;
+      font-family: "Jua", sans-serif;
+      font-size: clamp(32px, 5.5vw, 54px);
+      line-height: 1.1;
       word-break: keep-all;
     }
 
     .section-head p {
+      font-size: clamp(16px, 2.4vw, 18px);
       color: rgba(75, 52, 35, 0.76);
-      font-size: clamp(16px, 2.5vw, 18px);
       word-break: keep-all;
     }
 
-    /* Intro */
+    /* =========================
+       Intro
+    ========================= */
+
     .intro-box {
       display: grid;
-      grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
-      gap: clamp(22px, 4vw, 34px);
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(24px, 4vw, 36px);
       align-items: center;
-      padding: clamp(24px, 5vw, 38px);
+      padding: clamp(24px, 5vw, 40px);
       border-radius: var(--radius-lg);
       background: var(--white);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
     }
 
     .intro-quote {
-      border-radius: 24px;
-      background: linear-gradient(135deg, var(--yellow), #fff1ad);
       padding: clamp(24px, 5vw, 34px);
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
     }
 
     .intro-quote strong {
       display: block;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(30px, 5vw, 36px);
-      line-height: 1.15;
       margin-bottom: 16px;
+      font-family: "Jua", sans-serif;
+      font-size: clamp(30px, 4.8vw, 38px);
+      line-height: 1.15;
       word-break: keep-all;
     }
 
     .intro-quote span {
-      color: rgba(75, 52, 35, 0.75);
-      font-size: clamp(15px, 2.5vw, 16px);
+      color: rgba(75, 52, 35, 0.74);
+      word-break: keep-all;
     }
 
     .intro-text p {
       margin-bottom: 16px;
-      font-size: clamp(16px, 2.5vw, 18px);
+      font-size: clamp(16px, 2.3vw, 18px);
       color: rgba(75, 52, 35, 0.84);
       word-break: keep-all;
     }
@@ -505,20 +529,23 @@
       font-size: 14px;
     }
 
-    /* Cards */
+    /* =========================
+       Cards
+    ========================= */
+
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-template-columns: repeat(5, 1fr);
       gap: 18px;
     }
 
     .card {
       min-height: 255px;
-      padding: clamp(22px, 4vw, 24px);
+      padding: 24px;
       border-radius: var(--radius-md);
       background: var(--white);
+      border: 1px solid rgba(169, 120, 75, 0.1);
       box-shadow: 0 12px 30px rgba(75, 52, 35, 0.09);
-      border: 1px solid rgba(169, 120, 75, 0.08);
       transition: 0.25s ease;
     }
 
@@ -539,66 +566,77 @@
     }
 
     .card h3 {
-      font-family: "Jua", sans-serif;
-      font-size: clamp(22px, 4vw, 23px);
       margin-bottom: 10px;
+      font-family: "Jua", sans-serif;
+      font-size: 23px;
       color: var(--brown);
       word-break: keep-all;
     }
 
     .card p {
-      font-size: clamp(15px, 2.5vw, 15.5px);
+      font-size: 15.5px;
       color: rgba(75, 52, 35, 0.74);
       word-break: keep-all;
     }
 
-    /* CTA */
+    /* =========================
+       CTA
+    ========================= */
+
     .cta {
-      padding-bottom: clamp(80px, 12vw, 110px);
+      padding-bottom: clamp(82px, 12vw, 112px);
     }
 
     .cta-box {
       position: relative;
       overflow: hidden;
-      border-radius: 38px;
-      padding: clamp(30px, 7vw, 58px);
+      padding: clamp(32px, 7vw, 60px);
+      border-radius: var(--radius-xl);
       background:
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.55), transparent 30%),
-        linear-gradient(135deg, var(--brown), #c58c53);
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.5), transparent 30%),
+        linear-gradient(135deg, var(--brown), #C58C53);
       color: var(--white);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-strong);
     }
 
     .cta-box::after {
       content: "☺";
       position: absolute;
       right: 30px;
-      bottom: -60px;
+      bottom: -62px;
       font-family: "Jua", sans-serif;
-      font-size: clamp(120px, 26vw, 230px);
-      color: rgba(255, 255, 255, 0.11);
+      font-size: clamp(130px, 24vw, 230px);
       line-height: 1;
+      color: rgba(255, 255, 255, 0.11);
     }
 
     .cta-box h2 {
       position: relative;
       z-index: 1;
-      max-width: 680px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(32px, 6vw, 58px);
-      line-height: 1.08;
+      max-width: 700px;
       margin-bottom: 18px;
+      font-family: "Jua", sans-serif;
+      font-size: clamp(32px, 5.6vw, 58px);
+      line-height: 1.1;
       word-break: keep-all;
     }
 
     .cta-box p {
       position: relative;
       z-index: 1;
-      max-width: 660px;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: clamp(16px, 2.5vw, 18px);
+      max-width: 670px;
       margin-bottom: 30px;
+      font-size: clamp(16px, 2.3vw, 18px);
+      color: rgba(255, 255, 255, 0.84);
       word-break: keep-all;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
     }
 
     .btn-light {
@@ -609,15 +647,18 @@
     .btn-outline {
       background: transparent;
       color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
-    .btn-outline:hover,
-    .btn-light:hover {
+    .btn-light:hover,
+    .btn-outline:hover {
       transform: translateY(-3px);
     }
 
-    /* Footer */
+    /* =========================
+       Footer
+    ========================= */
+
     .footer {
       padding: 36px 0;
       border-top: 1px solid rgba(169, 120, 75, 0.14);
@@ -632,29 +673,37 @@
       font-size: 14px;
     }
 
+    /* =========================
+       Toast
+    ========================= */
+
     .toast {
       position: fixed;
       left: 50%;
       bottom: 28px;
-      transform: translateX(-50%) translateY(20px);
+      z-index: 300;
       width: max-content;
       max-width: calc(100% - 28px);
       padding: 13px 18px;
       border-radius: 999px;
-      background: var(--deep-brown);
+      background: var(--brown-dark);
       color: var(--white);
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.25s ease;
-      z-index: 200;
       font-size: 14px;
       text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(20px);
+      transition: 0.25s ease;
     }
 
     .toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
+
+    /* =========================
+       Animation
+    ========================= */
 
     @keyframes float {
       0%, 100% {
@@ -676,11 +725,18 @@
       }
     }
 
-    /* Tablet */
-    @media (max-width: 980px) {
+    /* =========================
+       Tablet
+    ========================= */
+
+    @media (max-width: 1024px) {
       .hero {
         grid-template-columns: 1fr;
         text-align: center;
+      }
+
+      .hero-visual {
+        order: -1;
       }
 
       .hero-desc {
@@ -692,24 +748,22 @@
         justify-content: center;
       }
 
-      .hero-visual {
-        order: -1;
-        min-height: 430px;
-      }
-
       .intro-box {
         grid-template-columns: 1fr;
       }
 
       .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    /* Mobile */
+    /* =========================
+       Mobile
+    ========================= */
+
     @media (max-width: 700px) {
       .page {
-        width: min(100% - 28px, var(--page-width));
+        width: min(100% - 28px, var(--container));
       }
 
       .nav {
@@ -726,57 +780,52 @@
         left: 0;
         right: 0;
         display: grid;
-        gap: 6px;
+        gap: 8px;
         padding: 14px;
         border-radius: 22px;
         background: rgba(255, 255, 255, 0.96);
-        box-shadow: 0 18px 45px rgba(75, 52, 35, 0.16);
-        transform: translateY(-10px);
+        box-shadow: var(--shadow-strong);
         opacity: 0;
         pointer-events: none;
+        transform: translateY(-10px);
         transition: 0.25s ease;
       }
 
       .nav-links.open {
-        transform: translateY(0);
         opacity: 1;
         pointer-events: auto;
+        transform: translateY(0);
       }
 
       .nav-links a {
         min-height: 48px;
         justify-content: center;
         border-radius: 14px;
-        background: rgba(255, 216, 107, 0.24);
+        background: rgba(255, 216, 107, 0.28);
       }
 
       .hero {
         min-height: auto;
-        padding-top: 42px;
-        padding-bottom: 64px;
+        padding-top: 40px;
+        padding-bottom: 66px;
       }
 
-      .hero h1 {
-        letter-spacing: -0.4px;
-      }
-
-      .hero h1 span::after {
+      .hero-title span::after {
         height: 12px;
         bottom: 5px;
       }
 
-      .hero-actions,
-      .cta-actions {
+      .hero-actions {
         width: 100%;
       }
 
-      .hero-actions .btn,
-      .cta-actions .btn {
+      .hero-actions .btn {
         width: 100%;
       }
 
       .hero-visual {
-        min-height: 370px;
+        min-height: 390px;
+        margin-bottom: 6px;
       }
 
       .sun-circle {
@@ -784,11 +833,28 @@
       }
 
       .quokka-card {
+        width: min(300px, 82vw);
         border-radius: 30px;
       }
 
       .bubble {
-        display: none;
+        min-height: 38px;
+        padding: 8px 13px;
+        font-size: 15px;
+        border-width: 1.5px;
+      }
+
+      .bubble.one {
+        top: 4%;
+        left: 50%;
+        transform: translateX(-115%);
+      }
+
+      .bubble.two {
+        top: 4%;
+        right: 50%;
+        bottom: auto;
+        transform: translateX(115%);
       }
 
       .intro-box {
@@ -807,6 +873,14 @@
         min-height: auto;
       }
 
+      .cta-actions {
+        width: 100%;
+      }
+
+      .cta-actions .btn {
+        width: 100%;
+      }
+
       .cta-box {
         border-radius: 28px;
       }
@@ -818,10 +892,13 @@
       }
     }
 
-    /* Small Mobile */
-    @media (max-width: 420px) {
+    /* =========================
+       Small Mobile
+    ========================= */
+
+    @media (max-width: 430px) {
       .page {
-        width: min(100% - 22px, var(--page-width));
+        width: min(100% - 22px, var(--container));
       }
 
       .logo-mark {
@@ -830,27 +907,32 @@
       }
 
       .hero-visual {
-        min-height: 330px;
+        min-height: 360px;
       }
 
       .quokka-card {
-        width: min(292px, 88vw);
+        width: min(286px, 84vw);
+        padding: 22px;
       }
 
-      .hero-desc br {
-        display: none;
+      .bubble {
+        font-size: 14px;
       }
 
-      .badge {
-        padding: 8px 12px;
+      .bubble.one {
+        top: 2%;
+        left: 4%;
+        transform: none;
+      }
+
+      .bubble.two {
+        top: 2%;
+        right: 4%;
+        transform: none;
       }
 
       .btn {
         padding: 14px 18px;
-      }
-
-      .mini-tags {
-        gap: 8px;
       }
 
       .mini-tags span {
@@ -896,12 +978,12 @@
   </header>
 
   <main>
-    <!-- 1. Hero -->
+    <!-- Hero -->
     <section class="page hero">
       <div class="hero-content">
         <div class="badge">🌞 행복을 전하는 작은 친구</div>
 
-        <h1>
+        <h1 class="hero-title">
           세상에 행복을 전하는<br />
           작은 미소, <span>쿼카</span>
         </h1>
@@ -926,8 +1008,14 @@
 
         <div class="quokka-card">
           <div class="quokka-face">
-            <div class="ear left"><div class="inner-ear"></div></div>
-            <div class="ear right"><div class="inner-ear"></div></div>
+            <div class="ear left">
+              <div class="inner-ear"></div>
+            </div>
+
+            <div class="ear right">
+              <div class="inner-ear"></div>
+            </div>
+
             <div class="eye left"></div>
             <div class="eye right"></div>
             <div class="nose"></div>
@@ -942,7 +1030,7 @@
       </div>
     </section>
 
-    <!-- 2. Intro -->
+    <!-- Intro -->
     <section id="intro">
       <div class="page">
         <div class="section-head">
@@ -985,7 +1073,7 @@
       </div>
     </section>
 
-    <!-- 3. Charm Cards -->
+    <!-- Charm Cards -->
     <section id="charm">
       <div class="page">
         <div class="section-head">
@@ -1041,7 +1129,7 @@
       </div>
     </section>
 
-    <!-- 4. CTA -->
+    <!-- CTA -->
     <section id="protect" class="cta">
       <div class="page">
         <div class="cta-box">
@@ -1061,7 +1149,7 @@
     </section>
   </main>
 
-  <!-- 5. Footer -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="page footer-inner">
       <p>© 2026 Quokka Smile Project</p>
