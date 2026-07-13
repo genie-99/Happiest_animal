@@ -1,18 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Quokka Goods Ideas</title>
-  <link rel="icon" type="image/png" href="./imgs/quokka-favicon.png">
-  <!-- Vanilla HTML/CSS/JS only -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
-
-
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quokka Goods Ideas</title><link href="./imgs/quokka-favicon.png" rel="icon" type="image/png"/>
+<!-- Vanilla HTML/CSS/JS only -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Jua&amp;display=swap" rel="stylesheet"/>
+<script>
     (() => {
       try {
         const savedTheme = localStorage.getItem("quokkaSmileTheme");
@@ -24,9 +21,10 @@
         document.documentElement.dataset.theme = "light";
       }
     })();
-  </script>
-
-  <style>
+  
+try { document.documentElement.lang = localStorage.getItem("quokkaSmileLanguage") || "ko"; } catch (e) { document.documentElement.lang = "ko"; }
+</script>
+<style>
     :root {
       --yellow: #FFD86B;
       --yellow-light: #FFF1AF;
@@ -930,11 +928,6 @@
       color: var(--brown);
     }
 
-    html[data-theme="dark"] .btn-light {
-      background: #FFF3DF;
-      color: #4B3423;
-    }
-
     html[data-theme="dark"] .name-field input {
       background: var(--theme-input);
       color: var(--theme-text);
@@ -1068,242 +1061,270 @@
       }
     }
 
-  </style>
-</head>
+  
+    /* Keep the goods layout fixed while the English title is being typed. */
+    .typing-title {
+      display: block;
+      width: 100%;
+      white-space: pre-line;
+    }
 
+    .hero-grid > div:first-child { min-width: 0; }
+
+    @media (min-width: 1025px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(390px, 0.95fr);
+        gap: clamp(40px, 5vw, 72px);
+      }
+
+      html[lang="en"] .hero-title {
+        width: 100%;
+        max-width: 680px;
+        min-height: 2.12em;
+        font-size: clamp(48px, 4.4vw, 68px);
+        line-height: 1.06;
+        letter-spacing: -0.6px;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+
+      html[lang="en"] .hero-title span {
+        white-space: pre-line;
+      }
+
+      html[lang="en"] .hero-card {
+        width: 100%;
+        max-width: 500px;
+        justify-self: end;
+      }
+    }
+
+</style>
+<style>
+    .language-toggle { min-width: 72px; }
+    .language-icon { font-size: 17px; }
+    .typing-title { white-space: pre-line; position: relative; color: var(--theme-text, var(--brown-dark)); }
+    .typing-title::after { content: ""; display: inline-block; width: 3px; height: .86em; margin-left: 7px; vertical-align: -.05em; border-radius: 999px; background: var(--brown); animation: typingBlink .8s steps(1) infinite; }
+    @keyframes typingBlink { 50% { opacity: 0; } }
+    html[lang="ko"] .hero-title .typing-title {
+      white-space: pre-line;
+    }
+
+    @media (min-width: 1025px) {
+      html[lang="ko"] .hero-title {
+        min-height: 2.05em;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) { .typing-title::after { animation: none; } }
+    @media (max-width: 700px) { .language-toggle { width: 100%; min-height: 46px; } }
+    </style></head>
 <body>
-  <header class="header">
-    <nav class="page nav">
-      <a href="./index.html" class="logo" aria-label="Quokka Smile Project 홈">
-        <span class="logo-mark">☺</span>
+<header class="header">
+<nav class="page nav">
+<a aria-label="Quokka Smile Project 홈" class="logo" href="./index.html">
+<span class="logo-mark">☺</span>
         Quokka Smile
       </a>
-
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="./index.html">홈</a>
-        <a href="#goods">굿즈</a>
-        <a href="./campaign.html">캠페인</a>
-        <a href="#story">기획 방향</a>
-        <a href="#next">다음 단계</a>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 변경" aria-pressed="false">
-          <span class="theme-icon" aria-hidden="true">🌙</span>
-          <span class="theme-text">다크 모드</span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="goods-hero">
-      <div class="page hero-grid">
-        <div>
-          <div class="badge">🎁 Quokka Goods Ideas</div>
-
-          <h1 class="hero-title">
-            쿼카의 미소를<br />
-            일상 속 <span>굿즈</span>로
-          </h1>
-
-          <p class="hero-desc">
+<button aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="nav-links" id="navLinks">
+<a data-en="Home" data-i18n="k0" data-ko="홈" href="./index.html">홈</a>
+<a data-en="Goods" data-i18n="k1" data-ko="굿즈" href="#goods">굿즈</a>
+<a data-en="Campaign" data-i18n="k2" data-ko="캠페인" href="./campaign.html">캠페인</a>
+<a data-en="Direction" data-i18n="k3" data-ko="기획 방향" href="#story">기획 방향</a>
+<a data-en="Next step" data-i18n="k4" data-ko="다음 단계" href="#next">다음 단계</a>
+<button aria-label="Switch to English" aria-pressed="false" class="theme-toggle language-toggle" id="languageToggle" type="button"><span aria-hidden="true" class="language-icon">🌐</span><span class="language-text">EN</span></button><button aria-label="다크 모드로 변경" aria-pressed="false" class="theme-toggle" id="themeToggle" type="button">
+<span aria-hidden="true" class="theme-icon">🌙</span>
+<span class="theme-text">다크 모드</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero -->
+<section class="goods-hero">
+<div class="page hero-grid">
+<div>
+<div class="badge" data-en="🎁 Quokka Goods Ideas" data-i18n="k5" data-ko="🎁 Quokka Goods Ideas">🎁 Quokka Goods Ideas</div>
+<h1 class="hero-title" data-title-en="Bring the quokka smile
+into everyday life" data-title-ko="쿼카의 미소를
+일상 속 굿즈로"><span aria-live="polite" class="typing-title" id="typingTitle"></span></h1>
+<p class="hero-desc" data-en="We go beyond introducing a cute animal and expand the quokka into goods people can touch, wear, hug, and use every day—while preserving a warm, cute, and hopeful mood." data-i18n="k7" data-ko="귀여운 동물 소개에서 끝나지 않고, 사람들이 매일 만지고 입고 안고 사용할 수 있는 쿼카 굿즈 아이디어로 확장합니다. 따뜻하고 귀엽고 희망적인 분위기를 그대로 유지합니다.">
             귀여운 동물 소개에서 끝나지 않고, 사람들이 매일 만지고 입고 안고 사용할 수 있는
             쿼카 굿즈 아이디어로 확장합니다. 따뜻하고 귀엽고 희망적인 분위기를 그대로 유지합니다.
           </p>
-
-          <div class="hero-actions">
-            <a href="#goods" class="btn btn-primary">굿즈 아이디어 보기</a>
-            <a href="./index.html" class="btn btn-soft">메인으로 돌아가기</a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-card-icon">🧸</div>
-          <h2>Smile Goods Collection</h2>
-          <p>
+<div class="hero-actions">
+<a class="btn btn-primary" data-en="Explore goods ideas" data-i18n="k8" data-ko="굿즈 아이디어 보기" href="#goods">굿즈 아이디어 보기</a>
+<a class="btn btn-soft" data-en="Back to home" data-i18n="k9" data-ko="메인으로 돌아가기" href="./index.html">메인으로 돌아가기</a>
+</div>
+</div>
+<div class="hero-card">
+<div class="hero-card-icon">🧸</div>
+<h2>Smile Goods Collection</h2>
+<p data-en="A warm collection that brings the quokka’s smile to cards, fashion, lifestyle items, and scented goods." data-i18n="k10" data-ko="쿼카의 웃는 얼굴을 카드, 패션, 생활용품, 향기 굿즈로 확장한 따뜻한 굿즈 라인업입니다.">
             쿼카의 웃는 얼굴을 카드, 패션, 생활용품, 향기 굿즈로 확장한
             따뜻한 굿즈 라인업입니다.
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Goods Cards -->
-    <section id="goods">
-      <div class="page">
-        <div class="section-head">
-          <span class="section-label">굿즈 라인업</span>
-          <h2>쿼카 굿즈 아이디어 8가지</h2>
-          <p>
+</div>
+</div>
+</section>
+<!-- Goods Cards -->
+<section id="goods">
+<div class="page">
+<div class="section-head">
+<span class="section-label" data-en="Goods lineup" data-i18n="k11" data-ko="굿즈 라인업">굿즈 라인업</span>
+<h2 data-en="8 quokka goods ideas" data-i18n="k12" data-ko="쿼카 굿즈 아이디어 8가지">쿼카 굿즈 아이디어 8가지</h2>
+<p data-en="These products attract attention through cuteness and keep the quokka’s message of happiness present in everyday life." data-i18n="k13" data-ko="귀여움으로 관심을 만들고, 일상에서 쿼카의 행복 메시지를 계속 떠올리게 하는 제품들입니다.">
             귀여움으로 관심을 만들고, 일상에서 쿼카의 행복 메시지를 계속 떠올리게 하는 제품들입니다.
           </p>
-        </div>
-
-        <div class="goods-tools" aria-label="굿즈 검색과 필터">
-          <label for="goodsSearch" class="section-label" style="margin: 0;">원하는 굿즈 찾기</label>
-          <input class="goods-search" id="goodsSearch" type="search" placeholder="예: 인형, 수면, 티셔츠" autocomplete="off" />
-          <div class="filter-row" id="filterRow">
-            <button class="filter-btn active" type="button" data-filter="all">전체</button>
-            <button class="filter-btn" type="button" data-filter="guide">소개</button>
-            <button class="filter-btn" type="button" data-filter="fashion">패션</button>
-            <button class="filter-btn" type="button" data-filter="healing">힐링</button>
-            <button class="filter-btn" type="button" data-filter="life">생활</button>
-            <span class="goods-result-count" id="goodsResultCount">8개 굿즈</span>
-          </div>
-        </div>
-
-        <div class="goods-grid">
-          <article class="goods-card" data-category="guide">
-            <div class="goods-icon">📘</div>
-            <h3>쿼카 소개서</h3>
-            <p>
+</div>
+<div aria-label="굿즈 검색과 필터" class="goods-tools">
+<label class="section-label" data-en="Find your goods" data-i18n="k14" data-ko="원하는 굿즈 찾기" for="goodsSearch" style="margin: 0;">원하는 굿즈 찾기</label>
+<input autocomplete="off" class="goods-search" id="goodsSearch" placeholder="예: 인형, 수면, 티셔츠" type="search"/>
+<div class="filter-row" id="filterRow">
+<button class="filter-btn active" data-en="All" data-filter="all" data-i18n="k15" data-ko="전체" type="button">전체</button>
+<button class="filter-btn" data-en="Intro" data-filter="guide" data-i18n="k16" data-ko="소개" type="button">소개</button>
+<button class="filter-btn" data-en="Fashion" data-filter="fashion" data-i18n="k17" data-ko="패션" type="button">패션</button>
+<button class="filter-btn" data-en="Healing" data-filter="healing" data-i18n="k18" data-ko="힐링" type="button">힐링</button>
+<button class="filter-btn" data-en="Lifestyle" data-filter="life" data-i18n="k19" data-ko="생활" type="button">생활</button>
+<span class="goods-result-count" data-en="8 items" data-i18n="k20" data-ko="8개 굿즈" id="goodsResultCount">8개 굿즈</span>
+</div>
+</div>
+<div class="goods-grid">
+<article class="goods-card" data-category="guide">
+<div class="goods-icon">📘</div>
+<h3 data-en="Quokka introduction cards" data-i18n="k21" data-ko="쿼카 소개서">쿼카 소개서</h3>
+<p data-en="A compact card set introducing quokka traits, charm, and protection messages—perfect for a first encounter." data-i18n="k22" data-ko="쿼카의 특징, 매력, 보호 메시지를 카드형으로 담은 작은 소개서입니다. 첫 만남용 굿즈로 좋습니다.">
               쿼카의 특징, 매력, 보호 메시지를 카드형으로 담은 작은 소개서입니다.
               첫 만남용 굿즈로 좋습니다.
             </p>
-            <span class="goods-tag">카드형 소개 굿즈</span>
-          </article>
-
-          <article class="goods-card" data-category="healing">
-            <div class="goods-icon">🧸</div>
-            <h3>쿼카 인형</h3>
-            <p>
+<span class="goods-tag" data-en="Introduction cards" data-i18n="k23" data-ko="카드형 소개 굿즈">카드형 소개 굿즈</span>
+</article>
+<article class="goods-card" data-category="healing">
+<div class="goods-icon">🧸</div>
+<h3 data-en="Quokka plush" data-i18n="k24" data-ko="쿼카 인형">쿼카 인형</h3>
+<p data-en="A signature plush featuring a small round face and smiling expression, ideal for a desk or bedside." data-i18n="k25" data-ko="둥글고 작은 얼굴, 웃는 표정을 살린 대표 굿즈입니다. 책상 위나 침대 옆에 두기 좋습니다.">
               둥글고 작은 얼굴, 웃는 표정을 살린 대표 굿즈입니다.
               책상 위나 침대 옆에 두기 좋습니다.
             </p>
-            <span class="goods-tag">대표 캐릭터 굿즈</span>
-          </article>
-
-          <article class="goods-card" data-category="fashion">
-            <div class="goods-icon">👕</div>
-            <h3>쿼카 티셔츠</h3>
-            <p>
+<span class="goods-tag" data-en="Signature character item" data-i18n="k26" data-ko="대표 캐릭터 굿즈">대표 캐릭터 굿즈</span>
+</article>
+<article class="goods-card" data-category="fashion">
+<div class="goods-icon">👕</div>
+<h3 data-en="Quokka T-shirt" data-i18n="k27" data-ko="쿼카 티셔츠">쿼카 티셔츠</h3>
+<p data-en="An easy everyday T-shirt with a small smiling quokka graphic and catchphrase." data-i18n="k28" data-ko="작게 웃는 쿼카 그래픽과 캐치프레이즈를 넣은 데일리 티셔츠입니다. 부담 없이 입기 좋습니다.">
               작게 웃는 쿼카 그래픽과 캐치프레이즈를 넣은 데일리 티셔츠입니다.
               부담 없이 입기 좋습니다.
             </p>
-            <span class="goods-tag">데일리 패션</span>
-          </article>
-
-          <article class="goods-card" data-category="fashion">
-            <div class="goods-icon">🧥</div>
-            <h3>쿼카 후드</h3>
-            <p>
+<span class="goods-tag" data-en="Daily fashion" data-i18n="k29" data-ko="데일리 패션">데일리 패션</span>
+</article>
+<article class="goods-card" data-category="fashion">
+<div class="goods-icon">🧥</div>
+<h3 data-en="Quokka hoodie" data-i18n="k30" data-ko="쿼카 후드">쿼카 후드</h3>
+<p data-en="A cozy hoodie with quokka embroidery or a small patch that carries the warm brand image." data-i18n="k31" data-ko="포근한 후드에 쿼카 자수나 작은 와펜을 넣어 따뜻한 브랜드 이미지를 전달합니다.">
               포근한 후드에 쿼카 자수나 작은 와펜을 넣어 따뜻한 브랜드 이미지를 전달합니다.
             </p>
-            <span class="goods-tag">포근한 의류</span>
-          </article>
-
-          <article class="goods-card" data-category="healing">
-            <div class="goods-icon">🛏️</div>
-            <h3>쿼카 안아주기 베개</h3>
-            <p>
+<span class="goods-tag" data-en="Cozy apparel" data-i18n="k32" data-ko="포근한 의류">포근한 의류</span>
+</article>
+<article class="goods-card" data-category="healing">
+<div class="goods-icon">🛏️</div>
+<h3 data-en="Quokka hug pillow" data-i18n="k33" data-ko="쿼카 안아주기 베개">쿼카 안아주기 베개</h3>
+<p data-en="A long cushion shaped to feel like hugging a quokka, suited for relaxation and sleep support." data-i18n="k34" data-ko="쿼카를 품에 안는 듯한 형태의 롱쿠션입니다. 힐링과 수면 보조 굿즈로 확장하기 좋습니다.">
               쿼카를 품에 안는 듯한 형태의 롱쿠션입니다.
               힐링과 수면 보조 굿즈로 확장하기 좋습니다.
             </p>
-            <span class="goods-tag">힐링 생활용품</span>
-          </article>
-
-          <article class="goods-card" data-category="life">
-            <div class="goods-icon">🌿</div>
-            <h3>쿼카 냄새를 담은 봉지</h3>
-            <p>
+<span class="goods-tag" data-en="Healing lifestyle item" data-i18n="k35" data-ko="힐링 생활용품">힐링 생활용품</span>
+</article>
+<article class="goods-card" data-category="life">
+<div class="goods-icon">🌿</div>
+<h3 data-en="Quokka-inspired scent pouch" data-i18n="k36" data-ko="쿼카 냄새를 담은 봉지">쿼카 냄새를 담은 봉지</h3>
+<p data-en="A scent pouch inspired not by an animal smell, but by forest air, sunlight, and soft fur." data-i18n="k37" data-ko="실제 동물 냄새가 아니라 숲, 햇살, 포근한 털 느낌을 상상한 향기 포켓입니다. 가방이나 방에 둘 수 있습니다.">
               실제 동물 냄새가 아니라 숲, 햇살, 포근한 털 느낌을 상상한 향기 포켓입니다.
               가방이나 방에 둘 수 있습니다.
             </p>
-            <span class="goods-tag">상상 향기 굿즈</span>
-          </article>
-
-          <article class="goods-card" data-category="life">
-            <div class="goods-icon">🥿</div>
-            <h3>쿼카 슬리퍼</h3>
-            <p>
+<span class="goods-tag" data-en="Imagined scent item" data-i18n="k38" data-ko="상상 향기 굿즈">상상 향기 굿즈</span>
+</article>
+<article class="goods-card" data-category="life">
+<div class="goods-icon">🥿</div>
+<h3 data-en="Quokka slippers" data-i18n="k39" data-ko="쿼카 슬리퍼">쿼카 슬리퍼</h3>
+<p data-en="Indoor slippers featuring a quokka face, bringing cheerful cuteness into the home." data-i18n="k40" data-ko="발등 부분에 쿼카 얼굴을 넣은 실내용 슬리퍼입니다. 집에서도 귀여운 행복감을 느끼게 합니다.">
               발등 부분에 쿼카 얼굴을 넣은 실내용 슬리퍼입니다.
               집에서도 귀여운 행복감을 느끼게 합니다.
             </p>
-            <span class="goods-tag">홈 라이프 굿즈</span>
-          </article>
-
-          <article class="goods-card" data-category="healing">
-            <div class="goods-icon">😴</div>
-            <h3>쿼카 안대</h3>
-            <p>
+<span class="goods-tag" data-en="Home lifestyle item" data-i18n="k41" data-ko="홈 라이프 굿즈">홈 라이프 굿즈</span>
+</article>
+<article class="goods-card" data-category="healing">
+<div class="goods-icon">😴</div>
+<h3 data-en="Quokka sleep mask" data-i18n="k42" data-ko="쿼카 안대">쿼카 안대</h3>
+<p data-en="A cute sleep mask that makes the quokka look as though it is smiling when your eyes are closed." data-i18n="k43" data-ko="눈을 감으면 쿼카가 웃고 있는 듯한 귀여운 수면 안대입니다. 휴식과 힐링 콘셉트에 잘 맞습니다.">
               눈을 감으면 쿼카가 웃고 있는 듯한 귀여운 수면 안대입니다.
               휴식과 힐링 콘셉트에 잘 맞습니다.
             </p>
-            <span class="goods-tag">수면 힐링 굿즈</span>
-          </article>
-        </div>
-        <div class="empty-result" id="emptyResult">검색 조건에 맞는 굿즈가 없어요. 다른 검색어를 입력해 보세요.</div>
-      </div>
-    </section>
-
-    <!-- Story -->
-    <section id="story">
-      <div class="page">
-        <div class="idea-box">
-          <div class="idea-quote">
-            <strong>귀여움은 입구, 행복은 경험, 보호는 메시지.</strong>
-            <span>
+<span class="goods-tag" data-en="Sleep and healing item" data-i18n="k44" data-ko="수면 힐링 굿즈">수면 힐링 굿즈</span>
+</article>
+</div>
+<div class="empty-result" data-en="No goods match your search. Try another keyword." data-i18n="k45" data-ko="검색 조건에 맞는 굿즈가 없어요. 다른 검색어를 입력해 보세요." id="emptyResult">검색 조건에 맞는 굿즈가 없어요. 다른 검색어를 입력해 보세요.</div>
+</div>
+</section>
+<!-- Story -->
+<section id="story">
+<div class="page">
+<div class="idea-box">
+<div class="idea-quote">
+<strong data-en="Cuteness is the entrance, happiness is the experience, and protection is the message." data-i18n="k46" data-ko="귀여움은 입구, 행복은 경험, 보호는 메시지.">귀여움은 입구, 행복은 경험, 보호는 메시지.</strong>
+<span data-en="Goods are more than products—they keep the quokka’s warm image present in daily life." data-i18n="k47" data-ko="굿즈는 단순히 상품을 파는 것이 아니라 쿼카의 따뜻한 이미지를 일상 속에서 기억하게 만드는 장치입니다.">
               굿즈는 단순히 상품을 파는 것이 아니라 쿼카의 따뜻한 이미지를 일상 속에서 기억하게 만드는 장치입니다.
             </span>
-          </div>
-
-          <div class="idea-text">
-            <h2>굿즈 방향성</h2>
-            <p>
+</div>
+<div class="idea-text">
+<h2 data-en="Goods direction" data-i18n="k48" data-ko="굿즈 방향성">굿즈 방향성</h2>
+<p data-en="Rather than feeling flashy or cold, the goods use warm yellow and soft brown to stay gentle and welcoming." data-i18n="k49" data-ko="쿼카 굿즈는 너무 화려하거나 차갑게 보이기보다, 웜 옐로우와 소프트 브라운을 중심으로 부드럽고 따뜻한 느낌을 유지합니다.">
               쿼카 굿즈는 너무 화려하거나 차갑게 보이기보다,
               웜 옐로우와 소프트 브라운을 중심으로 부드럽고 따뜻한 느낌을 유지합니다.
             </p>
-            <p>
+<p data-en="Connecting each item to smiles, comfort, rest, and protection turns character merchandise into meaningful brand goods." data-i18n="k50" data-ko="제품마다 “웃음”, “포근함”, “휴식”, “보호”라는 감정을 연결하면 단순한 캐릭터 상품이 아니라 브랜드 메시지가 있는 굿즈가 됩니다.">
               제품마다 “웃음”, “포근함”, “휴식”, “보호”라는 감정을 연결하면
               단순한 캐릭터 상품이 아니라 브랜드 메시지가 있는 굿즈가 됩니다.
             </p>
-
-            <div class="mini-tags">
-              <span>#따뜻한</span>
-              <span>#귀여운</span>
-              <span>#희망적인</span>
-              <span>#힐링굿즈</span>
-              <span>#쿼카브랜드</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="next" class="cta">
-      <div class="page">
-        <div class="cta-box">
-          <h2>다음 단계는 굿즈 상세 페이지입니다.</h2>
-          <p>
+<div class="mini-tags">
+<span data-en="#Warm" data-i18n="k51" data-ko="#따뜻한">#따뜻한</span>
+<span data-en="#Cute" data-i18n="k52" data-ko="#귀여운">#귀여운</span>
+<span data-en="#Hopeful" data-i18n="k53" data-ko="#희망적인">#희망적인</span>
+<span data-en="#HealingGoods" data-i18n="k54" data-ko="#힐링굿즈">#힐링굿즈</span>
+<span data-en="#QuokkaBrand" data-i18n="k55" data-ko="#쿼카브랜드">#쿼카브랜드</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="cta" id="next">
+<div class="page">
+<div class="cta-box">
+<h2 data-en="The next step is a detailed goods page." data-i18n="k56" data-ko="다음 단계는 굿즈 상세 페이지입니다.">다음 단계는 굿즈 상세 페이지입니다.</h2>
+<p data-en="Each item can expand into a detail page with pricing, descriptions, usage scenes, and a purchase button. For now, the brand mood and lineup are established." data-i18n="k57" data-ko="각 굿즈를 클릭했을 때 가격, 설명, 사용 장면, 구매 버튼이 나오는 상세 페이지로 확장할 수 있습니다. 지금은 브랜드 분위기와 굿즈 라인업을 먼저 잡은 상태입니다.">
             각 굿즈를 클릭했을 때 가격, 설명, 사용 장면, 구매 버튼이 나오는 상세 페이지로 확장할 수 있습니다.
             지금은 브랜드 분위기와 굿즈 라인업을 먼저 잡은 상태입니다.
           </p>
-
-          <div class="cta-actions">
-            <a href="./index.html" class="btn btn-light">메인 페이지로 이동</a>
-            <button class="btn btn-outline" id="ideaBtn" type="button">아이디어 저장하기</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="page footer-inner">
-      <p>© 2026 Quokka Smile Project</p>
-      <p>Goods Idea Page · Vanilla HTML/CSS/JS</p>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast">아이디어가 준비됐어요 ☺</div>
-
-  <script>
+<div class="cta-actions">
+<a class="btn btn-light" data-en="Go to home" data-i18n="k58" data-ko="메인 페이지로 이동" href="./index.html">메인 페이지로 이동</a>
+<button class="btn btn-outline" data-en="Save ideas" data-i18n="k59" data-ko="아이디어 저장하기" id="ideaBtn" type="button">아이디어 저장하기</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="page footer-inner">
+<p>© 2026 Quokka Smile Project</p>
+<p>Goods Idea Page · Vanilla HTML/CSS/JS</p>
+</div>
+</footer>
+<div class="toast" data-en="Your ideas are ready ☺" data-i18n="k60" data-ko="아이디어가 준비됐어요 ☺" id="toast">아이디어가 준비됐어요 ☺</div>
+<script>
     const menuBtn = document.querySelector("#menuBtn");
     const navLinks = document.querySelector("#navLinks");
     const navItems = document.querySelectorAll(".nav-links a");
@@ -1348,8 +1369,7 @@
       showToast("굿즈 아이디어 라인업이 완성됐어요 🎁");
     });
   </script>
-
-  <script>
+<script>
     (() => {
       const root = document.documentElement;
       const themeToggle = document.querySelector("#themeToggle");
@@ -1439,8 +1459,7 @@
       }
     })();
   </script>
-
-  <script>
+<script>
     (() => {
       const searchInput = document.querySelector("#goodsSearch");
       const filterButtons = [...document.querySelectorAll(".filter-btn")];
@@ -1477,5 +1496,71 @@
       filterGoods();
     })();
   </script>
-</body>
+<script>
+    (() => {
+      const LANGUAGE_KEY = "quokkaSmileLanguage";
+      const languageToggle = document.querySelector("#languageToggle");
+      const typingTitle = document.querySelector("#typingTitle");
+      const titleCopy = {"ko": "쿼카의 미소를\n일상 속 굿즈로", "en": "Bring the quokka smile\ninto everyday life"};
+      const pageTitleCopy = {"ko": "쿼카 굿즈 아이디어", "en": "Quokka Goods Ideas"};
+      let typingTimer;
+
+      function getLanguage() {
+        try { return localStorage.getItem(LANGUAGE_KEY) || "ko"; }
+        catch (error) { return "ko"; }
+      }
+
+      function typeTitle(text) {
+        if (!typingTitle) return;
+        clearTimeout(typingTimer);
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduceMotion) { typingTitle.textContent = text; return; }
+        typingTitle.textContent = "";
+        let index = 0;
+        const write = () => {
+          typingTitle.textContent = text.slice(0, index);
+          index += 1;
+          if (index <= text.length) typingTimer = setTimeout(write, text.charCodeAt(index - 1) === 10 ? 180 : 55);
+        };
+        write();
+      }
+
+      function applyLanguage(language, persist = true) {
+        const lang = language === "en" ? "en" : "ko";
+        document.documentElement.lang = lang;
+        if (persist) { try { localStorage.setItem(LANGUAGE_KEY, lang); } catch (error) {} }
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const value = element.dataset[lang];
+          if (value) element.textContent = value;
+        });
+        document.title = pageTitleCopy[lang];
+        if (languageToggle) {
+          const isEnglish = lang === "en";
+          languageToggle.setAttribute("aria-pressed", String(isEnglish));
+          languageToggle.setAttribute("aria-label", isEnglish ? "한국어로 변경" : "Switch to English");
+          languageToggle.querySelector(".language-text").textContent = isEnglish ? "KO" : "EN";
+        }
+        const themeText = document.querySelector("#themeToggle .theme-text");
+        const themeToggle = document.querySelector("#themeToggle");
+        if (themeText && themeToggle) {
+          const dark = document.documentElement.dataset.theme === "dark";
+          themeText.textContent = lang === "en" ? (dark ? "Light mode" : "Dark mode") : (dark ? "라이트 모드" : "다크 모드");
+          themeToggle.setAttribute("aria-label", lang === "en" ? (dark ? "Switch to light mode" : "Switch to dark mode") : (dark ? "라이트 모드로 변경" : "다크 모드로 변경"));
+        }
+        typeTitle(titleCopy[lang]);
+        window.dispatchEvent(new CustomEvent("quokka-language-change", { detail: { language: lang } }));
+      }
+
+      languageToggle?.addEventListener("click", () => applyLanguage(getLanguage() === "ko" ? "en" : "ko"));
+      document.querySelector("#themeToggle")?.addEventListener("click", () => setTimeout(() => applyLanguage(getLanguage(), false), 0));
+      applyLanguage(getLanguage(), false);
+    })();
+    </script><script>
+window.addEventListener("quokka-language-change", (event) => {
+  const lang = event.detail.language;
+  const input = document.querySelector("#goodsSearch");
+  if (input) input.placeholder = lang === "en" ? input.dataset.placeholderEn : input.dataset.placeholderKo;
+  input?.dispatchEvent(new Event("input"));
+});
+</script></body>
 </html>

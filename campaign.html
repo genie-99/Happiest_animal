@@ -1,22 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Quokka Smile Campaign</title>
-  <meta
-    name="description"
-    content="쿼카를 귀여움으로만 소비하지 않고, 안전한 거리에서 존중하며 보호하는 Quokka Smile Campaign"
-  />
-  <link rel="icon" type="image/png" href="./imgs/quokka-favicon.png">
-  <!-- Vanilla HTML/CSS/JS only -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
-
-
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quokka Goods Ideas</title><link href="./imgs/quokka-favicon.png" rel="icon" type="image/png"/>
+<!-- Vanilla HTML/CSS/JS only -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Jua&amp;display=swap" rel="stylesheet"/>
+<script>
     (() => {
       try {
         const savedTheme = localStorage.getItem("quokkaSmileTheme");
@@ -28,9 +21,10 @@
         document.documentElement.dataset.theme = "light";
       }
     })();
-  </script>
-
-  <style>
+  
+try { document.documentElement.lang = localStorage.getItem("quokkaSmileLanguage") || "ko"; } catch (e) { document.documentElement.lang = "ko"; }
+</script>
+<style>
     :root {
       --yellow: #FFD86B;
       --yellow-light: #FFF1AF;
@@ -38,9 +32,6 @@
       --brown-dark: #4B3423;
       --cream: #FFF7E8;
       --white: #FFFFFF;
-      --green: #6F9565;
-      --green-light: #EAF3DE;
-      --red-soft: #FFF0E9;
 
       --shadow-soft: 0 14px 35px rgba(75, 52, 35, 0.12);
       --shadow-strong: 0 22px 55px rgba(75, 52, 35, 0.18);
@@ -75,13 +66,8 @@
       text-decoration: none;
     }
 
-    button,
-    input {
-      font: inherit;
-    }
-
     button {
-      cursor: pointer;
+      font-family: inherit;
     }
 
     .page {
@@ -105,8 +91,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: relative;
       gap: 20px;
+      position: relative;
     }
 
     .logo {
@@ -155,6 +141,7 @@
       border: none;
       border-radius: 14px;
       background: var(--white);
+      cursor: pointer;
       box-shadow: var(--shadow-soft);
       z-index: 120;
     }
@@ -183,45 +170,33 @@
 
     /* Hero */
 
-    .campaign-hero {
+    .goods-hero {
       position: relative;
-      padding: clamp(58px, 9vw, 100px) 0 clamp(64px, 9vw, 96px);
+      padding: clamp(64px, 10vw, 110px) 0 clamp(56px, 8vw, 90px);
       overflow: hidden;
     }
 
-    .campaign-hero::before,
-    .campaign-hero::after {
+    .goods-hero::before {
       content: "";
       position: absolute;
-      z-index: -1;
-      border-radius: 50%;
-    }
-
-    .campaign-hero::before {
       top: 80px;
-      right: -110px;
-      width: min(430px, 84vw);
-      aspect-ratio: 1;
+      right: -120px;
+      width: min(420px, 82vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
       background:
-        radial-gradient(circle at 35% 30%, #fff7cd 0 18%, transparent 19%),
+        radial-gradient(circle at 35% 30%, #fff6c7 0 18%, transparent 19%),
         linear-gradient(135deg, var(--yellow), #ffc46a);
       box-shadow: var(--shadow-strong);
-      opacity: 0.92;
-    }
-
-    .campaign-hero::after {
-      left: -140px;
-      bottom: -120px;
-      width: 360px;
-      height: 360px;
-      background: rgba(111, 149, 101, 0.14);
+      opacity: 0.9;
+      z-index: -1;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 0.88fr;
+      grid-template-columns: 1fr 0.85fr;
       align-items: center;
-      gap: clamp(36px, 7vw, 78px);
+      gap: clamp(34px, 6vw, 70px);
     }
 
     .badge {
@@ -240,7 +215,7 @@
       margin-bottom: 24px;
       font-family: "Jua", sans-serif;
       font-size: clamp(42px, 7vw, 78px);
-      line-height: 1;
+      line-height: 0.98;
       letter-spacing: -1px;
       word-break: keep-all;
     }
@@ -256,11 +231,11 @@
       position: absolute;
       left: 0;
       bottom: 7px;
-      z-index: -1;
       width: 100%;
       height: 16px;
       border-radius: 999px;
       background: rgba(255, 216, 107, 0.82);
+      z-index: -1;
     }
 
     .hero-desc {
@@ -286,8 +261,9 @@
       border: none;
       border-radius: 999px;
       font-size: 16px;
-      text-align: center;
+      cursor: pointer;
       transition: 0.25s ease;
+      text-align: center;
     }
 
     .btn-primary {
@@ -314,75 +290,41 @@
 
     .hero-card {
       position: relative;
-      padding: clamp(28px, 5vw, 42px);
+      padding: clamp(28px, 5vw, 40px);
       border-radius: var(--radius-xl);
-      background: rgba(255, 255, 255, 0.84);
-      border: 1px solid rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       box-shadow: var(--shadow-strong);
       backdrop-filter: blur(16px);
       transform: rotate(2deg);
-      overflow: hidden;
     }
 
-    .hero-card::after {
-      content: "🌱";
-      position: absolute;
-      right: 18px;
-      bottom: -20px;
-      font-size: 110px;
-      opacity: 0.1;
-      transform: rotate(-8deg);
-    }
-
-    .status-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: var(--green-light);
-      color: #4d7046;
-      font-size: 14px;
-      font-weight: 700;
+    .hero-card-icon {
+      width: 96px;
+      height: 96px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
+      font-size: 48px;
+      box-shadow: var(--shadow-soft);
     }
 
     .hero-card h2 {
-      position: relative;
-      z-index: 1;
       margin-bottom: 12px;
       font-family: "Jua", sans-serif;
-      font-size: clamp(29px, 4vw, 38px);
+      font-size: clamp(28px, 4vw, 36px);
       color: var(--brown);
       word-break: keep-all;
     }
 
     .hero-card p {
-      position: relative;
-      z-index: 1;
       color: rgba(75, 52, 35, 0.76);
       word-break: keep-all;
     }
 
-    .hero-facts {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .hero-fact {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255, 216, 107, 0.24);
-      font-size: 14px;
-    }
-
-    /* Common */
+    /* Goods Section */
 
     section {
       padding: clamp(72px, 10vw, 96px) 0;
@@ -416,44 +358,59 @@
       word-break: keep-all;
     }
 
-    /* Promise cards */
-
-    .promise-grid {
+    .goods-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
 
-    .promise-card {
-      min-height: 300px;
-      padding: 25px;
+    .goods-card {
+      position: relative;
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
       border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(169, 120, 75, 0.1);
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(169, 120, 75, 0.12);
       box-shadow: 0 12px 30px rgba(75, 52, 35, 0.09);
+      overflow: hidden;
       transition: 0.25s ease;
     }
 
-    .promise-card:hover {
+    .goods-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 42px rgba(75, 52, 35, 0.14);
+      box-shadow: 0 20px 42px rgba(75, 52, 35, 0.15);
     }
 
-    .promise-number {
-      width: 54px;
-      height: 54px;
+    .goods-card::after {
+      content: "";
+      position: absolute;
+      right: -38px;
+      bottom: -38px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255, 216, 107, 0.34);
+    }
+
+    .goods-icon {
+      position: relative;
+      z-index: 1;
+      width: 72px;
+      height: 72px;
       display: grid;
       place-items: center;
       margin-bottom: 20px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
-      font-family: "Jua", sans-serif;
-      font-size: 24px;
-      color: var(--brown);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255, 216, 107, 0.85), rgba(255, 241, 175, 0.9));
+      font-size: 38px;
       box-shadow: var(--shadow-soft);
     }
 
-    .promise-card h3 {
+    .goods-card h3 {
+      position: relative;
+      z-index: 1;
       margin-bottom: 10px;
       font-family: "Jua", sans-serif;
       font-size: 25px;
@@ -461,266 +418,63 @@
       word-break: keep-all;
     }
 
-    .promise-card p {
-      font-size: 15.5px;
+    .goods-card p {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
       color: rgba(75, 52, 35, 0.74);
+      font-size: 15.5px;
       word-break: keep-all;
     }
 
-    .promise-tag {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 7px 11px;
+    .goods-tag {
+      position: relative;
+      z-index: 1;
+      width: fit-content;
+      margin-top: auto;
+      padding: 7px 12px;
       border-radius: 999px;
-      background: var(--green-light);
-      color: #4d7046;
+      background: rgba(255, 216, 107, 0.34);
+      color: var(--brown);
       font-size: 13px;
     }
 
-    /* Participation */
+    /* Idea Detail */
 
-    .join-section {
-      background:
-        radial-gradient(circle at 10% 20%, rgba(255, 216, 107, 0.22), transparent 25%),
-        radial-gradient(circle at 90% 80%, rgba(111, 149, 101, 0.14), transparent 24%);
-    }
-
-    .join-box {
+    .idea-box {
       display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
-      gap: clamp(24px, 5vw, 42px);
-      align-items: stretch;
-    }
-
-    .join-message {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(28px, 5vw, 42px);
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(24px, 5vw, 40px);
+      align-items: center;
+      padding: clamp(28px, 6vw, 52px);
       border-radius: var(--radius-xl);
-      background: linear-gradient(145deg, var(--brown), #C58C53);
-      color: var(--white);
-      box-shadow: var(--shadow-strong);
-      overflow: hidden;
-      position: relative;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255, 216, 107, 0.5), transparent 28%),
+        var(--white);
+      box-shadow: var(--shadow-soft);
     }
 
-    .join-message::after {
-      content: "☺";
-      position: absolute;
-      right: 18px;
-      bottom: -48px;
-      font-family: "Jua", sans-serif;
-      font-size: 170px;
-      color: rgba(255, 255, 255, 0.1);
-      line-height: 1;
+    .idea-quote {
+      padding: clamp(24px, 5vw, 36px);
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
     }
 
-    .join-message h2 {
-      position: relative;
-      z-index: 1;
+    .idea-quote strong {
+      display: block;
       margin-bottom: 16px;
       font-family: "Jua", sans-serif;
-      font-size: clamp(32px, 5vw, 48px);
+      font-size: clamp(30px, 5vw, 40px);
       line-height: 1.12;
       word-break: keep-all;
     }
 
-    .join-message p {
-      position: relative;
-      z-index: 1;
-      color: rgba(255, 255, 255, 0.84);
+    .idea-quote span {
+      color: rgba(75, 52, 35, 0.76);
       word-break: keep-all;
     }
 
-    .progress-wrap {
-      position: relative;
-      z-index: 1;
-      margin-top: 30px;
-    }
-
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .progress-track {
-      height: 12px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .progress-bar {
-      width: 0;
-      height: 100%;
-      border-radius: inherit;
-      background: var(--yellow);
-      transition: width 0.3s ease;
-    }
-
-    .pledge-form {
-      padding: clamp(26px, 5vw, 40px);
-      border-radius: var(--radius-xl);
-      background: var(--white);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .form-title {
-      margin-bottom: 8px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(28px, 4vw, 36px);
-      color: var(--brown);
-    }
-
-    .form-desc {
-      margin-bottom: 24px;
-      color: rgba(75, 52, 35, 0.7);
-    }
-
-    .name-field {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-
-    .name-field label {
-      font-weight: 700;
-      color: var(--brown-dark);
-    }
-
-    .name-field input {
-      width: 100%;
-      min-height: 50px;
-      padding: 12px 15px;
-      border: 1px solid rgba(169, 120, 75, 0.24);
-      border-radius: 15px;
-      background: #fffdf8;
-      color: var(--brown-dark);
-      outline: none;
-    }
-
-    .name-field input:focus {
-      border-color: var(--brown);
-      box-shadow: 0 0 0 4px rgba(169, 120, 75, 0.1);
-    }
-
-    .check-list {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 15px;
-      border-radius: 16px;
-      background: rgba(255, 216, 107, 0.18);
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .check-item:hover {
-      background: rgba(255, 216, 107, 0.3);
-    }
-
-    .check-item input {
-      width: 19px;
-      height: 19px;
-      margin-top: 3px;
-      accent-color: var(--brown);
-      flex: 0 0 auto;
-    }
-
-    .check-item span {
-      word-break: keep-all;
-    }
-
-    .form-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .form-actions .btn {
-      flex: 1;
-    }
-
-    .form-note {
-      margin-top: 16px;
-      font-size: 13px;
-      color: rgba(75, 52, 35, 0.58);
-      text-align: center;
-    }
-
-    /* Completed card */
-
-    .result-card {
-      display: none;
-      padding: clamp(28px, 5vw, 42px);
-      border-radius: var(--radius-xl);
-      background: var(--white);
-      box-shadow: var(--shadow-soft);
-      text-align: center;
-    }
-
-    .result-card.show {
-      display: block;
-      animation: rise 0.35s ease;
-    }
-
-    .result-icon {
-      width: 86px;
-      height: 86px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 20px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
-      font-size: 42px;
-    }
-
-    .result-card h3 {
-      margin-bottom: 10px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(30px, 4.6vw, 40px);
-      color: var(--brown);
-    }
-
-    .result-card p {
-      max-width: 600px;
-      margin: 0 auto 24px;
-      color: rgba(75, 52, 35, 0.74);
-      word-break: keep-all;
-    }
-
-    .result-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    /* Source / next */
-
-    .source-box {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: clamp(24px, 5vw, 42px);
-      align-items: center;
-      padding: clamp(28px, 6vw, 52px);
-      border-radius: var(--radius-xl);
-      background: var(--white);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .source-box h2 {
+    .idea-text h2 {
       margin-bottom: 16px;
       font-family: "Jua", sans-serif;
       font-size: clamp(30px, 5vw, 46px);
@@ -728,32 +482,26 @@
       word-break: keep-all;
     }
 
-    .source-box p {
+    .idea-text p {
       margin-bottom: 14px;
-      color: rgba(75, 52, 35, 0.78);
+      font-size: clamp(16px, 2.3vw, 18px);
+      color: rgba(75, 52, 35, 0.8);
       word-break: keep-all;
     }
 
-    .source-links {
-      display: grid;
-      gap: 12px;
-    }
-
-    .source-link {
+    .mini-tags {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: rgba(255, 216, 107, 0.22);
-      color: var(--brown);
-      transition: 0.2s ease;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
     }
 
-    .source-link:hover {
-      transform: translateX(4px);
-      background: rgba(255, 216, 107, 0.36);
+    .mini-tags span {
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255, 216, 107, 0.34);
+      color: var(--brown);
+      font-size: 14px;
     }
 
     /* CTA */
@@ -775,12 +523,14 @@
     }
 
     .cta-box::after {
-      content: "🌍";
+      content: "☺";
       position: absolute;
-      right: 28px;
-      bottom: -44px;
-      font-size: clamp(120px, 21vw, 210px);
-      opacity: 0.12;
+      right: 30px;
+      bottom: -62px;
+      font-family: "Jua", sans-serif;
+      font-size: clamp(130px, 24vw, 230px);
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.11);
     }
 
     .cta-box h2 {
@@ -828,7 +578,7 @@
       transform: translateY(-3px);
     }
 
-    /* Footer / Toast */
+    /* Footer */
 
     .footer {
       padding: 36px 0;
@@ -868,19 +618,6 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive */
-
     @media (max-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -897,17 +634,20 @@
       }
 
       .hero-card {
-        max-width: 560px;
+        max-width: 520px;
         margin: 0 auto;
-        text-align: left;
       }
 
-      .promise-grid {
+      .hero-card-icon {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .goods-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .join-box,
-      .source-box {
+      .idea-box {
         grid-template-columns: 1fr;
       }
     }
@@ -955,7 +695,7 @@
         background: rgba(255, 216, 107, 0.28);
       }
 
-      .campaign-hero {
+      .goods-hero {
         padding-top: 44px;
       }
 
@@ -973,28 +713,23 @@
       }
 
       .hero-card {
-        transform: none;
+        transform: rotate(0);
       }
 
-      .promise-grid {
+      .goods-grid {
         grid-template-columns: 1fr;
       }
 
-      .promise-card {
+      .goods-card {
         min-height: auto;
       }
 
-      .form-actions,
-      .result-actions,
       .cta-actions {
         width: 100%;
       }
 
-      .form-actions .btn,
-      .result-actions .btn,
       .cta-actions .btn {
         width: 100%;
-        flex: none;
       }
 
       .footer-inner {
@@ -1018,22 +753,12 @@
         padding: 14px 18px;
       }
 
-      .pledge-form,
-      .join-message {
-        border-radius: 26px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
+      .goods-card {
+        padding: 22px;
       }
 
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
+      .mini-tags span {
+        font-size: 13px;
       }
     }
 
@@ -1203,11 +928,6 @@
       color: var(--brown);
     }
 
-    html[data-theme="dark"] .btn-light {
-      background: #FFF3DF;
-      color: #4B3423;
-    }
-
     html[data-theme="dark"] .name-field input {
       background: var(--theme-input);
       color: var(--theme-text);
@@ -1260,431 +980,309 @@
 
 
 
-    .live-stats {
+    .goods-tools {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .live-stat {
-      padding: 15px;
+      gap: 18px;
+      margin-bottom: 28px;
+      padding: 20px;
       border: 1px solid var(--theme-border);
-      border-radius: 18px;
-      background: var(--theme-surface-soft);
+      border-radius: 24px;
+      background: var(--theme-surface);
+      box-shadow: var(--shadow-soft);
     }
 
-    .live-stat strong,
-    .live-stat span {
+    .goods-search {
+      width: 100%;
+      min-height: 50px;
+      padding: 13px 17px;
+      border: 1px solid var(--theme-border);
+      border-radius: 16px;
+      background: var(--theme-input);
+      color: var(--theme-text);
+      font: inherit;
+    }
+
+    .goods-search::placeholder {
+      color: var(--theme-muted);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      min-height: 40px;
+      padding: 8px 14px;
+      border: 1px solid var(--theme-border);
+      border-radius: 999px;
+      background: var(--theme-surface-soft);
+      color: var(--theme-text);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: var(--brown);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .goods-result-count {
+      margin-left: auto;
+      color: var(--theme-muted);
+      font-size: 14px;
+    }
+
+    .goods-card.is-hidden {
+      display: none;
+    }
+
+    .empty-result {
+      display: none;
+      padding: 42px 20px;
+      border: 1px dashed var(--theme-border);
+      border-radius: 24px;
+      background: var(--theme-surface);
+      color: var(--theme-muted);
+      text-align: center;
+    }
+
+    .empty-result.show {
       display: block;
     }
 
-    .live-stat strong {
-      margin-bottom: 3px;
-      font-family: "Jua", sans-serif;
-      font-size: 25px;
-      color: var(--brown);
-    }
-
-    .live-stat span {
-      color: var(--theme-muted);
-      font-size: 13px;
-    }
-
-    .check-item.is-checked {
-      border-color: rgba(111, 149, 101, 0.58);
-      background: var(--green-light);
-      transform: translateX(4px);
-    }
-
-    .draft-status {
-      min-height: 24px;
-      margin-top: 10px;
-      color: var(--theme-muted);
-      font-size: 13px;
-    }
-
-    .celebration-layer {
-      position: fixed;
-      inset: 0;
-      z-index: 500;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .celebration-piece {
-      position: absolute;
-      top: -40px;
-      font-size: 24px;
-      animation: celebrationFall 1.8s ease-in forwards;
-    }
-
-    @keyframes celebrationFall {
-      to {
-        transform: translate3d(var(--drift), 110vh, 0) rotate(540deg);
-        opacity: 0;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .live-stats {
-        grid-template-columns: 1fr;
+    @media (max-width: 700px) {
+      .goods-result-count {
+        width: 100%;
+        margin-left: 0;
       }
     }
 
   </style>
-</head>
-
+<style>
+    .language-toggle { min-width: 72px; }
+    .language-icon { font-size: 17px; }
+    .typing-title { white-space: pre-line; position: relative; color: var(--theme-text, var(--brown-dark)); }
+    .typing-title::after { content: ""; display: inline-block; width: 3px; height: .86em; margin-left: 7px; vertical-align: -.05em; border-radius: 999px; background: var(--brown); animation: typingBlink .8s steps(1) infinite; }
+    @keyframes typingBlink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .typing-title::after { animation: none; } }
+    @media (max-width: 700px) { .language-toggle { width: 100%; min-height: 46px; } }
+    </style></head>
 <body>
-  <header class="header">
-    <nav class="page nav">
-      <a href="./index.html" class="logo" aria-label="Quokka Smile Project 홈">
-        <span class="logo-mark">☺</span>
+<header class="header">
+<nav class="page nav">
+<a aria-label="Quokka Smile Project 홈" class="logo" href="./index.html">
+<span class="logo-mark">☺</span>
         Quokka Smile
       </a>
-
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="./index.html">홈</a>
-        <a href="#promise">캠페인 약속</a>
-        <a href="#join">참여하기</a>
-        <a href="./goods.html">굿즈</a>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 변경" aria-pressed="false">
-          <span class="theme-icon" aria-hidden="true">🌙</span>
-          <span class="theme-text">다크 모드</span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="campaign-hero">
-      <div class="page hero-grid">
-        <div>
-          <div class="badge">🌱 Quokka Smile Campaign</div>
-
-          <h1 class="hero-title">
-            미소는 가까이,<br />
-            야생은 <span>안전하게</span>
-          </h1>
-
-          <p class="hero-desc">
-            쿼카를 사랑하는 가장 좋은 방법은 만지거나 먹이를 주는 것이 아니라,
-            자연스러운 모습을 안전한 거리에서 존중하는 것입니다.
-            네 가지 작은 약속으로 쿼카의 미소를 오래 지켜주세요.
+<button aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="nav-links" id="navLinks">
+<a data-en="Home" data-i18n="k0" data-ko="홈" href="./index.html">홈</a>
+<a data-en="Goods" data-i18n="k1" data-ko="굿즈" href="#goods">굿즈</a>
+<a data-en="Campaign" data-i18n="k2" data-ko="캠페인" href="./campaign.html">캠페인</a>
+<a data-en="Direction" data-i18n="k3" data-ko="기획 방향" href="#story">기획 방향</a>
+<a data-en="Next step" data-i18n="k4" data-ko="다음 단계" href="#next">다음 단계</a>
+<button aria-label="Switch to English" aria-pressed="false" class="theme-toggle language-toggle" id="languageToggle" type="button"><span aria-hidden="true" class="language-icon">🌐</span><span class="language-text">EN</span></button><button aria-label="다크 모드로 변경" aria-pressed="false" class="theme-toggle" id="themeToggle" type="button">
+<span aria-hidden="true" class="theme-icon">🌙</span>
+<span class="theme-text">다크 모드</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero -->
+<section class="goods-hero">
+<div class="page hero-grid">
+<div>
+<div class="badge" data-en="🎁 Quokka Goods Ideas" data-i18n="k5" data-ko="🎁 Quokka Goods Ideas">🎁 Quokka Goods Ideas</div>
+<h1 class="hero-title" data-title-en="Bring the quokka’s smile
+into everyday goods" data-title-ko="쿼카의 미소를
+일상 속 굿즈로"><span aria-live="polite" class="typing-title" id="typingTitle"></span></h1>
+<p class="hero-desc" data-en="We go beyond introducing a cute animal and expand the quokka into goods people can touch, wear, hug, and use every day—while preserving a warm, cute, and hopeful mood." data-i18n="k7" data-ko="귀여운 동물 소개에서 끝나지 않고, 사람들이 매일 만지고 입고 안고 사용할 수 있는 쿼카 굿즈 아이디어로 확장합니다. 따뜻하고 귀엽고 희망적인 분위기를 그대로 유지합니다.">
+            귀여운 동물 소개에서 끝나지 않고, 사람들이 매일 만지고 입고 안고 사용할 수 있는
+            쿼카 굿즈 아이디어로 확장합니다. 따뜻하고 귀엽고 희망적인 분위기를 그대로 유지합니다.
           </p>
-
-          <div class="hero-actions">
-            <a href="#join" class="btn btn-primary">캠페인 참여하기</a>
-            <a href="#promise" class="btn btn-soft">약속 먼저 보기</a>
-          </div>
-        </div>
-
-        <aside class="hero-card" aria-label="쿼카 보호 상태와 캠페인 핵심 정보">
-          <div class="status-chip">● 보호가 필요한 취약종</div>
-          <h2>귀여움에서 보호 행동으로</h2>
-          <p>
-            쿼카는 IUCN 적색목록에서 취약종(Vulnerable)으로 분류되며,
-            개체군 추세는 감소로 평가됩니다.
+<div class="hero-actions">
+<a class="btn btn-primary" data-en="Explore goods ideas" data-i18n="k8" data-ko="굿즈 아이디어 보기" href="#goods">굿즈 아이디어 보기</a>
+<a class="btn btn-soft" data-en="Back to home" data-i18n="k9" data-ko="메인으로 돌아가기" href="./index.html">메인으로 돌아가기</a>
+</div>
+</div>
+<div class="hero-card">
+<div class="hero-card-icon">🧸</div>
+<h2>Smile Goods Collection</h2>
+<p data-en="A warm collection that brings the quokka’s smile to cards, fashion, lifestyle items, and scented goods." data-i18n="k10" data-ko="쿼카의 웃는 얼굴을 카드, 패션, 생활용품, 향기 굿즈로 확장한 따뜻한 굿즈 라인업입니다.">
+            쿼카의 웃는 얼굴을 카드, 패션, 생활용품, 향기 굿즈로 확장한
+            따뜻한 굿즈 라인업입니다.
           </p>
-
-          <div class="hero-facts">
-            <div class="hero-fact">
-              <span>🤲</span>
-              <span>만지거나 쓰다듬지 않기</span>
-            </div>
-            <div class="hero-fact">
-              <span>🥕</span>
-              <span>먹이와 물을 주지 않기</span>
-            </div>
-            <div class="hero-fact">
-              <span>📷</span>
-              <span>거리를 지키며 자연스럽게 관찰하기</span>
-            </div>
-          </div>
-          <div class="live-stats" aria-live="polite">
-            <div class="live-stat">
-              <strong id="keeperCount">0회</strong>
-              <span>이 브라우저의 약속 완료</span>
-            </div>
-            <div class="live-stat">
-              <strong id="todayLabel">오늘</strong>
-              <span>현재 캠페인 날짜</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Promise -->
-    <section id="promise">
-      <div class="page">
-        <div class="section-head">
-          <span class="section-label">우리의 네 가지 약속</span>
-          <h2>쿼카를 위한 올바른 관심</h2>
-          <p>
-            공식 야생동물 보호 안내를 일상에서 기억하기 쉬운 네 가지 행동으로 정리했습니다.
+</div>
+</div>
+</section>
+<!-- Goods Cards -->
+<section id="goods">
+<div class="page">
+<div class="section-head">
+<span class="section-label" data-en="Goods lineup" data-i18n="k11" data-ko="굿즈 라인업">굿즈 라인업</span>
+<h2 data-en="8 quokka goods ideas" data-i18n="k12" data-ko="쿼카 굿즈 아이디어 8가지">쿼카 굿즈 아이디어 8가지</h2>
+<p data-en="These products attract attention through cuteness and keep the quokka’s message of happiness present in everyday life." data-i18n="k13" data-ko="귀여움으로 관심을 만들고, 일상에서 쿼카의 행복 메시지를 계속 떠올리게 하는 제품들입니다.">
+            귀여움으로 관심을 만들고, 일상에서 쿼카의 행복 메시지를 계속 떠올리게 하는 제품들입니다.
           </p>
-        </div>
-
-        <div class="promise-grid">
-          <article class="promise-card">
-            <div class="promise-number">01</div>
-            <h3>만지지 않기</h3>
-            <p>
-              친근하게 다가오더라도 야생동물입니다. 손을 뻗거나 쓰다듬지 않고,
-              쿼카가 스스로 이동할 공간을 남겨주세요.
+</div>
+<div aria-label="굿즈 검색과 필터" class="goods-tools">
+<label class="section-label" data-en="Find your goods" data-i18n="k14" data-ko="원하는 굿즈 찾기" for="goodsSearch" style="margin: 0;">원하는 굿즈 찾기</label>
+<input autocomplete="off" class="goods-search" id="goodsSearch" placeholder="예: 인형, 수면, 티셔츠" type="search"/>
+<div class="filter-row" id="filterRow">
+<button class="filter-btn active" data-en="All" data-filter="all" data-i18n="k15" data-ko="전체" type="button">전체</button>
+<button class="filter-btn" data-en="Intro" data-filter="guide" data-i18n="k16" data-ko="소개" type="button">소개</button>
+<button class="filter-btn" data-en="Fashion" data-filter="fashion" data-i18n="k17" data-ko="패션" type="button">패션</button>
+<button class="filter-btn" data-en="Healing" data-filter="healing" data-i18n="k18" data-ko="힐링" type="button">힐링</button>
+<button class="filter-btn" data-en="Lifestyle" data-filter="life" data-i18n="k19" data-ko="생활" type="button">생활</button>
+<span class="goods-result-count" data-en="8 items" data-i18n="k20" data-ko="8개 굿즈" id="goodsResultCount">8개 굿즈</span>
+</div>
+</div>
+<div class="goods-grid">
+<article class="goods-card" data-category="guide">
+<div class="goods-icon">📘</div>
+<h3 data-en="Quokka introduction cards" data-i18n="k21" data-ko="쿼카 소개서">쿼카 소개서</h3>
+<p data-en="A compact card set introducing quokka traits, charm, and protection messages—perfect for a first encounter." data-i18n="k22" data-ko="쿼카의 특징, 매력, 보호 메시지를 카드형으로 담은 작은 소개서입니다. 첫 만남용 굿즈로 좋습니다.">
+              쿼카의 특징, 매력, 보호 메시지를 카드형으로 담은 작은 소개서입니다.
+              첫 만남용 굿즈로 좋습니다.
             </p>
-            <span class="promise-tag">Respect their space</span>
-          </article>
-
-          <article class="promise-card">
-            <div class="promise-number">02</div>
-            <h3>먹이·물 주지 않기</h3>
-            <p>
-              사람이 주는 음식과 물은 자연스러운 먹이 활동을 방해할 수 있습니다.
-              쿼카가 스스로 먹이를 찾도록 그대로 두세요.
+<span class="goods-tag" data-en="Introduction cards" data-i18n="k23" data-ko="카드형 소개 굿즈">카드형 소개 굿즈</span>
+</article>
+<article class="goods-card" data-category="healing">
+<div class="goods-icon">🧸</div>
+<h3 data-en="Quokka plush" data-i18n="k24" data-ko="쿼카 인형">쿼카 인형</h3>
+<p data-en="A signature plush featuring a small round face and smiling expression, ideal for a desk or bedside." data-i18n="k25" data-ko="둥글고 작은 얼굴, 웃는 표정을 살린 대표 굿즈입니다. 책상 위나 침대 옆에 두기 좋습니다.">
+              둥글고 작은 얼굴, 웃는 표정을 살린 대표 굿즈입니다.
+              책상 위나 침대 옆에 두기 좋습니다.
             </p>
-            <span class="promise-tag">Let wildlife forage</span>
-          </article>
-
-          <article class="promise-card">
-            <div class="promise-number">03</div>
-            <h3>안전거리 지키기</h3>
-            <p>
-              사진을 찍을 때도 쫓아가거나 둘러싸지 않습니다.
-              쿼카가 가까이 오면 한 걸음 물러나 조용히 관찰하세요.
+<span class="goods-tag" data-en="Signature character item" data-i18n="k26" data-ko="대표 캐릭터 굿즈">대표 캐릭터 굿즈</span>
+</article>
+<article class="goods-card" data-category="fashion">
+<div class="goods-icon">👕</div>
+<h3 data-en="Quokka T-shirt" data-i18n="k27" data-ko="쿼카 티셔츠">쿼카 티셔츠</h3>
+<p data-en="An easy everyday T-shirt with a small smiling quokka graphic and catchphrase." data-i18n="k28" data-ko="작게 웃는 쿼카 그래픽과 캐치프레이즈를 넣은 데일리 티셔츠입니다. 부담 없이 입기 좋습니다.">
+              작게 웃는 쿼카 그래픽과 캐치프레이즈를 넣은 데일리 티셔츠입니다.
+              부담 없이 입기 좋습니다.
             </p>
-            <span class="promise-tag">Observe, do not chase</span>
-          </article>
-
-          <article class="promise-card">
-            <div class="promise-number">04</div>
-            <h3>지정된 길 이용하기</h3>
-            <p>
-              서식지와 식생을 보호할 수 있도록 정해진 길을 이용하고,
-              쓰레기와 흔적을 남기지 않는 방문자가 되어주세요.
+<span class="goods-tag" data-en="Daily fashion" data-i18n="k29" data-ko="데일리 패션">데일리 패션</span>
+</article>
+<article class="goods-card" data-category="fashion">
+<div class="goods-icon">🧥</div>
+<h3 data-en="Quokka hoodie" data-i18n="k30" data-ko="쿼카 후드">쿼카 후드</h3>
+<p data-en="A cozy hoodie with quokka embroidery or a small patch that carries the warm brand image." data-i18n="k31" data-ko="포근한 후드에 쿼카 자수나 작은 와펜을 넣어 따뜻한 브랜드 이미지를 전달합니다.">
+              포근한 후드에 쿼카 자수나 작은 와펜을 넣어 따뜻한 브랜드 이미지를 전달합니다.
             </p>
-            <span class="promise-tag">Leave no trace</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Join -->
-    <section id="join" class="join-section">
-      <div class="page">
-        <div class="section-head">
-          <span class="section-label">캠페인 참여</span>
-          <h2>네 가지 약속에 체크해 주세요</h2>
-          <p>
-            개인정보를 서버로 전송하지 않는 프론트엔드 데모입니다.
-            입력한 참여 정보는 현재 브라우저의 localStorage에만 저장됩니다.
+<span class="goods-tag" data-en="Cozy apparel" data-i18n="k32" data-ko="포근한 의류">포근한 의류</span>
+</article>
+<article class="goods-card" data-category="healing">
+<div class="goods-icon">🛏️</div>
+<h3 data-en="Quokka hug pillow" data-i18n="k33" data-ko="쿼카 안아주기 베개">쿼카 안아주기 베개</h3>
+<p data-en="A long cushion shaped to feel like hugging a quokka, suited for relaxation and sleep support." data-i18n="k34" data-ko="쿼카를 품에 안는 듯한 형태의 롱쿠션입니다. 힐링과 수면 보조 굿즈로 확장하기 좋습니다.">
+              쿼카를 품에 안는 듯한 형태의 롱쿠션입니다.
+              힐링과 수면 보조 굿즈로 확장하기 좋습니다.
+            </p>
+<span class="goods-tag" data-en="Healing lifestyle item" data-i18n="k35" data-ko="힐링 생활용품">힐링 생활용품</span>
+</article>
+<article class="goods-card" data-category="life">
+<div class="goods-icon">🌿</div>
+<h3 data-en="Quokka-inspired scent pouch" data-i18n="k36" data-ko="쿼카 냄새를 담은 봉지">쿼카 냄새를 담은 봉지</h3>
+<p data-en="A scent pouch inspired not by an animal smell, but by forest air, sunlight, and soft fur." data-i18n="k37" data-ko="실제 동물 냄새가 아니라 숲, 햇살, 포근한 털 느낌을 상상한 향기 포켓입니다. 가방이나 방에 둘 수 있습니다.">
+              실제 동물 냄새가 아니라 숲, 햇살, 포근한 털 느낌을 상상한 향기 포켓입니다.
+              가방이나 방에 둘 수 있습니다.
+            </p>
+<span class="goods-tag" data-en="Imagined scent item" data-i18n="k38" data-ko="상상 향기 굿즈">상상 향기 굿즈</span>
+</article>
+<article class="goods-card" data-category="life">
+<div class="goods-icon">🥿</div>
+<h3 data-en="Quokka slippers" data-i18n="k39" data-ko="쿼카 슬리퍼">쿼카 슬리퍼</h3>
+<p data-en="Indoor slippers featuring a quokka face, bringing cheerful cuteness into the home." data-i18n="k40" data-ko="발등 부분에 쿼카 얼굴을 넣은 실내용 슬리퍼입니다. 집에서도 귀여운 행복감을 느끼게 합니다.">
+              발등 부분에 쿼카 얼굴을 넣은 실내용 슬리퍼입니다.
+              집에서도 귀여운 행복감을 느끼게 합니다.
+            </p>
+<span class="goods-tag" data-en="Home lifestyle item" data-i18n="k41" data-ko="홈 라이프 굿즈">홈 라이프 굿즈</span>
+</article>
+<article class="goods-card" data-category="healing">
+<div class="goods-icon">😴</div>
+<h3 data-en="Quokka sleep mask" data-i18n="k42" data-ko="쿼카 안대">쿼카 안대</h3>
+<p data-en="A cute sleep mask that makes the quokka look as though it is smiling when your eyes are closed." data-i18n="k43" data-ko="눈을 감으면 쿼카가 웃고 있는 듯한 귀여운 수면 안대입니다. 휴식과 힐링 콘셉트에 잘 맞습니다.">
+              눈을 감으면 쿼카가 웃고 있는 듯한 귀여운 수면 안대입니다.
+              휴식과 힐링 콘셉트에 잘 맞습니다.
+            </p>
+<span class="goods-tag" data-en="Sleep and healing item" data-i18n="k44" data-ko="수면 힐링 굿즈">수면 힐링 굿즈</span>
+</article>
+</div>
+<div class="empty-result" data-en="No goods match your search. Try another keyword." data-i18n="k45" data-ko="검색 조건에 맞는 굿즈가 없어요. 다른 검색어를 입력해 보세요." id="emptyResult">검색 조건에 맞는 굿즈가 없어요. 다른 검색어를 입력해 보세요.</div>
+</div>
+</section>
+<!-- Story -->
+<section id="story">
+<div class="page">
+<div class="idea-box">
+<div class="idea-quote">
+<strong data-en="Cuteness is the entrance, happiness is the experience, and protection is the message." data-i18n="k46" data-ko="귀여움은 입구, 행복은 경험, 보호는 메시지.">귀여움은 입구, 행복은 경험, 보호는 메시지.</strong>
+<span data-en="Goods are more than products—they keep the quokka’s warm image present in daily life." data-i18n="k47" data-ko="굿즈는 단순히 상품을 파는 것이 아니라 쿼카의 따뜻한 이미지를 일상 속에서 기억하게 만드는 장치입니다.">
+              굿즈는 단순히 상품을 파는 것이 아니라 쿼카의 따뜻한 이미지를 일상 속에서 기억하게 만드는 장치입니다.
+            </span>
+</div>
+<div class="idea-text">
+<h2 data-en="Goods direction" data-i18n="k48" data-ko="굿즈 방향성">굿즈 방향성</h2>
+<p data-en="Rather than feeling flashy or cold, the goods use warm yellow and soft brown to stay gentle and welcoming." data-i18n="k49" data-ko="쿼카 굿즈는 너무 화려하거나 차갑게 보이기보다, 웜 옐로우와 소프트 브라운을 중심으로 부드럽고 따뜻한 느낌을 유지합니다.">
+              쿼카 굿즈는 너무 화려하거나 차갑게 보이기보다,
+              웜 옐로우와 소프트 브라운을 중심으로 부드럽고 따뜻한 느낌을 유지합니다.
+            </p>
+<p data-en="Connecting each item to smiles, comfort, rest, and protection turns character merchandise into meaningful brand goods." data-i18n="k50" data-ko="제품마다 “웃음”, “포근함”, “휴식”, “보호”라는 감정을 연결하면 단순한 캐릭터 상품이 아니라 브랜드 메시지가 있는 굿즈가 됩니다.">
+              제품마다 “웃음”, “포근함”, “휴식”, “보호”라는 감정을 연결하면
+              단순한 캐릭터 상품이 아니라 브랜드 메시지가 있는 굿즈가 됩니다.
+            </p>
+<div class="mini-tags">
+<span data-en="#Warm" data-i18n="k51" data-ko="#따뜻한">#따뜻한</span>
+<span data-en="#Cute" data-i18n="k52" data-ko="#귀여운">#귀여운</span>
+<span data-en="#Hopeful" data-i18n="k53" data-ko="#희망적인">#희망적인</span>
+<span data-en="#HealingGoods" data-i18n="k54" data-ko="#힐링굿즈">#힐링굿즈</span>
+<span data-en="#QuokkaBrand" data-i18n="k55" data-ko="#쿼카브랜드">#쿼카브랜드</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="cta" id="next">
+<div class="page">
+<div class="cta-box">
+<h2 data-en="The next step is a detailed goods page." data-i18n="k56" data-ko="다음 단계는 굿즈 상세 페이지입니다.">다음 단계는 굿즈 상세 페이지입니다.</h2>
+<p data-en="Each item can expand into a detail page with pricing, descriptions, usage scenes, and a purchase button. For now, the brand mood and lineup are established." data-i18n="k57" data-ko="각 굿즈를 클릭했을 때 가격, 설명, 사용 장면, 구매 버튼이 나오는 상세 페이지로 확장할 수 있습니다. 지금은 브랜드 분위기와 굿즈 라인업을 먼저 잡은 상태입니다.">
+            각 굿즈를 클릭했을 때 가격, 설명, 사용 장면, 구매 버튼이 나오는 상세 페이지로 확장할 수 있습니다.
+            지금은 브랜드 분위기와 굿즈 라인업을 먼저 잡은 상태입니다.
           </p>
-        </div>
-
-        <div class="join-box">
-          <div class="join-message">
-            <div>
-              <h2>작은 행동이<br />쿼카의 내일을 지켜요.</h2>
-              <p>
-                네 가지 항목을 모두 선택하면 캠페인 약속 카드가 완성됩니다.
-                완료 후 친구에게 캠페인 문구를 공유할 수도 있습니다.
-              </p>
-            </div>
-
-            <div class="progress-wrap">
-              <div class="progress-label">
-                <span>나의 약속 진행도</span>
-                <strong id="progressText">0 / 4</strong>
-              </div>
-              <div
-                class="progress-track"
-                role="progressbar"
-                aria-label="캠페인 약속 진행도"
-                aria-valuemin="0"
-                aria-valuemax="4"
-                aria-valuenow="0"
-                id="progressTrack"
-              >
-                <div class="progress-bar" id="progressBar"></div>
-              </div>
-            </div>
-          </div>
-
-          <form class="pledge-form" id="pledgeForm">
-            <h3 class="form-title">Smile Keeper 약속서</h3>
-            <p class="form-desc">닉네임과 네 가지 약속을 확인하고 참여 버튼을 눌러주세요.</p>
-
-            <div class="name-field">
-              <label for="nickname">닉네임</label>
-              <input
-                id="nickname"
-                name="nickname"
-                type="text"
-                maxlength="20"
-                placeholder="예: 행복한 쿼카"
-                autocomplete="nickname"
-                required
-              />
-            </div>
-
-            <div class="check-list">
-              <label class="check-item">
-                <input type="checkbox" name="promise" value="touch" />
-                <span>쿼카와 야생동물을 만지지 않겠습니다.</span>
-              </label>
-
-              <label class="check-item">
-                <input type="checkbox" name="promise" value="feed" />
-                <span>먹이와 물을 주지 않겠습니다.</span>
-              </label>
-
-              <label class="check-item">
-                <input type="checkbox" name="promise" value="distance" />
-                <span>안전한 거리를 두고 조용히 관찰하겠습니다.</span>
-              </label>
-
-              <label class="check-item">
-                <input type="checkbox" name="promise" value="path" />
-                <span>지정된 길을 이용하고 흔적을 남기지 않겠습니다.</span>
-              </label>
-            </div>
-
-            <div class="form-actions">
-              <button class="btn btn-primary" type="submit">약속하고 참여하기</button>
-              <button class="btn btn-soft" id="resetBtn" type="button">다시 작성하기</button>
-            </div>
-
-            <p class="draft-status" id="draftStatus" aria-live="polite"></p>
-
-            <p class="form-note">
-              이 페이지는 학습용 데모이며 실제 보호단체의 공식 모금·서명 페이지가 아닙니다.
-            </p>
-          </form>
-
-          <div class="result-card" id="resultCard" aria-live="polite">
-            <div class="result-icon">🌱</div>
-            <h3 id="resultTitle">캠페인 참여 완료!</h3>
-            <p id="resultMessage">
-              네 가지 약속이 저장되었습니다. 쿼카를 만날 때 오늘의 약속을 기억해 주세요.
-            </p>
-
-            <div class="result-actions">
-              <button class="btn btn-primary" id="shareCampaignBtn" type="button">캠페인 공유하기</button>
-              <button class="btn btn-soft" id="editPledgeBtn" type="button">약속 다시 보기</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sources -->
-    <section id="sources">
-      <div class="page">
-        <div class="source-box">
-          <div>
-            <span class="section-label">확인된 보호 정보</span>
-            <h2>공식 안내를 바탕으로 만들었어요.</h2>
-            <p>
-              Rottnest Island Authority는 쿼카를 포함한 야생동물에게
-              먹이·물 주기와 접촉을 피하고, 적절한 거리에서 관찰하도록 안내합니다.
-            </p>
-            <p>
-              IUCN 적색목록에는 쿼카가 취약종(Vulnerable), 감소 추세로 표시되어 있습니다.
-            </p>
-          </div>
-
-          <div class="source-links">
-            <a
-              class="source-link"
-              href="https://www.rottnestisland.com/learn/nature-wildlife/protect-our-wildlife"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>Rottnest Island 야생동물 보호 안내</span>
-              <strong>↗</strong>
-            </a>
-
-            <a
-              class="source-link"
-              href="https://www.rottnestisland.com/see-do/wildlife-nature/quokkas"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>Rottnest Island 쿼카 안내</span>
-              <strong>↗</strong>
-            </a>
-
-            <a
-              class="source-link"
-              href="https://www.iucnredlist.org/search?searchType=species&taxonomies=100245"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>IUCN Red List 쿼카 검색</span>
-              <strong>↗</strong>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-      <div class="page">
-        <div class="cta-box">
-          <h2>보호의 메시지를 굿즈와 이야기로 이어가요.</h2>
-          <p>
-            캠페인의 약속을 기억했다면, 이제 쿼카의 미소를 일상에 전하는
-            굿즈 아이디어도 살펴보세요.
-          </p>
-
-          <div class="cta-actions">
-            <a href="./goods.html" class="btn btn-light">굿즈 아이디어 보기</a>
-            <a href="./index.html" class="btn btn-outline">메인으로 돌아가기</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="page footer-inner">
-      <p>© 2026 Quokka Smile Project</p>
-      <p>Campaign Page · Vanilla HTML/CSS/JS</p>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast">캠페인 메시지가 준비됐어요 ☺</div>
-
-  <script>
+<div class="cta-actions">
+<a class="btn btn-light" data-en="Go to home" data-i18n="k58" data-ko="메인 페이지로 이동" href="./index.html">메인 페이지로 이동</a>
+<button class="btn btn-outline" data-en="Save ideas" data-i18n="k59" data-ko="아이디어 저장하기" id="ideaBtn" type="button">아이디어 저장하기</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="page footer-inner">
+<p>© 2026 Quokka Smile Project</p>
+<p>Goods Idea Page · Vanilla HTML/CSS/JS</p>
+</div>
+</footer>
+<div class="toast" data-en="Your ideas are ready ☺" data-i18n="k60" data-ko="아이디어가 준비됐어요 ☺" id="toast">아이디어가 준비됐어요 ☺</div>
+<script>
     const menuBtn = document.querySelector("#menuBtn");
     const navLinks = document.querySelector("#navLinks");
     const navItems = document.querySelectorAll(".nav-links a");
-
-    const pledgeForm = document.querySelector("#pledgeForm");
-    const nicknameInput = document.querySelector("#nickname");
-    const checkboxes = [...document.querySelectorAll('input[name="promise"]')];
-    const resetBtn = document.querySelector("#resetBtn");
-    const resultCard = document.querySelector("#resultCard");
-    const resultTitle = document.querySelector("#resultTitle");
-    const resultMessage = document.querySelector("#resultMessage");
-    const shareCampaignBtn = document.querySelector("#shareCampaignBtn");
-    const editPledgeBtn = document.querySelector("#editPledgeBtn");
-
-    const progressText = document.querySelector("#progressText");
-    const progressTrack = document.querySelector("#progressTrack");
-    const progressBar = document.querySelector("#progressBar");
+    const ideaBtn = document.querySelector("#ideaBtn");
     const toast = document.querySelector("#toast");
-
-    const STORAGE_KEY = "quokkaSmileCampaignPledge";
 
     function closeMenu() {
       menuBtn.classList.remove("active");
@@ -1697,67 +1295,9 @@
       toast.textContent = message;
       toast.classList.add("show");
 
-      window.setTimeout(() => {
+      setTimeout(() => {
         toast.classList.remove("show");
       }, 1800);
-    }
-
-    function updateProgress() {
-      const checkedCount = checkboxes.filter((checkbox) => checkbox.checked).length;
-      const percentage = (checkedCount / checkboxes.length) * 100;
-
-      progressText.textContent = `${checkedCount} / ${checkboxes.length}`;
-      progressBar.style.width = `${percentage}%`;
-      progressTrack.setAttribute("aria-valuenow", String(checkedCount));
-    }
-
-    function showResult(nickname) {
-      pledgeForm.style.display = "none";
-      resultCard.classList.add("show");
-      resultTitle.textContent = `${nickname}님, 참여 완료!`;
-      resultMessage.textContent =
-        "네 가지 약속이 현재 브라우저에 저장되었습니다. 쿼카를 만날 때 오늘의 약속을 기억해 주세요.";
-    }
-
-    function showForm() {
-      resultCard.classList.remove("show");
-      pledgeForm.style.display = "block";
-    }
-
-    function resetForm() {
-      pledgeForm.reset();
-      localStorage.removeItem(STORAGE_KEY);
-      showForm();
-      updateProgress();
-      nicknameInput.focus();
-      showToast("약속서를 새로 작성할 수 있어요");
-    }
-
-    function loadSavedPledge() {
-      const savedValue = localStorage.getItem(STORAGE_KEY);
-
-      if (!savedValue) {
-        updateProgress();
-        return;
-      }
-
-      try {
-        const savedPledge = JSON.parse(savedValue);
-
-        nicknameInput.value = savedPledge.nickname || "";
-        checkboxes.forEach((checkbox) => {
-          checkbox.checked = savedPledge.promises?.includes(checkbox.value) ?? false;
-        });
-
-        updateProgress();
-
-        if (savedPledge.completed && savedPledge.nickname) {
-          showResult(savedPledge.nickname);
-        }
-      } catch (error) {
-        localStorage.removeItem(STORAGE_KEY);
-        updateProgress();
-      }
     }
 
     menuBtn.addEventListener("click", () => {
@@ -1778,74 +1318,11 @@
       }
     });
 
-    checkboxes.forEach((checkbox) => {
-      checkbox.addEventListener("change", updateProgress);
+    ideaBtn.addEventListener("click", () => {
+      showToast("굿즈 아이디어 라인업이 완성됐어요 🎁");
     });
-
-    pledgeForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const nickname = nicknameInput.value.trim();
-      const selectedPromises = checkboxes
-        .filter((checkbox) => checkbox.checked)
-        .map((checkbox) => checkbox.value);
-
-      if (!nickname) {
-        showToast("닉네임을 입력해 주세요");
-        nicknameInput.focus();
-        return;
-      }
-
-      if (selectedPromises.length !== checkboxes.length) {
-        showToast("네 가지 약속을 모두 확인해 주세요");
-        return;
-      }
-
-      const pledgeData = {
-        nickname,
-        promises: selectedPromises,
-        completed: true,
-        savedAt: new Date().toISOString()
-      };
-
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(pledgeData));
-      showResult(nickname);
-      showToast("캠페인 참여가 저장됐어요 🌱");
-    });
-
-    resetBtn.addEventListener("click", resetForm);
-
-    editPledgeBtn.addEventListener("click", () => {
-      showForm();
-      document.querySelector("#join").scrollIntoView({ behavior: "smooth" });
-    });
-
-    shareCampaignBtn.addEventListener("click", async () => {
-      const nickname = nicknameInput.value.trim() || "Smile Keeper";
-      const shareData = {
-        title: "Quokka Smile Campaign",
-        text: `${nickname}님이 쿼카를 위한 네 가지 약속에 참여했어요. 만지지 않기, 먹이와 물 주지 않기, 안전거리 지키기, 지정된 길 이용하기 🌱`,
-        url: window.location.href
-      };
-
-      try {
-        if (navigator.share) {
-          await navigator.share(shareData);
-        } else if (navigator.clipboard) {
-          await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
-          showToast("캠페인 문구와 주소가 복사됐어요");
-        } else {
-          showToast("이 브라우저에서는 공유 기능을 지원하지 않아요");
-        }
-      } catch (error) {
-        showToast("공유를 취소했어요");
-      }
-    });
-
-    loadSavedPledge();
   </script>
-
-  <script>
+<script>
     (() => {
       const root = document.documentElement;
       const themeToggle = document.querySelector("#themeToggle");
@@ -1935,130 +1412,108 @@
       }
     })();
   </script>
-
-  <script>
+<script>
     (() => {
-      const pledgeForm = document.querySelector("#pledgeForm");
-      const nicknameInput = document.querySelector("#nickname");
-      const checkboxes = [...document.querySelectorAll('input[name="promise"]')];
-      const resultCard = document.querySelector("#resultCard");
-      const keeperCount = document.querySelector("#keeperCount");
-      const todayLabel = document.querySelector("#todayLabel");
-      const draftStatus = document.querySelector("#draftStatus");
-      const PLEDGE_KEY = "quokkaSmileCampaignPledge";
-      const COUNT_KEY = "quokkaSmileCampaignCompletionCount";
-      const COUNTED_AT_KEY = "quokkaSmileCampaignCountedAt";
-      let draftTimer;
+      const searchInput = document.querySelector("#goodsSearch");
+      const filterButtons = [...document.querySelectorAll(".filter-btn")];
+      const cards = [...document.querySelectorAll(".goods-card")];
+      const resultCount = document.querySelector("#goodsResultCount");
+      const emptyResult = document.querySelector("#emptyResult");
+      let activeFilter = "all";
 
-      function readCount() {
-        const count = Number(localStorage.getItem(COUNT_KEY) || 0);
-        keeperCount.textContent = `${count}회`;
-        return count;
-      }
+      function filterGoods() {
+        const keyword = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
 
-      function updateCheckedStyles() {
-        checkboxes.forEach((checkbox) => {
-          checkbox.closest(".check-item")?.classList.toggle("is-checked", checkbox.checked);
+        cards.forEach((card) => {
+          const categoryMatch = activeFilter === "all" || card.dataset.category === activeFilter;
+          const keywordMatch = !keyword || card.textContent.toLowerCase().includes(keyword);
+          const isVisible = categoryMatch && keywordMatch;
+          card.classList.toggle("is-hidden", !isVisible);
+          if (isVisible) visibleCount += 1;
         });
+
+        resultCount.textContent = `${visibleCount}개 굿즈`;
+        emptyResult.classList.toggle("show", visibleCount === 0);
       }
 
-      function saveDraft() {
-        window.clearTimeout(draftTimer);
-        draftTimer = window.setTimeout(() => {
-          const nickname = nicknameInput.value.trim();
-          const promises = checkboxes.filter((item) => item.checked).map((item) => item.value);
-          const existing = JSON.parse(localStorage.getItem(PLEDGE_KEY) || "{}");
-
-          localStorage.setItem(PLEDGE_KEY, JSON.stringify({
-            nickname,
-            promises,
-            completed: false,
-            savedAt: existing.savedAt || null,
-            draftSavedAt: new Date().toISOString()
-          }));
-
-          draftStatus.textContent = "작성 중인 내용이 이 브라우저에 자동 저장됐어요.";
-        }, 300);
-      }
-
-      function celebrate() {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        const layer = document.createElement("div");
-        layer.className = "celebration-layer";
-        const icons = ["🌱", "✨", "☺", "🍃"];
-
-        for (let index = 0; index < 24; index += 1) {
-          const piece = document.createElement("span");
-          piece.className = "celebration-piece";
-          piece.textContent = icons[index % icons.length];
-          piece.style.left = `${Math.random() * 100}%`;
-          piece.style.animationDelay = `${Math.random() * 0.45}s`;
-          piece.style.setProperty("--drift", `${(Math.random() - 0.5) * 180}px`);
-          layer.appendChild(piece);
-        }
-
-        document.body.appendChild(layer);
-        window.setTimeout(() => layer.remove(), 2500);
-      }
-
-      function syncCompletedPledge() {
-        const raw = localStorage.getItem(PLEDGE_KEY);
-        if (!raw) return;
-
-        try {
-          const pledge = JSON.parse(raw);
-          if (!pledge.completed || !pledge.savedAt) return;
-
-          const lastCountedAt = localStorage.getItem(COUNTED_AT_KEY);
-          if (lastCountedAt !== pledge.savedAt) {
-            const nextCount = readCount() + 1;
-            localStorage.setItem(COUNT_KEY, String(nextCount));
-            localStorage.setItem(COUNTED_AT_KEY, pledge.savedAt);
-            keeperCount.textContent = `${nextCount}회`;
-            celebrate();
-          }
-        } catch (error) {
-          // 기존 참여 기능에서 잘못된 저장값을 정리합니다.
-        }
-      }
-
-      todayLabel.textContent = new Intl.DateTimeFormat("ko-KR", {
-        month: "short",
-        day: "numeric"
-      }).format(new Date());
-
-      readCount();
-      updateCheckedStyles();
-
-      checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", () => {
-          updateCheckedStyles();
-          saveDraft();
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+          filterGoods();
         });
       });
 
-      nicknameInput.addEventListener("input", saveDraft);
-
-      pledgeForm.addEventListener("submit", () => {
-        window.clearTimeout(draftTimer);
-        window.setTimeout(() => {
-          syncCompletedPledge();
-          draftStatus.textContent = "네 가지 약속이 완료 상태로 저장됐어요.";
-        }, 0);
-      });
-
-      document.querySelector("#resetBtn")?.addEventListener("click", () => {
-        updateCheckedStyles();
-        draftStatus.textContent = "새 약속서를 작성해 주세요.";
-      });
-
-      const resultObserver = new MutationObserver(() => {
-        if (resultCard.classList.contains("show")) syncCompletedPledge();
-      });
-      resultObserver.observe(resultCard, { attributes: true, attributeFilter: ["class"] });
-
-      syncCompletedPledge();
+      searchInput.addEventListener("input", filterGoods);
+      filterGoods();
     })();
   </script>
-</body>
+<script>
+    (() => {
+      const LANGUAGE_KEY = "quokkaSmileLanguage";
+      const languageToggle = document.querySelector("#languageToggle");
+      const typingTitle = document.querySelector("#typingTitle");
+      const titleCopy = {"ko": "쿼카의 미소를\n일상 속 굿즈로", "en": "Bring the quokka’s smile\ninto everyday goods"};
+      const pageTitleCopy = {"ko": "쿼카 굿즈 아이디어", "en": "Quokka Goods Ideas"};
+      let typingTimer;
+
+      function getLanguage() {
+        try { return localStorage.getItem(LANGUAGE_KEY) || "ko"; }
+        catch (error) { return "ko"; }
+      }
+
+      function typeTitle(text) {
+        if (!typingTitle) return;
+        clearTimeout(typingTimer);
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduceMotion) { typingTitle.textContent = text; return; }
+        typingTitle.textContent = "";
+        let index = 0;
+        const write = () => {
+          typingTitle.textContent = text.slice(0, index);
+          index += 1;
+          if (index <= text.length) typingTimer = setTimeout(write, text.charCodeAt(index - 1) === 10 ? 180 : 55);
+        };
+        write();
+      }
+
+      function applyLanguage(language, persist = true) {
+        const lang = language === "en" ? "en" : "ko";
+        document.documentElement.lang = lang;
+        if (persist) { try { localStorage.setItem(LANGUAGE_KEY, lang); } catch (error) {} }
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const value = element.dataset[lang];
+          if (value) element.textContent = value;
+        });
+        document.title = pageTitleCopy[lang];
+        if (languageToggle) {
+          const isEnglish = lang === "en";
+          languageToggle.setAttribute("aria-pressed", String(isEnglish));
+          languageToggle.setAttribute("aria-label", isEnglish ? "한국어로 변경" : "Switch to English");
+          languageToggle.querySelector(".language-text").textContent = isEnglish ? "KO" : "EN";
+        }
+        const themeText = document.querySelector("#themeToggle .theme-text");
+        const themeToggle = document.querySelector("#themeToggle");
+        if (themeText && themeToggle) {
+          const dark = document.documentElement.dataset.theme === "dark";
+          themeText.textContent = lang === "en" ? (dark ? "Light mode" : "Dark mode") : (dark ? "라이트 모드" : "다크 모드");
+          themeToggle.setAttribute("aria-label", lang === "en" ? (dark ? "Switch to light mode" : "Switch to dark mode") : (dark ? "라이트 모드로 변경" : "다크 모드로 변경"));
+        }
+        typeTitle(titleCopy[lang]);
+        window.dispatchEvent(new CustomEvent("quokka-language-change", { detail: { language: lang } }));
+      }
+
+      languageToggle?.addEventListener("click", () => applyLanguage(getLanguage() === "ko" ? "en" : "ko"));
+      document.querySelector("#themeToggle")?.addEventListener("click", () => setTimeout(() => applyLanguage(getLanguage(), false), 0));
+      applyLanguage(getLanguage(), false);
+    })();
+    </script><script>
+window.addEventListener("quokka-language-change", (event) => {
+  const lang = event.detail.language;
+  const input = document.querySelector("#goodsSearch");
+  if (input) input.placeholder = lang === "en" ? input.dataset.placeholderEn : input.dataset.placeholderKo;
+  input?.dispatchEvent(new Event("input"));
+});
+</script></body>
 </html>

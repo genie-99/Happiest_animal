@@ -1,19 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Quokka Smile Project</title>
-  
-  <link rel="icon" type="image/png" href="./imgs/quokka-favicon.png">
-  <!-- Vanilla HTML/CSS/JS only -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
-
-
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quokka Smile Project</title><link href="./imgs/quokka-favicon.png" rel="icon" type="image/png"/>
+<!-- Vanilla HTML/CSS/JS only -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Jua&amp;display=swap" rel="stylesheet"/>
+<script>
     (() => {
       try {
         const savedTheme = localStorage.getItem("quokkaSmileTheme");
@@ -25,9 +21,10 @@
         document.documentElement.dataset.theme = "light";
       }
     })();
-  </script>
-
-  <style>
+  
+try { document.documentElement.lang = localStorage.getItem("quokkaSmileLanguage") || "ko"; } catch (e) { document.documentElement.lang = "ko"; }
+</script>
+<style>
     :root {
       --yellow: #FFD86B;
       --yellow-light: #FFF1AF;
@@ -701,6 +698,50 @@
       }
     }
 
+    /* Desktop hero balance */
+
+    @media (min-width: 1025px) {
+      .hero {
+        width: min(1320px, calc(100% - 80px));
+        grid-template-columns: minmax(0, 1.18fr) minmax(390px, 0.82fr);
+        gap: clamp(32px, 4vw, 56px);
+      }
+
+      .hero-content {
+        padding-left: 20px;
+      }
+
+      .hero-visual {
+        transform: translateX(-18px);
+      }
+
+      /* The English heading is longer, so keep the same centered balance
+         without letting the text crowd the quokka card. */
+      html[lang="en"] .hero {
+        grid-template-columns: minmax(0, 1.24fr) minmax(370px, 0.76fr);
+        gap: clamp(28px, 3.5vw, 50px);
+      }
+
+      html[lang="en"] .hero-content {
+        padding-left: 12px;
+      }
+
+      html[lang="en"] .hero-title {
+        max-width: 790px;
+        font-size: clamp(46px, 5vw, 72px);
+        line-height: 1.02;
+        letter-spacing: -0.8px;
+      }
+
+      html[lang="en"] .hero-desc {
+        max-width: 700px;
+      }
+
+      html[lang="en"] .hero-visual {
+        transform: translateX(-8px);
+      }
+    }
+
     /* Tablet */
 
     @media (max-width: 1024px) {
@@ -1099,11 +1140,6 @@
       color: var(--brown);
     }
 
-    html[data-theme="dark"] .btn-light {
-      background: #FFF3DF;
-      color: #4B3423;
-    }
-
     html[data-theme="dark"] .name-field input {
       background: var(--theme-input);
       color: var(--theme-text);
@@ -1154,209 +1190,230 @@
       }
     }
 
-  </style>
-</head>
+  
+    /* Desktop English title stability: reserve space before typing and prevent overflow. */
+    .typing-title {
+      display: block;
+      width: 100%;
+      white-space: pre-line;
+    }
 
+    @media (min-width: 1025px) {
+      .hero-content { min-width: 0; }
+
+      html[lang="en"] .hero {
+        grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.92fr);
+        gap: clamp(40px, 4vw, 64px);
+      }
+
+      html[lang="en"] .hero-title {
+        width: 100%;
+        max-width: 760px;
+        min-height: 2.12em;
+        font-size: clamp(48px, 4.35vw, 68px);
+        line-height: 1.06;
+        letter-spacing: -0.6px;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+
+      html[lang="en"] .hero-title span {
+        white-space: pre-line;
+      }
+
+      html[lang="en"] .hero-visual {
+        transform: translateX(0);
+      }
+    }
+
+</style>
+<style>
+    .language-toggle { min-width: 72px; }
+    .language-icon { font-size: 17px; }
+    .typing-title { white-space: pre-line; position: relative; color: var(--theme-text, var(--brown-dark)); }
+    .typing-title::after { content: ""; display: inline-block; width: 3px; height: .86em; margin-left: 7px; vertical-align: -.05em; border-radius: 999px; background: var(--brown); animation: typingBlink .8s steps(1) infinite; }
+    @keyframes typingBlink { 50% { opacity: 0; } }
+    html[lang="ko"] .hero-title .typing-title {
+      white-space: pre-line;
+    }
+
+    @media (min-width: 1025px) {
+      html[lang="ko"] .hero-title {
+        min-height: 2.05em;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) { .typing-title::after { animation: none; } }
+    @media (max-width: 700px) { .language-toggle { width: 100%; min-height: 46px; } }
+    </style></head>
 <body>
-  <header class="header">
-    <nav class="page nav">
-      <a href="./index.html" class="logo" aria-label="Quokka Smile Project 홈">
-        <span class="logo-mark">☺</span>
+<header class="header">
+<nav class="page nav">
+<a aria-label="Quokka Smile Project 홈" class="logo" href="./index.html">
+<span class="logo-mark">☺</span>
         Quokka Smile
       </a>
-
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#intro">소개</a>
-        <a href="#charm">매력</a>
-        <a href="#protect">함께하기</a>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 변경" aria-pressed="false">
-          <span class="theme-icon" aria-hidden="true">🌙</span>
-          <span class="theme-text">다크 모드</span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="page hero">
-      <div class="hero-content">
-        <div class="badge" id="dynamicBadge">🌞 행복을 전하는 작은 친구</div>
-
-        <h1 class="hero-title">
-          세상에 행복을 전하는<br />
-          작은 미소, <span>쿼카</span>
-        </h1>
-
-        <p class="hero-desc">
+<button aria-expanded="false" aria-label="메뉴 열기" class="menu-btn" id="menuBtn" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="nav-links" id="navLinks">
+<a data-en="About" data-i18n="k0" data-ko="소개" href="#intro">소개</a>
+<a data-en="Charm" data-i18n="k1" data-ko="매력" href="#charm">매력</a>
+<a data-en="Join" data-i18n="k2" data-ko="함께하기" href="#protect">함께하기</a>
+<button aria-label="Switch to English" aria-pressed="false" class="theme-toggle language-toggle" id="languageToggle" type="button"><span aria-hidden="true" class="language-icon">🌐</span><span class="language-text">EN</span></button><button aria-label="다크 모드로 변경" aria-pressed="false" class="theme-toggle" id="themeToggle" type="button">
+<span aria-hidden="true" class="theme-icon">🌙</span>
+<span class="theme-text">다크 모드</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero -->
+<section class="page hero">
+<div class="hero-content">
+<div class="badge" data-en="🌞 A little friend spreading happiness" data-i18n="k3" data-ko="🌞 행복을 전하는 작은 친구" id="dynamicBadge">🌞 행복을 전하는 작은 친구</div>
+<h1 class="hero-title" data-title-en="A little smile that spreads happiness:
+the quokka" data-title-ko="세상에 행복을 전하는
+작은 미소, 쿼카"><span aria-live="polite" class="typing-title" id="typingTitle"></span></h1>
+<p class="hero-desc" data-en="With its smile-like expression, the quokka brings warmth to people. The Quokka Smile Project turns that small smile into a message of happiness and wildlife protection." data-i18n="k4" data-ko="쿼카는 웃는 듯한 얼굴로 사람들에게 따뜻한 기분을 전합니다. 이 작은 미소가 단순한 귀여움을 넘어, 행복과 보호의 메시지로 이어지도록 Quokka Smile Project를 시작합니다.">
           쿼카는 웃는 듯한 얼굴로 사람들에게 따뜻한 기분을 전합니다.
           이 작은 미소가 단순한 귀여움을 넘어, 행복과 보호의 메시지로 이어지도록
           Quokka Smile Project를 시작합니다.
         </p>
-
-        <div class="hero-actions">
-          <a href="#intro" class="btn btn-primary">쿼카 만나기</a>
-          <button class="btn btn-soft" id="shareBtn" type="button">행복 공유하기</button>
-        </div>
-      </div>
-
-      <div class="hero-visual" aria-label="쿼카 사진이 들어간 Smile Keeper 카드">
-        <div class="sun-circle"></div>
-
-        <div class="bubble one">따뜻한 ☀</div>
-        <div class="bubble two">희망적인 🌱</div>
-
-        <div class="quokka-card">
-          <div class="quokka-photo-wrap">
-            <img
-              class="quokka-photo"
-              src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTJfNjEg/MDAxNDg5MjgzMzk0NzAy.D9qlh_kTlXpH34lAHxjiVieyxWoj3FazBsGIhGz8Q4wg.B2pcp5-kx_dJvbh7cCTxcCmU-Oj36ES_hvGRSoMuTRkg.JPEG.astaldo/1a.jpg?type=w800"
-              alt="웃는 듯한 얼굴의 쿼카 사진"
-            />
-          </div>
-
-          <h2>Smile Keeper</h2>
-          <p>웃음을 지키는 가장 귀여운 자원</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Intro -->
-    <section id="intro">
-      <div class="page">
-        <div class="section-head">
-          <span class="section-label">첫 만남</span>
-          <h2>세상에서 가장 행복해 보이는 동물, 쿼카를 아시나요?</h2>
-          <p>
+<div class="hero-actions">
+<a class="btn btn-primary" data-en="Meet the quokka" data-i18n="k5" data-ko="쿼카 만나기" href="#intro">쿼카 만나기</a>
+<button class="btn btn-soft" data-en="Share happiness" data-i18n="k6" data-ko="행복 공유하기" id="shareBtn" type="button">행복 공유하기</button>
+</div>
+</div>
+<div aria-label="쿼카 사진이 들어간 Smile Keeper 카드" class="hero-visual">
+<div class="sun-circle"></div>
+<div class="bubble one" data-en="Warm ☀" data-i18n="k7" data-ko="따뜻한 ☀">따뜻한 ☀</div>
+<div class="bubble two" data-en="Hopeful 🌱" data-i18n="k8" data-ko="희망적인 🌱">희망적인 🌱</div>
+<div class="quokka-card">
+<div class="quokka-photo-wrap">
+<img alt="웃는 듯한 얼굴의 쿼카 사진" class="quokka-photo" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTJfNjEg/MDAxNDg5MjgzMzk0NzAy.D9qlh_kTlXpH34lAHxjiVieyxWoj3FazBsGIhGz8Q4wg.B2pcp5-kx_dJvbh7cCTxcCmU-Oj36ES_hvGRSoMuTRkg.JPEG.astaldo/1a.jpg?type=w800"/>
+</div>
+<h2>Smile Keeper</h2>
+<p data-en="The cutest guardian of smiles" data-i18n="k9" data-ko="웃음을 지키는 가장 귀여운 자원">웃음을 지키는 가장 귀여운 자원</p>
+</div>
+</div>
+</section>
+<!-- Intro -->
+<section id="intro">
+<div class="page">
+<div class="section-head">
+<span class="section-label" data-en="First encounter" data-i18n="k10" data-ko="첫 만남">첫 만남</span>
+<h2 data-en="Have you met the quokka, the world’s happiest-looking animal?" data-i18n="k11" data-ko="세상에서 가장 행복해 보이는 동물, 쿼카를 아시나요?">세상에서 가장 행복해 보이는 동물, 쿼카를 아시나요?</h2>
+<p data-en="Quokkas catch the eye with cuteness and stay in the heart through a warm story." data-i18n="k12" data-ko="쿼카는 귀여움으로 시선을 끌고, 따뜻한 이야기로 마음에 남는 동물입니다.">
             쿼카는 귀여움으로 시선을 끌고, 따뜻한 이야기로 마음에 남는 동물입니다.
           </p>
-        </div>
-
-        <div class="intro-box">
-          <div class="intro-quote">
-            <strong>행복은 쿼카처럼 작고 따뜻하게 번집니다.</strong>
-            <span>
+</div>
+<div class="intro-box">
+<div class="intro-quote">
+<strong data-en="Happiness spreads in small, warm ways—just like a quokka." data-i18n="k13" data-ko="행복은 쿼카처럼 작고 따뜻하게 번집니다.">행복은 쿼카처럼 작고 따뜻하게 번집니다.</strong>
+<span data-en="If one small smile can brighten someone’s day, the quokka can become the loveliest symbol of that message." data-i18n="k14" data-ko="작은 미소 하나가 누군가의 하루를 바꿀 수 있다면, 쿼카는 그 메시지를 가장 사랑스럽게 전하는 상징이 될 수 있습니다.">
               작은 미소 하나가 누군가의 하루를 바꿀 수 있다면,
               쿼카는 그 메시지를 가장 사랑스럽게 전하는 상징이 될 수 있습니다.
             </span>
-          </div>
-
-          <div class="intro-text">
-            <p>
+</div>
+<div class="intro-text">
+<p data-en="The quokka’s greatest charm is its smile-like face, which gives people a bright and positive impression." data-i18n="k15" data-ko="쿼카의 가장 큰 매력은 웃는 듯한 얼굴입니다. 입꼬리가 올라간 듯한 인상은 보는 사람에게 밝고 긍정적인 느낌을 줍니다.">
               쿼카의 가장 큰 매력은 웃는 듯한 얼굴입니다.
               입꼬리가 올라간 듯한 인상은 보는 사람에게 밝고 긍정적인 느낌을 줍니다.
             </p>
-
-            <p>
+<p data-en="But quokkas should not be treated as cute content alone. Protecting their habitat and ecosystem helps their smiles endure." data-i18n="k16" data-ko="하지만 쿼카를 단순히 귀여운 동물로만 소비해서는 안 됩니다. 쿼카가 계속 웃을 수 있으려면 서식지와 생태계를 함께 지키는 마음이 필요합니다.">
               하지만 쿼카를 단순히 귀여운 동물로만 소비해서는 안 됩니다.
               쿼카가 계속 웃을 수 있으려면 서식지와 생태계를 함께 지키는 마음이 필요합니다.
             </p>
-
-            <div class="mini-tags">
-              <span>#귀여움</span>
-              <span>#힐링</span>
-              <span>#굿즈</span>
-              <span>#보호</span>
-              <span>#행복캠페인</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Charm Cards -->
-    <section id="charm">
-      <div class="page">
-        <div class="section-head">
-          <span class="section-label">매력 포인트</span>
-          <h2>쿼카가 특별한 이유</h2>
-          <p>
+<div class="mini-tags">
+<span data-en="#Cuteness" data-i18n="k17" data-ko="#귀여움">#귀여움</span>
+<span data-en="#Healing" data-i18n="k18" data-ko="#힐링">#힐링</span>
+<span data-en="#Goods" data-i18n="k19" data-ko="#굿즈">#굿즈</span>
+<span data-en="#Protection" data-i18n="k20" data-ko="#보호">#보호</span>
+<span data-en="#HappinessCampaign" data-i18n="k21" data-ko="#행복캠페인">#행복캠페인</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Charm Cards -->
+<section id="charm">
+<div class="page">
+<div class="section-head">
+<span class="section-label" data-en="Why quokkas" data-i18n="k22" data-ko="매력 포인트">매력 포인트</span>
+<h2 data-en="What makes quokkas special" data-i18n="k23" data-ko="쿼카가 특별한 이유">쿼카가 특별한 이유</h2>
+<p data-en="We design a brand experience that begins with cuteness, reveals the value of happiness and protection, and inspires action." data-i18n="k24" data-ko="귀여움으로 들어와서, 행복과 보호의 가치를 느끼고, 함께 행동하게 만드는 브랜드 경험을 설계합니다.">
             귀여움으로 들어와서, 행복과 보호의 가치를 느끼고,
             함께 행동하게 만드는 브랜드 경험을 설계합니다.
           </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon">☺</div>
-            <h3>웃는 듯한 얼굴</h3>
-            <p>
+</div>
+<div class="cards">
+<article class="card">
+<div class="card-icon">☺</div>
+<h3 data-en="A smile-like face" data-i18n="k25" data-ko="웃는 듯한 얼굴">웃는 듯한 얼굴</h3>
+<p data-en="Its upturned expression creates a bright and positive first impression." data-i18n="k26" data-ko="입꼬리가 올라간 듯한 인상은 사람들에게 밝고 긍정적인 첫인상을 줍니다.">
               입꼬리가 올라간 듯한 인상은 사람들에게 밝고 긍정적인 첫인상을 줍니다.
             </p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🐾</div>
-            <h3>작고 동글동글함</h3>
-            <p>
+</article>
+<article class="card">
+<div class="card-icon">🐾</div>
+<h3 data-en="Small and round" data-i18n="k27" data-ko="작고 동글동글함">작고 동글동글함</h3>
+<p data-en="Its round face and small body translate naturally into characters, stickers, plush toys, and goods." data-i18n="k28" data-ko="둥근 얼굴과 작은 몸집은 캐릭터, 스티커, 인형, 굿즈로 확장하기 좋습니다.">
               둥근 얼굴과 작은 몸집은 캐릭터, 스티커, 인형, 굿즈로 확장하기 좋습니다.
             </p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🌞</div>
-            <h3>행복의 상징</h3>
-            <p>
+</article>
+<article class="card">
+<div class="card-icon">🌞</div>
+<h3 data-en="A symbol of happiness" data-i18n="k29" data-ko="행복의 상징">행복의 상징</h3>
+<p data-en="The quokka grows beyond an animal introduction into a symbol that spreads happiness." data-i18n="k30" data-ko="쿼카는 단순한 동물 소개를 넘어 “행복을 전하는 존재”라는 메시지로 확장됩니다.">
               쿼카는 단순한 동물 소개를 넘어 “행복을 전하는 존재”라는 메시지로 확장됩니다.
             </p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🌱</div>
-            <h3>보호해야 할 가치</h3>
-            <p>
+</article>
+<article class="card">
+<div class="card-icon">🌱</div>
+<h3 data-en="Worth protecting" data-i18n="k31" data-ko="보호해야 할 가치">보호해야 할 가치</h3>
+<p data-en="The message goes beyond consuming cuteness and calls for protecting habitats and ecosystems." data-i18n="k32" data-ko="귀여움을 소비하는 데서 끝나지 않고, 서식지와 생태를 지키자는 메시지를 담습니다.">
               귀여움을 소비하는 데서 끝나지 않고, 서식지와 생태를 지키자는 메시지를 담습니다.
             </p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">🌍</div>
-            <h3>글로벌 확장성</h3>
-            <p>
+</article>
+<article class="card">
+<div class="card-icon">🌍</div>
+<h3 data-en="Global appeal" data-i18n="k33" data-ko="글로벌 확장성">글로벌 확장성</h3>
+<p data-en="It can travel worldwide through photos, memes, characters, goods, and campaigns." data-i18n="k34" data-ko="사진, 밈, 캐릭터, 굿즈, 캠페인으로 전 세계에 쉽게 전달될 수 있습니다.">
               사진, 밈, 캐릭터, 굿즈, 캠페인으로 전 세계에 쉽게 전달될 수 있습니다.
             </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="protect" class="cta">
-      <div class="page">
-        <div class="cta-box">
-          <h2>나도 행복을 퍼뜨리는 사람이 될 수 있어요.</h2>
-          <p>
+</article>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="cta" id="protect">
+<div class="page">
+<div class="cta-box">
+<h2 data-en="You can help spread happiness too." data-i18n="k35" data-ko="나도 행복을 퍼뜨리는 사람이 될 수 있어요.">나도 행복을 퍼뜨리는 사람이 될 수 있어요.</h2>
+<p data-en="Start with your love for the quokka’s smile, then share warm happiness through goods, campaigns, and stories. Small attention can grow into meaningful protection." data-i18n="k36" data-ko="쿼카의 미소를 좋아하는 마음에서 시작해, 굿즈, 캠페인, 공유하기를 통해 더 많은 사람에게 따뜻한 행복을 전해보세요. 작은 관심이 쿼카를 지키는 큰 움직임이 됩니다.">
             쿼카의 미소를 좋아하는 마음에서 시작해,
             굿즈, 캠페인, 공유하기를 통해 더 많은 사람에게 따뜻한 행복을 전해보세요.
             작은 관심이 쿼카를 지키는 큰 움직임이 됩니다.
           </p>
-
-          <div class="cta-actions">
-            <button class="btn btn-light" id="campaignBtn" type="button">캠페인 참여하기</button>
-            <button class="btn btn-outline" id="goodsBtn" type="button">굿즈 아이디어 보기</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="page footer-inner">
-      <p>© 2026 Quokka Smile Project</p>
-      <p>따뜻한 / 귀여운 / 희망적인 브랜드 경험</p>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast">메시지가 준비됐어요 ☺</div>
-
-  <script>
+<div class="cta-actions">
+<button class="btn btn-light" data-en="Join the campaign" data-i18n="k37" data-ko="캠페인 참여하기" id="campaignBtn" type="button">캠페인 참여하기</button>
+<button class="btn btn-outline" data-en="Explore goods ideas" data-i18n="k38" data-ko="굿즈 아이디어 보기" id="goodsBtn" type="button">굿즈 아이디어 보기</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="footer">
+<div class="page footer-inner">
+<p>© 2026 Quokka Smile Project</p>
+<p data-en="A warm / cute / hopeful brand experience" data-i18n="k39" data-ko="따뜻한 / 귀여운 / 희망적인 브랜드 경험">따뜻한 / 귀여운 / 희망적인 브랜드 경험</p>
+</div>
+</footer>
+<div class="toast" data-en="Your message is ready ☺" data-i18n="k40" data-ko="메시지가 준비됐어요 ☺" id="toast">메시지가 준비됐어요 ☺</div>
+<script>
     const toast = document.querySelector("#toast");
     const shareBtn = document.querySelector("#shareBtn");
     const campaignBtn = document.querySelector("#campaignBtn");
@@ -1427,8 +1484,7 @@
     window.location.href = "./goods.html";
     });
   </script>
-
-  <script>
+<script>
     (() => {
       const root = document.documentElement;
       const themeToggle = document.querySelector("#themeToggle");
@@ -1518,8 +1574,7 @@
       }
     })();
   </script>
-
-  <script>
+<script>
     (() => {
       const badge = document.querySelector("#dynamicBadge");
       if (!badge) return;
@@ -1536,5 +1591,64 @@
       badge.textContent = message;
     })();
   </script>
-</body>
+<script>
+    (() => {
+      const LANGUAGE_KEY = "quokkaSmileLanguage";
+      const languageToggle = document.querySelector("#languageToggle");
+      const typingTitle = document.querySelector("#typingTitle");
+      const titleCopy = {"ko": "세상에 행복을 전하는\n작은 미소, 쿼카", "en": "A little smile that spreads happiness:\nthe quokka"};
+      const pageTitleCopy = {"ko": "Quokka Smile Project", "en": "Quokka Smile Project"};
+      let typingTimer;
+
+      function getLanguage() {
+        try { return localStorage.getItem(LANGUAGE_KEY) || "ko"; }
+        catch (error) { return "ko"; }
+      }
+
+      function typeTitle(text) {
+        if (!typingTitle) return;
+        clearTimeout(typingTimer);
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduceMotion) { typingTitle.textContent = text; return; }
+        typingTitle.textContent = "";
+        let index = 0;
+        const write = () => {
+          typingTitle.textContent = text.slice(0, index);
+          index += 1;
+          if (index <= text.length) typingTimer = setTimeout(write, text.charCodeAt(index - 1) === 10 ? 180 : 55);
+        };
+        write();
+      }
+
+      function applyLanguage(language, persist = true) {
+        const lang = language === "en" ? "en" : "ko";
+        document.documentElement.lang = lang;
+        if (persist) { try { localStorage.setItem(LANGUAGE_KEY, lang); } catch (error) {} }
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const value = element.dataset[lang];
+          if (value) element.textContent = value;
+        });
+        document.title = pageTitleCopy[lang];
+        if (languageToggle) {
+          const isEnglish = lang === "en";
+          languageToggle.setAttribute("aria-pressed", String(isEnglish));
+          languageToggle.setAttribute("aria-label", isEnglish ? "한국어로 변경" : "Switch to English");
+          languageToggle.querySelector(".language-text").textContent = isEnglish ? "KO" : "EN";
+        }
+        const themeText = document.querySelector("#themeToggle .theme-text");
+        const themeToggle = document.querySelector("#themeToggle");
+        if (themeText && themeToggle) {
+          const dark = document.documentElement.dataset.theme === "dark";
+          themeText.textContent = lang === "en" ? (dark ? "Light mode" : "Dark mode") : (dark ? "라이트 모드" : "다크 모드");
+          themeToggle.setAttribute("aria-label", lang === "en" ? (dark ? "Switch to light mode" : "Switch to dark mode") : (dark ? "라이트 모드로 변경" : "다크 모드로 변경"));
+        }
+        typeTitle(titleCopy[lang]);
+        window.dispatchEvent(new CustomEvent("quokka-language-change", { detail: { language: lang } }));
+      }
+
+      languageToggle?.addEventListener("click", () => applyLanguage(getLanguage() === "ko" ? "en" : "ko"));
+      document.querySelector("#themeToggle")?.addEventListener("click", () => setTimeout(() => applyLanguage(getLanguage(), false), 0));
+      applyLanguage(getLanguage(), false);
+    })();
+    </script></body>
 </html>
