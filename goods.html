@@ -11,6 +11,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
 
+
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("quokkaSmileTheme");
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const theme = savedTheme || systemTheme;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+
   <style>
     :root {
       --yellow: #FFD86B;
@@ -748,6 +763,311 @@
         font-size: 13px;
       }
     }
+
+
+    /* Theme + dynamic interaction */
+    :root {
+      --theme-bg: var(--cream);
+      --theme-surface: var(--white);
+      --theme-surface-soft: #fffaf0;
+      --theme-text: var(--brown-dark);
+      --theme-muted: rgba(75, 52, 35, 0.76);
+      --theme-border: rgba(169, 120, 75, 0.16);
+      --theme-header: rgba(255, 247, 232, 0.9);
+      --theme-input: #ffffff;
+      --theme-focus: rgba(255, 216, 107, 0.38);
+    }
+
+    html[data-theme="dark"] {
+      --yellow: #F3C862;
+      --yellow-light: #6A5426;
+      --brown: #F0B96C;
+      --brown-dark: #FFF3DF;
+      --cream: #17120F;
+      --white: #28201B;
+      --green: #9CC58F;
+      --green-light: #263725;
+      --red-soft: #3D2821;
+      --theme-bg: #17120F;
+      --theme-surface: #28201B;
+      --theme-surface-soft: #332820;
+      --theme-text: #FFF3DF;
+      --theme-muted: rgba(255, 243, 223, 0.72);
+      --theme-border: rgba(255, 216, 107, 0.2);
+      --theme-header: rgba(23, 18, 15, 0.9);
+      --theme-input: #211A16;
+      --theme-focus: rgba(243, 200, 98, 0.22);
+      --shadow-soft: 0 14px 35px rgba(0, 0, 0, 0.28);
+      --shadow-strong: 0 22px 55px rgba(0, 0, 0, 0.4);
+    }
+
+    body {
+      background: var(--theme-bg);
+      color: var(--theme-text);
+      transition: background-color 0.28s ease, color 0.28s ease;
+    }
+
+    .header {
+      background: var(--theme-header);
+      border-bottom-color: var(--theme-border);
+    }
+
+    .theme-toggle {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 13px;
+      border: 1px solid var(--theme-border);
+      border-radius: 999px;
+      background: var(--theme-surface);
+      color: var(--theme-text);
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(75, 52, 35, 0.08);
+      transition: transform 0.2s ease, background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle:focus-visible,
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 3px solid var(--theme-focus);
+      outline-offset: 3px;
+    }
+
+    .theme-icon {
+      line-height: 1;
+    }
+
+    .nav-links a.active-section {
+      color: var(--brown);
+      font-weight: 700;
+    }
+
+    .nav-links a.active-section::after {
+      content: "";
+      width: 5px;
+      height: 5px;
+      margin-left: 6px;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+
+    .hero-desc,
+    .section-head p,
+    .intro-text p,
+    .card p,
+    .quokka-card p,
+    .hero-card p,
+    .goods-card p,
+    .idea-text p,
+    .promise-card p,
+    .form-desc,
+    .form-note,
+    .result-card p,
+    .source-box p,
+    .footer,
+    .nav-links {
+      color: var(--theme-muted);
+    }
+
+    .quokka-card,
+    .intro-box,
+    .card,
+    .hero-card,
+    .goods-card,
+    .idea-box,
+    .promise-card,
+    .pledge-form,
+    .result-card,
+    .source-box,
+    .source-link,
+    .check-item,
+    .menu-btn {
+      background-color: var(--theme-surface);
+      border-color: var(--theme-border);
+    }
+
+    .btn-soft {
+      background: var(--theme-surface);
+      color: var(--brown);
+      border-color: var(--theme-border);
+    }
+
+    .btn-soft:hover {
+      background: var(--theme-surface-soft);
+    }
+
+    html[data-theme="dark"] .quokka-card,
+    html[data-theme="dark"] .hero-card,
+    html[data-theme="dark"] .goods-card {
+      background: rgba(40, 32, 27, 0.9);
+      border-color: var(--theme-border);
+    }
+
+    html[data-theme="dark"] .intro-box,
+    html[data-theme="dark"] .idea-box,
+    html[data-theme="dark"] .source-box {
+      background: var(--theme-surface);
+    }
+
+    html[data-theme="dark"] .nav-links a:hover,
+    html[data-theme="dark"] .logo,
+    html[data-theme="dark"] .section-label,
+    html[data-theme="dark"] .hero-title span,
+    html[data-theme="dark"] .card h3,
+    html[data-theme="dark"] .goods-card h3,
+    html[data-theme="dark"] .promise-card h3,
+    html[data-theme="dark"] .idea-text h2,
+    html[data-theme="dark"] .hero-card h2 {
+      color: var(--brown);
+    }
+
+    html[data-theme="dark"] .btn-light {
+      background: #FFF3DF;
+      color: #4B3423;
+    }
+
+    html[data-theme="dark"] .name-field input {
+      background: var(--theme-input);
+      color: var(--theme-text);
+      border-color: var(--theme-border);
+    }
+
+    html[data-theme="dark"] .name-field input::placeholder {
+      color: rgba(255, 243, 223, 0.42);
+    }
+
+    html[data-theme="dark"] .nav-links {
+      background-color: transparent;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.58s ease, transform 0.58s ease;
+    }
+
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 700px) {
+      .theme-toggle {
+        width: 100%;
+        min-height: 48px;
+        margin-top: 2px;
+        background: var(--theme-surface-soft);
+      }
+
+      html[data-theme="dark"] .nav-links {
+        background: rgba(40, 32, 27, 0.98);
+        border: 1px solid var(--theme-border);
+      }
+
+      html[data-theme="dark"] .nav-links a {
+        background: rgba(243, 200, 98, 0.1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+
+
+    .goods-tools {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 28px;
+      padding: 20px;
+      border: 1px solid var(--theme-border);
+      border-radius: 24px;
+      background: var(--theme-surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .goods-search {
+      width: 100%;
+      min-height: 50px;
+      padding: 13px 17px;
+      border: 1px solid var(--theme-border);
+      border-radius: 16px;
+      background: var(--theme-input);
+      color: var(--theme-text);
+      font: inherit;
+    }
+
+    .goods-search::placeholder {
+      color: var(--theme-muted);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      min-height: 40px;
+      padding: 8px 14px;
+      border: 1px solid var(--theme-border);
+      border-radius: 999px;
+      background: var(--theme-surface-soft);
+      color: var(--theme-text);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: var(--brown);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .goods-result-count {
+      margin-left: auto;
+      color: var(--theme-muted);
+      font-size: 14px;
+    }
+
+    .goods-card.is-hidden {
+      display: none;
+    }
+
+    .empty-result {
+      display: none;
+      padding: 42px 20px;
+      border: 1px dashed var(--theme-border);
+      border-radius: 24px;
+      background: var(--theme-surface);
+      color: var(--theme-muted);
+      text-align: center;
+    }
+
+    .empty-result.show {
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+      .goods-result-count {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
   </style>
 </head>
 
@@ -771,6 +1091,10 @@
         <a href="./campaign.html">캠페인</a>
         <a href="#story">기획 방향</a>
         <a href="#next">다음 단계</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 변경" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="theme-text">다크 모드</span>
+        </button>
       </div>
     </nav>
   </header>
@@ -820,8 +1144,21 @@
           </p>
         </div>
 
+        <div class="goods-tools" aria-label="굿즈 검색과 필터">
+          <label for="goodsSearch" class="section-label" style="margin: 0;">원하는 굿즈 찾기</label>
+          <input class="goods-search" id="goodsSearch" type="search" placeholder="예: 인형, 수면, 티셔츠" autocomplete="off" />
+          <div class="filter-row" id="filterRow">
+            <button class="filter-btn active" type="button" data-filter="all">전체</button>
+            <button class="filter-btn" type="button" data-filter="guide">소개</button>
+            <button class="filter-btn" type="button" data-filter="fashion">패션</button>
+            <button class="filter-btn" type="button" data-filter="healing">힐링</button>
+            <button class="filter-btn" type="button" data-filter="life">생활</button>
+            <span class="goods-result-count" id="goodsResultCount">8개 굿즈</span>
+          </div>
+        </div>
+
         <div class="goods-grid">
-          <article class="goods-card">
+          <article class="goods-card" data-category="guide">
             <div class="goods-icon">📘</div>
             <h3>쿼카 소개서</h3>
             <p>
@@ -831,7 +1168,7 @@
             <span class="goods-tag">카드형 소개 굿즈</span>
           </article>
 
-          <article class="goods-card">
+          <article class="goods-card" data-category="healing">
             <div class="goods-icon">🧸</div>
             <h3>쿼카 인형</h3>
             <p>
@@ -841,7 +1178,7 @@
             <span class="goods-tag">대표 캐릭터 굿즈</span>
           </article>
 
-          <article class="goods-card">
+          <article class="goods-card" data-category="fashion">
             <div class="goods-icon">👕</div>
             <h3>쿼카 티셔츠</h3>
             <p>
@@ -851,7 +1188,7 @@
             <span class="goods-tag">데일리 패션</span>
           </article>
 
-          <article class="goods-card">
+          <article class="goods-card" data-category="fashion">
             <div class="goods-icon">🧥</div>
             <h3>쿼카 후드</h3>
             <p>
@@ -860,7 +1197,7 @@
             <span class="goods-tag">포근한 의류</span>
           </article>
 
-          <article class="goods-card">
+          <article class="goods-card" data-category="healing">
             <div class="goods-icon">🛏️</div>
             <h3>쿼카 안아주기 베개</h3>
             <p>
@@ -870,7 +1207,7 @@
             <span class="goods-tag">힐링 생활용품</span>
           </article>
 
-          <article class="goods-card">
+          <article class="goods-card" data-category="life">
             <div class="goods-icon">🌿</div>
             <h3>쿼카 냄새를 담은 봉지</h3>
             <p>
@@ -880,7 +1217,7 @@
             <span class="goods-tag">상상 향기 굿즈</span>
           </article>
 
-          <article class="goods-card">
+          <article class="goods-card" data-category="life">
             <div class="goods-icon">🥿</div>
             <h3>쿼카 슬리퍼</h3>
             <p>
@@ -890,7 +1227,7 @@
             <span class="goods-tag">홈 라이프 굿즈</span>
           </article>
 
-          <article class="goods-card">
+          <article class="goods-card" data-category="healing">
             <div class="goods-icon">😴</div>
             <h3>쿼카 안대</h3>
             <p>
@@ -900,6 +1237,7 @@
             <span class="goods-tag">수면 힐링 굿즈</span>
           </article>
         </div>
+        <div class="empty-result" id="emptyResult">검색 조건에 맞는 굿즈가 없어요. 다른 검색어를 입력해 보세요.</div>
       </div>
     </section>
 
@@ -1009,6 +1347,135 @@
     ideaBtn.addEventListener("click", () => {
       showToast("굿즈 아이디어 라인업이 완성됐어요 🎁");
     });
+  </script>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const themeToggle = document.querySelector("#themeToggle");
+      const THEME_KEY = "quokkaSmileTheme";
+
+      function setTheme(theme, persist = true) {
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+
+        if (persist) {
+          try {
+            localStorage.setItem(THEME_KEY, theme);
+          } catch (error) {
+            // 저장을 막은 브라우저에서도 화면 전환은 유지합니다.
+          }
+        }
+
+        if (themeToggle) {
+          const isDark = theme === "dark";
+          themeToggle.setAttribute("aria-pressed", String(isDark));
+          themeToggle.setAttribute("aria-label", isDark ? "라이트 모드로 변경" : "다크 모드로 변경");
+          themeToggle.querySelector(".theme-icon").textContent = isDark ? "☀️" : "🌙";
+          themeToggle.querySelector(".theme-text").textContent = isDark ? "라이트 모드" : "다크 모드";
+        }
+      }
+
+      setTheme(root.dataset.theme || "light", false);
+
+      themeToggle?.addEventListener("click", () => {
+        setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+      });
+
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+      systemTheme.addEventListener?.("change", (event) => {
+        try {
+          if (!localStorage.getItem(THEME_KEY)) {
+            setTheme(event.matches ? "dark" : "light", false);
+          }
+        } catch (error) {
+          setTheme(event.matches ? "dark" : "light", false);
+        }
+      });
+
+      const revealTargets = document.querySelectorAll(
+        "main section, .card, .goods-card, .promise-card, .intro-box, .idea-box, .source-box"
+      );
+
+      revealTargets.forEach((target, index) => {
+        target.dataset.reveal = "";
+        target.style.transitionDelay = `${Math.min(index % 5, 4) * 55}ms`;
+      });
+
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        revealTargets.forEach((target) => revealObserver.observe(target));
+      } else {
+        revealTargets.forEach((target) => target.classList.add("revealed"));
+      }
+
+      const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const sections = sectionLinks
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      if (sections.length && "IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+          if (!visible) return;
+
+          sectionLinks.forEach((link) => {
+            link.classList.toggle("active-section", link.getAttribute("href") === `#${visible.target.id}`);
+          });
+        }, { rootMargin: "-25% 0px -60%", threshold: [0.05, 0.25, 0.5] });
+
+        sections.forEach((section) => sectionObserver.observe(section));
+      }
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const searchInput = document.querySelector("#goodsSearch");
+      const filterButtons = [...document.querySelectorAll(".filter-btn")];
+      const cards = [...document.querySelectorAll(".goods-card")];
+      const resultCount = document.querySelector("#goodsResultCount");
+      const emptyResult = document.querySelector("#emptyResult");
+      let activeFilter = "all";
+
+      function filterGoods() {
+        const keyword = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const categoryMatch = activeFilter === "all" || card.dataset.category === activeFilter;
+          const keywordMatch = !keyword || card.textContent.toLowerCase().includes(keyword);
+          const isVisible = categoryMatch && keywordMatch;
+          card.classList.toggle("is-hidden", !isVisible);
+          if (isVisible) visibleCount += 1;
+        });
+
+        resultCount.textContent = `${visibleCount}개 굿즈`;
+        emptyResult.classList.toggle("show", visibleCount === 0);
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+          filterGoods();
+        });
+      });
+
+      searchInput.addEventListener("input", filterGoods);
+      filterGoods();
+    })();
   </script>
 </body>
 </html>

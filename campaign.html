@@ -15,6 +15,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
 
+
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("quokkaSmileTheme");
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const theme = savedTheme || systemTheme;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+
   <style>
     :root {
       --yellow: #FFD86B;
@@ -1021,6 +1036,302 @@
         transition: none !important;
       }
     }
+
+
+    /* Theme + dynamic interaction */
+    :root {
+      --theme-bg: var(--cream);
+      --theme-surface: var(--white);
+      --theme-surface-soft: #fffaf0;
+      --theme-text: var(--brown-dark);
+      --theme-muted: rgba(75, 52, 35, 0.76);
+      --theme-border: rgba(169, 120, 75, 0.16);
+      --theme-header: rgba(255, 247, 232, 0.9);
+      --theme-input: #ffffff;
+      --theme-focus: rgba(255, 216, 107, 0.38);
+    }
+
+    html[data-theme="dark"] {
+      --yellow: #F3C862;
+      --yellow-light: #6A5426;
+      --brown: #F0B96C;
+      --brown-dark: #FFF3DF;
+      --cream: #17120F;
+      --white: #28201B;
+      --green: #9CC58F;
+      --green-light: #263725;
+      --red-soft: #3D2821;
+      --theme-bg: #17120F;
+      --theme-surface: #28201B;
+      --theme-surface-soft: #332820;
+      --theme-text: #FFF3DF;
+      --theme-muted: rgba(255, 243, 223, 0.72);
+      --theme-border: rgba(255, 216, 107, 0.2);
+      --theme-header: rgba(23, 18, 15, 0.9);
+      --theme-input: #211A16;
+      --theme-focus: rgba(243, 200, 98, 0.22);
+      --shadow-soft: 0 14px 35px rgba(0, 0, 0, 0.28);
+      --shadow-strong: 0 22px 55px rgba(0, 0, 0, 0.4);
+    }
+
+    body {
+      background: var(--theme-bg);
+      color: var(--theme-text);
+      transition: background-color 0.28s ease, color 0.28s ease;
+    }
+
+    .header {
+      background: var(--theme-header);
+      border-bottom-color: var(--theme-border);
+    }
+
+    .theme-toggle {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 13px;
+      border: 1px solid var(--theme-border);
+      border-radius: 999px;
+      background: var(--theme-surface);
+      color: var(--theme-text);
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(75, 52, 35, 0.08);
+      transition: transform 0.2s ease, background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+    }
+
+    .theme-toggle:focus-visible,
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 3px solid var(--theme-focus);
+      outline-offset: 3px;
+    }
+
+    .theme-icon {
+      line-height: 1;
+    }
+
+    .nav-links a.active-section {
+      color: var(--brown);
+      font-weight: 700;
+    }
+
+    .nav-links a.active-section::after {
+      content: "";
+      width: 5px;
+      height: 5px;
+      margin-left: 6px;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+
+    .hero-desc,
+    .section-head p,
+    .intro-text p,
+    .card p,
+    .quokka-card p,
+    .hero-card p,
+    .goods-card p,
+    .idea-text p,
+    .promise-card p,
+    .form-desc,
+    .form-note,
+    .result-card p,
+    .source-box p,
+    .footer,
+    .nav-links {
+      color: var(--theme-muted);
+    }
+
+    .quokka-card,
+    .intro-box,
+    .card,
+    .hero-card,
+    .goods-card,
+    .idea-box,
+    .promise-card,
+    .pledge-form,
+    .result-card,
+    .source-box,
+    .source-link,
+    .check-item,
+    .menu-btn {
+      background-color: var(--theme-surface);
+      border-color: var(--theme-border);
+    }
+
+    .btn-soft {
+      background: var(--theme-surface);
+      color: var(--brown);
+      border-color: var(--theme-border);
+    }
+
+    .btn-soft:hover {
+      background: var(--theme-surface-soft);
+    }
+
+    html[data-theme="dark"] .quokka-card,
+    html[data-theme="dark"] .hero-card,
+    html[data-theme="dark"] .goods-card {
+      background: rgba(40, 32, 27, 0.9);
+      border-color: var(--theme-border);
+    }
+
+    html[data-theme="dark"] .intro-box,
+    html[data-theme="dark"] .idea-box,
+    html[data-theme="dark"] .source-box {
+      background: var(--theme-surface);
+    }
+
+    html[data-theme="dark"] .nav-links a:hover,
+    html[data-theme="dark"] .logo,
+    html[data-theme="dark"] .section-label,
+    html[data-theme="dark"] .hero-title span,
+    html[data-theme="dark"] .card h3,
+    html[data-theme="dark"] .goods-card h3,
+    html[data-theme="dark"] .promise-card h3,
+    html[data-theme="dark"] .idea-text h2,
+    html[data-theme="dark"] .hero-card h2 {
+      color: var(--brown);
+    }
+
+    html[data-theme="dark"] .btn-light {
+      background: #FFF3DF;
+      color: #4B3423;
+    }
+
+    html[data-theme="dark"] .name-field input {
+      background: var(--theme-input);
+      color: var(--theme-text);
+      border-color: var(--theme-border);
+    }
+
+    html[data-theme="dark"] .name-field input::placeholder {
+      color: rgba(255, 243, 223, 0.42);
+    }
+
+    html[data-theme="dark"] .nav-links {
+      background-color: transparent;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.58s ease, transform 0.58s ease;
+    }
+
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 700px) {
+      .theme-toggle {
+        width: 100%;
+        min-height: 48px;
+        margin-top: 2px;
+        background: var(--theme-surface-soft);
+      }
+
+      html[data-theme="dark"] .nav-links {
+        background: rgba(40, 32, 27, 0.98);
+        border: 1px solid var(--theme-border);
+      }
+
+      html[data-theme="dark"] .nav-links a {
+        background: rgba(243, 200, 98, 0.1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+
+
+    .live-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .live-stat {
+      padding: 15px;
+      border: 1px solid var(--theme-border);
+      border-radius: 18px;
+      background: var(--theme-surface-soft);
+    }
+
+    .live-stat strong,
+    .live-stat span {
+      display: block;
+    }
+
+    .live-stat strong {
+      margin-bottom: 3px;
+      font-family: "Jua", sans-serif;
+      font-size: 25px;
+      color: var(--brown);
+    }
+
+    .live-stat span {
+      color: var(--theme-muted);
+      font-size: 13px;
+    }
+
+    .check-item.is-checked {
+      border-color: rgba(111, 149, 101, 0.58);
+      background: var(--green-light);
+      transform: translateX(4px);
+    }
+
+    .draft-status {
+      min-height: 24px;
+      margin-top: 10px;
+      color: var(--theme-muted);
+      font-size: 13px;
+    }
+
+    .celebration-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .celebration-piece {
+      position: absolute;
+      top: -40px;
+      font-size: 24px;
+      animation: celebrationFall 1.8s ease-in forwards;
+    }
+
+    @keyframes celebrationFall {
+      to {
+        transform: translate3d(var(--drift), 110vh, 0) rotate(540deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .live-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -1043,6 +1354,10 @@
         <a href="#promise">캠페인 약속</a>
         <a href="#join">참여하기</a>
         <a href="./goods.html">굿즈</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 변경" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="theme-text">다크 모드</span>
+        </button>
       </div>
     </nav>
   </header>
@@ -1091,6 +1406,16 @@
             <div class="hero-fact">
               <span>📷</span>
               <span>거리를 지키며 자연스럽게 관찰하기</span>
+            </div>
+          </div>
+          <div class="live-stats" aria-live="polite">
+            <div class="live-stat">
+              <strong id="keeperCount">0회</strong>
+              <span>이 브라우저의 약속 완료</span>
+            </div>
+            <div class="live-stat">
+              <strong id="todayLabel">오늘</strong>
+              <span>현재 캠페인 날짜</span>
             </div>
           </div>
         </aside>
@@ -1236,6 +1561,8 @@
               <button class="btn btn-primary" type="submit">약속하고 참여하기</button>
               <button class="btn btn-soft" id="resetBtn" type="button">다시 작성하기</button>
             </div>
+
+            <p class="draft-status" id="draftStatus" aria-live="polite"></p>
 
             <p class="form-note">
               이 페이지는 학습용 데모이며 실제 보호단체의 공식 모금·서명 페이지가 아닙니다.
@@ -1516,6 +1843,222 @@
     });
 
     loadSavedPledge();
+  </script>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const themeToggle = document.querySelector("#themeToggle");
+      const THEME_KEY = "quokkaSmileTheme";
+
+      function setTheme(theme, persist = true) {
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+
+        if (persist) {
+          try {
+            localStorage.setItem(THEME_KEY, theme);
+          } catch (error) {
+            // 저장을 막은 브라우저에서도 화면 전환은 유지합니다.
+          }
+        }
+
+        if (themeToggle) {
+          const isDark = theme === "dark";
+          themeToggle.setAttribute("aria-pressed", String(isDark));
+          themeToggle.setAttribute("aria-label", isDark ? "라이트 모드로 변경" : "다크 모드로 변경");
+          themeToggle.querySelector(".theme-icon").textContent = isDark ? "☀️" : "🌙";
+          themeToggle.querySelector(".theme-text").textContent = isDark ? "라이트 모드" : "다크 모드";
+        }
+      }
+
+      setTheme(root.dataset.theme || "light", false);
+
+      themeToggle?.addEventListener("click", () => {
+        setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+      });
+
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+      systemTheme.addEventListener?.("change", (event) => {
+        try {
+          if (!localStorage.getItem(THEME_KEY)) {
+            setTheme(event.matches ? "dark" : "light", false);
+          }
+        } catch (error) {
+          setTheme(event.matches ? "dark" : "light", false);
+        }
+      });
+
+      const revealTargets = document.querySelectorAll(
+        "main section, .card, .goods-card, .promise-card, .intro-box, .idea-box, .source-box"
+      );
+
+      revealTargets.forEach((target, index) => {
+        target.dataset.reveal = "";
+        target.style.transitionDelay = `${Math.min(index % 5, 4) * 55}ms`;
+      });
+
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        revealTargets.forEach((target) => revealObserver.observe(target));
+      } else {
+        revealTargets.forEach((target) => target.classList.add("revealed"));
+      }
+
+      const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const sections = sectionLinks
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      if (sections.length && "IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+          if (!visible) return;
+
+          sectionLinks.forEach((link) => {
+            link.classList.toggle("active-section", link.getAttribute("href") === `#${visible.target.id}`);
+          });
+        }, { rootMargin: "-25% 0px -60%", threshold: [0.05, 0.25, 0.5] });
+
+        sections.forEach((section) => sectionObserver.observe(section));
+      }
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const pledgeForm = document.querySelector("#pledgeForm");
+      const nicknameInput = document.querySelector("#nickname");
+      const checkboxes = [...document.querySelectorAll('input[name="promise"]')];
+      const resultCard = document.querySelector("#resultCard");
+      const keeperCount = document.querySelector("#keeperCount");
+      const todayLabel = document.querySelector("#todayLabel");
+      const draftStatus = document.querySelector("#draftStatus");
+      const PLEDGE_KEY = "quokkaSmileCampaignPledge";
+      const COUNT_KEY = "quokkaSmileCampaignCompletionCount";
+      const COUNTED_AT_KEY = "quokkaSmileCampaignCountedAt";
+      let draftTimer;
+
+      function readCount() {
+        const count = Number(localStorage.getItem(COUNT_KEY) || 0);
+        keeperCount.textContent = `${count}회`;
+        return count;
+      }
+
+      function updateCheckedStyles() {
+        checkboxes.forEach((checkbox) => {
+          checkbox.closest(".check-item")?.classList.toggle("is-checked", checkbox.checked);
+        });
+      }
+
+      function saveDraft() {
+        window.clearTimeout(draftTimer);
+        draftTimer = window.setTimeout(() => {
+          const nickname = nicknameInput.value.trim();
+          const promises = checkboxes.filter((item) => item.checked).map((item) => item.value);
+          const existing = JSON.parse(localStorage.getItem(PLEDGE_KEY) || "{}");
+
+          localStorage.setItem(PLEDGE_KEY, JSON.stringify({
+            nickname,
+            promises,
+            completed: false,
+            savedAt: existing.savedAt || null,
+            draftSavedAt: new Date().toISOString()
+          }));
+
+          draftStatus.textContent = "작성 중인 내용이 이 브라우저에 자동 저장됐어요.";
+        }, 300);
+      }
+
+      function celebrate() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const layer = document.createElement("div");
+        layer.className = "celebration-layer";
+        const icons = ["🌱", "✨", "☺", "🍃"];
+
+        for (let index = 0; index < 24; index += 1) {
+          const piece = document.createElement("span");
+          piece.className = "celebration-piece";
+          piece.textContent = icons[index % icons.length];
+          piece.style.left = `${Math.random() * 100}%`;
+          piece.style.animationDelay = `${Math.random() * 0.45}s`;
+          piece.style.setProperty("--drift", `${(Math.random() - 0.5) * 180}px`);
+          layer.appendChild(piece);
+        }
+
+        document.body.appendChild(layer);
+        window.setTimeout(() => layer.remove(), 2500);
+      }
+
+      function syncCompletedPledge() {
+        const raw = localStorage.getItem(PLEDGE_KEY);
+        if (!raw) return;
+
+        try {
+          const pledge = JSON.parse(raw);
+          if (!pledge.completed || !pledge.savedAt) return;
+
+          const lastCountedAt = localStorage.getItem(COUNTED_AT_KEY);
+          if (lastCountedAt !== pledge.savedAt) {
+            const nextCount = readCount() + 1;
+            localStorage.setItem(COUNT_KEY, String(nextCount));
+            localStorage.setItem(COUNTED_AT_KEY, pledge.savedAt);
+            keeperCount.textContent = `${nextCount}회`;
+            celebrate();
+          }
+        } catch (error) {
+          // 기존 참여 기능에서 잘못된 저장값을 정리합니다.
+        }
+      }
+
+      todayLabel.textContent = new Intl.DateTimeFormat("ko-KR", {
+        month: "short",
+        day: "numeric"
+      }).format(new Date());
+
+      readCount();
+      updateCheckedStyles();
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+          updateCheckedStyles();
+          saveDraft();
+        });
+      });
+
+      nicknameInput.addEventListener("input", saveDraft);
+
+      pledgeForm.addEventListener("submit", () => {
+        window.clearTimeout(draftTimer);
+        window.setTimeout(() => {
+          syncCompletedPledge();
+          draftStatus.textContent = "네 가지 약속이 완료 상태로 저장됐어요.";
+        }, 0);
+      });
+
+      document.querySelector("#resetBtn")?.addEventListener("click", () => {
+        updateCheckedStyles();
+        draftStatus.textContent = "새 약속서를 작성해 주세요.";
+      });
+
+      const resultObserver = new MutationObserver(() => {
+        if (resultCard.classList.contains("show")) syncCompletedPledge();
+      });
+      resultObserver.observe(resultCard, { attributes: true, attributeFilter: ["class"] });
+
+      syncCompletedPledge();
+    })();
   </script>
 </body>
 </html>
