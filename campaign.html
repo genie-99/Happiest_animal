@@ -1,1077 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="ko">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Quokka Goods Ideas</title><link href="./imgs/quokka-favicon.png" rel="icon" type="image/png"/>
+<title>Quokka Smile Campaign</title><link href="./assets/images/quokka-favicon.png" rel="icon" type="image/png"/>
+<meta content="쿼카를 귀여움으로만 소비하지 않고, 안전한 거리에서 존중하며 보호하는 Quokka Smile Campaign" name="description"/>
 <!-- Vanilla HTML/CSS/JS only -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Jua&amp;display=swap" rel="stylesheet"/>
-<script>
-    (() => {
-      try {
-        const savedTheme = localStorage.getItem("quokkaSmileTheme");
-        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        const theme = savedTheme || systemTheme;
-        document.documentElement.dataset.theme = theme;
-        document.documentElement.style.colorScheme = theme;
-      } catch (error) {
-        document.documentElement.dataset.theme = "light";
-      }
-    })();
-  
-try { document.documentElement.lang = localStorage.getItem("quokkaSmileLanguage") || "ko"; } catch (e) { document.documentElement.lang = "ko"; }
-</script>
-<style>
-    :root {
-      --yellow: #FFD86B;
-      --yellow-light: #FFF1AF;
-      --brown: #A9784B;
-      --brown-dark: #4B3423;
-      --cream: #FFF7E8;
-      --white: #FFFFFF;
 
-      --shadow-soft: 0 14px 35px rgba(75, 52, 35, 0.12);
-      --shadow-strong: 0 22px 55px rgba(75, 52, 35, 0.18);
 
-      --radius-xl: 36px;
-      --radius-lg: 28px;
-      --radius-md: 20px;
-
-      --container: 1120px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Gowun Dodum", system-ui, sans-serif;
-      background: var(--cream);
-      color: var(--brown-dark);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    .page {
-      width: min(var(--container), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* Header */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 247, 232, 0.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(169, 120, 75, 0.14);
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      position: relative;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(22px, 3vw, 26px);
-      color: var(--brown);
-      z-index: 120;
-    }
-
-    .logo-mark {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--yellow);
-      box-shadow: 0 8px 20px rgba(255, 216, 107, 0.45);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-size: 15px;
-      color: rgba(75, 52, 35, 0.78);
-    }
-
-    .nav-links a {
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      transition: 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--brown);
-    }
-
-    .menu-btn {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border: none;
-      border-radius: 14px;
-      background: var(--white);
-      cursor: pointer;
-      box-shadow: var(--shadow-soft);
-      z-index: 120;
-    }
-
-    .menu-btn span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      margin: 5px auto;
-      border-radius: 999px;
-      background: var(--brown);
-      transition: 0.25s ease;
-    }
-
-    .menu-btn.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .menu-btn.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-btn.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Hero */
-
-    .goods-hero {
-      position: relative;
-      padding: clamp(64px, 10vw, 110px) 0 clamp(56px, 8vw, 90px);
-      overflow: hidden;
-    }
-
-    .goods-hero::before {
-      content: "";
-      position: absolute;
-      top: 80px;
-      right: -120px;
-      width: min(420px, 82vw);
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 30%, #fff6c7 0 18%, transparent 19%),
-        linear-gradient(135deg, var(--yellow), #ffc46a);
-      box-shadow: var(--shadow-strong);
-      opacity: 0.9;
-      z-index: -1;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.85fr;
-      align-items: center;
-      gap: clamp(34px, 6vw, 70px);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 15px;
-      margin-bottom: 22px;
-      border-radius: 999px;
-      background: rgba(255, 216, 107, 0.5);
-      color: var(--brown);
-      font-size: 15px;
-    }
-
-    .hero-title {
-      margin-bottom: 24px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: 0.98;
-      letter-spacing: -1px;
-      word-break: keep-all;
-    }
-
-    .hero-title span {
-      position: relative;
-      color: var(--brown);
-      white-space: nowrap;
-    }
-
-    .hero-title span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 7px;
-      width: 100%;
-      height: 16px;
-      border-radius: 999px;
-      background: rgba(255, 216, 107, 0.82);
-      z-index: -1;
-    }
-
-    .hero-desc {
-      max-width: 620px;
-      margin-bottom: 32px;
-      font-size: clamp(16px, 2.2vw, 19px);
-      color: rgba(75, 52, 35, 0.82);
-      word-break: keep-all;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn {
-      min-height: 50px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 24px;
-      border: none;
-      border-radius: 999px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.25s ease;
-      text-align: center;
-    }
-
-    .btn-primary {
-      background: var(--brown);
-      color: var(--white);
-      box-shadow: 0 14px 28px rgba(169, 120, 75, 0.28);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 36px rgba(169, 120, 75, 0.36);
-    }
-
-    .btn-soft {
-      background: var(--white);
-      color: var(--brown);
-      border: 1px solid rgba(169, 120, 75, 0.18);
-    }
-
-    .btn-soft:hover {
-      transform: translateY(-3px);
-      background: #fffaf0;
-    }
-
-    .hero-card {
-      position: relative;
-      padding: clamp(28px, 5vw, 40px);
-      border-radius: var(--radius-xl);
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: var(--shadow-strong);
-      backdrop-filter: blur(16px);
-      transform: rotate(2deg);
-    }
-
-    .hero-card-icon {
-      width: 96px;
-      height: 96px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 22px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
-      font-size: 48px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .hero-card h2 {
-      margin-bottom: 12px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(28px, 4vw, 36px);
-      color: var(--brown);
-      word-break: keep-all;
-    }
-
-    .hero-card p {
-      color: rgba(75, 52, 35, 0.76);
-      word-break: keep-all;
-    }
-
-    /* Goods Section */
-
-    section {
-      padding: clamp(72px, 10vw, 96px) 0;
-    }
-
-    .section-head {
-      max-width: 760px;
-      margin: 0 auto clamp(36px, 6vw, 50px);
-      text-align: center;
-    }
-
-    .section-label {
-      display: inline-block;
-      margin-bottom: 12px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(18px, 3vw, 20px);
-      color: var(--brown);
-    }
-
-    .section-head h2 {
-      margin-bottom: 18px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(32px, 5.5vw, 54px);
-      line-height: 1.1;
-      word-break: keep-all;
-    }
-
-    .section-head p {
-      font-size: clamp(16px, 2.4vw, 18px);
-      color: rgba(75, 52, 35, 0.76);
-      word-break: keep-all;
-    }
-
-    .goods-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .goods-card {
-      position: relative;
-      min-height: 310px;
-      display: flex;
-      flex-direction: column;
-      padding: 24px;
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.86);
-      border: 1px solid rgba(169, 120, 75, 0.12);
-      box-shadow: 0 12px 30px rgba(75, 52, 35, 0.09);
-      overflow: hidden;
-      transition: 0.25s ease;
-    }
-
-    .goods-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 42px rgba(75, 52, 35, 0.15);
-    }
-
-    .goods-card::after {
-      content: "";
-      position: absolute;
-      right: -38px;
-      bottom: -38px;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: rgba(255, 216, 107, 0.34);
-    }
-
-    .goods-icon {
-      position: relative;
-      z-index: 1;
-      width: 72px;
-      height: 72px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 20px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255, 216, 107, 0.85), rgba(255, 241, 175, 0.9));
-      font-size: 38px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .goods-card h3 {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 10px;
-      font-family: "Jua", sans-serif;
-      font-size: 25px;
-      color: var(--brown);
-      word-break: keep-all;
-    }
-
-    .goods-card p {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 18px;
-      color: rgba(75, 52, 35, 0.74);
-      font-size: 15.5px;
-      word-break: keep-all;
-    }
-
-    .goods-tag {
-      position: relative;
-      z-index: 1;
-      width: fit-content;
-      margin-top: auto;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(255, 216, 107, 0.34);
-      color: var(--brown);
-      font-size: 13px;
-    }
-
-    /* Idea Detail */
-
-    .idea-box {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: clamp(24px, 5vw, 40px);
-      align-items: center;
-      padding: clamp(28px, 6vw, 52px);
-      border-radius: var(--radius-xl);
-      background:
-        radial-gradient(circle at 90% 10%, rgba(255, 216, 107, 0.5), transparent 28%),
-        var(--white);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .idea-quote {
-      padding: clamp(24px, 5vw, 36px);
-      border-radius: 28px;
-      background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
-    }
-
-    .idea-quote strong {
-      display: block;
-      margin-bottom: 16px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(30px, 5vw, 40px);
-      line-height: 1.12;
-      word-break: keep-all;
-    }
-
-    .idea-quote span {
-      color: rgba(75, 52, 35, 0.76);
-      word-break: keep-all;
-    }
-
-    .idea-text h2 {
-      margin-bottom: 16px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(30px, 5vw, 46px);
-      line-height: 1.14;
-      word-break: keep-all;
-    }
-
-    .idea-text p {
-      margin-bottom: 14px;
-      font-size: clamp(16px, 2.3vw, 18px);
-      color: rgba(75, 52, 35, 0.8);
-      word-break: keep-all;
-    }
-
-    .mini-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .mini-tags span {
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: rgba(255, 216, 107, 0.34);
-      color: var(--brown);
-      font-size: 14px;
-    }
-
-    /* CTA */
-
-    .cta {
-      padding-bottom: clamp(82px, 12vw, 112px);
-    }
-
-    .cta-box {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(32px, 7vw, 60px);
-      border-radius: var(--radius-xl);
-      background:
-        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.5), transparent 30%),
-        linear-gradient(135deg, var(--brown), #C58C53);
-      color: var(--white);
-      box-shadow: var(--shadow-strong);
-    }
-
-    .cta-box::after {
-      content: "☺";
-      position: absolute;
-      right: 30px;
-      bottom: -62px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(130px, 24vw, 230px);
-      line-height: 1;
-      color: rgba(255, 255, 255, 0.11);
-    }
-
-    .cta-box h2 {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin-bottom: 18px;
-      font-family: "Jua", sans-serif;
-      font-size: clamp(32px, 5.6vw, 58px);
-      line-height: 1.1;
-      word-break: keep-all;
-    }
-
-    .cta-box p {
-      position: relative;
-      z-index: 1;
-      max-width: 680px;
-      margin-bottom: 30px;
-      font-size: clamp(16px, 2.3vw, 18px);
-      color: rgba(255, 255, 255, 0.84);
-      word-break: keep-all;
-    }
-
-    .cta-actions {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn-light {
-      background: var(--white);
-      color: var(--brown);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-    }
-
-    .btn-light:hover,
-    .btn-outline:hover {
-      transform: translateY(-3px);
-    }
-
-    /* Footer */
-
-    .footer {
-      padding: 36px 0;
-      border-top: 1px solid rgba(169, 120, 75, 0.14);
-      color: rgba(75, 52, 35, 0.66);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 28px;
-      z-index: 300;
-      width: max-content;
-      max-width: calc(100% - 28px);
-      padding: 13px 18px;
-      border-radius: 999px;
-      background: var(--brown-dark);
-      color: var(--white);
-      font-size: 14px;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateX(-50%) translateY(20px);
-      transition: 0.25s ease;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    @media (max-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-desc {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .hero-card {
-        max-width: 520px;
-        margin: 0 auto;
-      }
-
-      .hero-card-icon {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .goods-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .idea-box {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .page {
-        width: min(100% - 28px, var(--container));
-      }
-
-      .nav {
-        min-height: 64px;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        right: 0;
-        display: grid;
-        gap: 8px;
-        padding: 14px;
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.96);
-        box-shadow: var(--shadow-strong);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-10px);
-        transition: 0.25s ease;
-      }
-
-      .nav-links.open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
-
-      .nav-links a {
-        min-height: 48px;
-        justify-content: center;
-        border-radius: 14px;
-        background: rgba(255, 216, 107, 0.28);
-      }
-
-      .goods-hero {
-        padding-top: 44px;
-      }
-
-      .hero-title span::after {
-        height: 12px;
-        bottom: 5px;
-      }
-
-      .hero-actions {
-        width: 100%;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .hero-card {
-        transform: rotate(0);
-      }
-
-      .goods-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .goods-card {
-        min-height: auto;
-      }
-
-      .cta-actions {
-        width: 100%;
-      }
-
-      .cta-actions .btn {
-        width: 100%;
-      }
-
-      .footer-inner {
-        display: grid;
-        justify-content: center;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .page {
-        width: min(100% - 22px, var(--container));
-      }
-
-      .logo-mark {
-        width: 34px;
-        height: 34px;
-      }
-
-      .btn {
-        padding: 14px 18px;
-      }
-
-      .goods-card {
-        padding: 22px;
-      }
-
-      .mini-tags span {
-        font-size: 13px;
-      }
-    }
-
-
-    /* Theme + dynamic interaction */
-    :root {
-      --theme-bg: var(--cream);
-      --theme-surface: var(--white);
-      --theme-surface-soft: #fffaf0;
-      --theme-text: var(--brown-dark);
-      --theme-muted: rgba(75, 52, 35, 0.76);
-      --theme-border: rgba(169, 120, 75, 0.16);
-      --theme-header: rgba(255, 247, 232, 0.9);
-      --theme-input: #ffffff;
-      --theme-focus: rgba(255, 216, 107, 0.38);
-    }
-
-    html[data-theme="dark"] {
-      --yellow: #F3C862;
-      --yellow-light: #6A5426;
-      --brown: #F0B96C;
-      --brown-dark: #FFF3DF;
-      --cream: #17120F;
-      --white: #28201B;
-      --green: #9CC58F;
-      --green-light: #263725;
-      --red-soft: #3D2821;
-      --theme-bg: #17120F;
-      --theme-surface: #28201B;
-      --theme-surface-soft: #332820;
-      --theme-text: #FFF3DF;
-      --theme-muted: rgba(255, 243, 223, 0.72);
-      --theme-border: rgba(255, 216, 107, 0.2);
-      --theme-header: rgba(23, 18, 15, 0.9);
-      --theme-input: #211A16;
-      --theme-focus: rgba(243, 200, 98, 0.22);
-      --shadow-soft: 0 14px 35px rgba(0, 0, 0, 0.28);
-      --shadow-strong: 0 22px 55px rgba(0, 0, 0, 0.4);
-    }
-
-    body {
-      background: var(--theme-bg);
-      color: var(--theme-text);
-      transition: background-color 0.28s ease, color 0.28s ease;
-    }
-
-    .header {
-      background: var(--theme-header);
-      border-bottom-color: var(--theme-border);
-    }
-
-    .theme-toggle {
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 8px 13px;
-      border: 1px solid var(--theme-border);
-      border-radius: 999px;
-      background: var(--theme-surface);
-      color: var(--theme-text);
-      font-family: inherit;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(75, 52, 35, 0.08);
-      transition: transform 0.2s ease, background-color 0.25s ease, color 0.25s ease;
-    }
-
-    .theme-toggle:hover {
-      transform: translateY(-2px);
-    }
-
-    .theme-toggle:focus-visible,
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible {
-      outline: 3px solid var(--theme-focus);
-      outline-offset: 3px;
-    }
-
-    .theme-icon {
-      line-height: 1;
-    }
-
-    .nav-links a.active-section {
-      color: var(--brown);
-      font-weight: 700;
-    }
-
-    .nav-links a.active-section::after {
-      content: "";
-      width: 5px;
-      height: 5px;
-      margin-left: 6px;
-      border-radius: 50%;
-      background: var(--yellow);
-    }
-
-    .hero-desc,
-    .section-head p,
-    .intro-text p,
-    .card p,
-    .quokka-card p,
-    .hero-card p,
-    .goods-card p,
-    .idea-text p,
-    .promise-card p,
-    .form-desc,
-    .form-note,
-    .result-card p,
-    .source-box p,
-    .footer,
-    .nav-links {
-      color: var(--theme-muted);
-    }
-
-    .quokka-card,
-    .intro-box,
-    .card,
-    .hero-card,
-    .goods-card,
-    .idea-box,
-    .promise-card,
-    .pledge-form,
-    .result-card,
-    .source-box,
-    .source-link,
-    .check-item,
-    .menu-btn {
-      background-color: var(--theme-surface);
-      border-color: var(--theme-border);
-    }
-
-    .btn-soft {
-      background: var(--theme-surface);
-      color: var(--brown);
-      border-color: var(--theme-border);
-    }
-
-    .btn-soft:hover {
-      background: var(--theme-surface-soft);
-    }
-
-    html[data-theme="dark"] .quokka-card,
-    html[data-theme="dark"] .hero-card,
-    html[data-theme="dark"] .goods-card {
-      background: rgba(40, 32, 27, 0.9);
-      border-color: var(--theme-border);
-    }
-
-    html[data-theme="dark"] .intro-box,
-    html[data-theme="dark"] .idea-box,
-    html[data-theme="dark"] .source-box {
-      background: var(--theme-surface);
-    }
-
-    html[data-theme="dark"] .nav-links a:hover,
-    html[data-theme="dark"] .logo,
-    html[data-theme="dark"] .section-label,
-    html[data-theme="dark"] .hero-title span,
-    html[data-theme="dark"] .card h3,
-    html[data-theme="dark"] .goods-card h3,
-    html[data-theme="dark"] .promise-card h3,
-    html[data-theme="dark"] .idea-text h2,
-    html[data-theme="dark"] .hero-card h2 {
-      color: var(--brown);
-    }
-
-    html[data-theme="dark"] .name-field input {
-      background: var(--theme-input);
-      color: var(--theme-text);
-      border-color: var(--theme-border);
-    }
-
-    html[data-theme="dark"] .name-field input::placeholder {
-      color: rgba(255, 243, 223, 0.42);
-    }
-
-    html[data-theme="dark"] .nav-links {
-      background-color: transparent;
-    }
-
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.58s ease, transform 0.58s ease;
-    }
-
-    [data-reveal].revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 700px) {
-      .theme-toggle {
-        width: 100%;
-        min-height: 48px;
-        margin-top: 2px;
-        background: var(--theme-surface-soft);
-      }
-
-      html[data-theme="dark"] .nav-links {
-        background: rgba(40, 32, 27, 0.98);
-        border: 1px solid var(--theme-border);
-      }
-
-      html[data-theme="dark"] .nav-links a {
-        background: rgba(243, 200, 98, 0.1);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      [data-reveal] {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-
-
-    .goods-tools {
-      display: grid;
-      gap: 18px;
-      margin-bottom: 28px;
-      padding: 20px;
-      border: 1px solid var(--theme-border);
-      border-radius: 24px;
-      background: var(--theme-surface);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .goods-search {
-      width: 100%;
-      min-height: 50px;
-      padding: 13px 17px;
-      border: 1px solid var(--theme-border);
-      border-radius: 16px;
-      background: var(--theme-input);
-      color: var(--theme-text);
-      font: inherit;
-    }
-
-    .goods-search::placeholder {
-      color: var(--theme-muted);
-    }
-
-    .filter-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .filter-btn {
-      min-height: 40px;
-      padding: 8px 14px;
-      border: 1px solid var(--theme-border);
-      border-radius: 999px;
-      background: var(--theme-surface-soft);
-      color: var(--theme-text);
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .filter-btn.active {
-      background: var(--brown);
-      color: #fff;
-      border-color: transparent;
-    }
-
-    .goods-result-count {
-      margin-left: auto;
-      color: var(--theme-muted);
-      font-size: 14px;
-    }
-
-    .goods-card.is-hidden {
-      display: none;
-    }
-
-    .empty-result {
-      display: none;
-      padding: 42px 20px;
-      border: 1px dashed var(--theme-border);
-      border-radius: 24px;
-      background: var(--theme-surface);
-      color: var(--theme-muted);
-      text-align: center;
-    }
-
-    .empty-result.show {
-      display: block;
-    }
-
-    @media (max-width: 700px) {
-      .goods-result-count {
-        width: 100%;
-        margin-left: 0;
-      }
-    }
-
-  </style>
-<style>
-    .language-toggle { min-width: 72px; }
-    .language-icon { font-size: 17px; }
-    .typing-title { white-space: pre-line; position: relative; color: var(--theme-text, var(--brown-dark)); }
-    .typing-title::after { content: ""; display: inline-block; width: 3px; height: .86em; margin-left: 7px; vertical-align: -.05em; border-radius: 999px; background: var(--brown); animation: typingBlink .8s steps(1) infinite; }
-    @keyframes typingBlink { 50% { opacity: 0; } }
-    @media (prefers-reduced-motion: reduce) { .typing-title::after { animation: none; } }
-    @media (max-width: 700px) { .language-toggle { width: 100%; min-height: 46px; } }
-    </style></head>
-<body>
+<script src="./assets/js/preload.js"></script>
+<link rel="stylesheet" href="./assets/css/campaign.css"/>
+</head>
+<body data-page="campaign">
 <header class="header">
 <nav class="page nav">
 <a aria-label="Quokka Smile Project 홈" class="logo" href="./index.html">
@@ -1085,10 +29,9 @@ try { document.documentElement.lang = localStorage.getItem("quokkaSmileLanguage"
 </button>
 <div class="nav-links" id="navLinks">
 <a data-en="Home" data-i18n="k0" data-ko="홈" href="./index.html">홈</a>
-<a data-en="Goods" data-i18n="k1" data-ko="굿즈" href="#goods">굿즈</a>
-<a data-en="Campaign" data-i18n="k2" data-ko="캠페인" href="./campaign.html">캠페인</a>
-<a data-en="Direction" data-i18n="k3" data-ko="기획 방향" href="#story">기획 방향</a>
-<a data-en="Next step" data-i18n="k4" data-ko="다음 단계" href="#next">다음 단계</a>
+<a data-en="Campaign promises" data-i18n="k1" data-ko="캠페인 약속" href="#promise">캠페인 약속</a>
+<a data-en="Join" data-i18n="k2" data-ko="참여하기" href="#join">참여하기</a>
+<a data-en="Goods" data-i18n="k3" data-ko="굿즈" href="./goods.html">굿즈</a>
 <button aria-label="Switch to English" aria-pressed="false" class="theme-toggle language-toggle" id="languageToggle" type="button"><span aria-hidden="true" class="language-icon">🌐</span><span class="language-text">EN</span></button><button aria-label="다크 모드로 변경" aria-pressed="false" class="theme-toggle" id="themeToggle" type="button">
 <span aria-hidden="true" class="theme-icon">🌙</span>
 <span class="theme-text">다크 모드</span>
@@ -1098,173 +41,229 @@ try { document.documentElement.lang = localStorage.getItem("quokkaSmileLanguage"
 </header>
 <main>
 <!-- Hero -->
-<section class="goods-hero">
+<section class="campaign-hero">
 <div class="page hero-grid">
 <div>
-<div class="badge" data-en="🎁 Quokka Goods Ideas" data-i18n="k5" data-ko="🎁 Quokka Goods Ideas">🎁 Quokka Goods Ideas</div>
-<h1 class="hero-title" data-title-en="Bring the quokka’s smile
-into everyday goods" data-title-ko="쿼카의 미소를
-일상 속 굿즈로"><span aria-live="polite" class="typing-title" id="typingTitle"></span></h1>
-<p class="hero-desc" data-en="We go beyond introducing a cute animal and expand the quokka into goods people can touch, wear, hug, and use every day—while preserving a warm, cute, and hopeful mood." data-i18n="k7" data-ko="귀여운 동물 소개에서 끝나지 않고, 사람들이 매일 만지고 입고 안고 사용할 수 있는 쿼카 굿즈 아이디어로 확장합니다. 따뜻하고 귀엽고 희망적인 분위기를 그대로 유지합니다.">
-            귀여운 동물 소개에서 끝나지 않고, 사람들이 매일 만지고 입고 안고 사용할 수 있는
-            쿼카 굿즈 아이디어로 확장합니다. 따뜻하고 귀엽고 희망적인 분위기를 그대로 유지합니다.
+<div class="badge" data-en="🌱 Quokka Smile Campaign" data-i18n="k4" data-ko="🌱 Quokka Smile Campaign">🌱 Quokka Smile Campaign</div>
+<h1 class="hero-title" data-title-en="Keep the smile close,
+keep wildlife safe" data-title-ko="미소는 가까이,
+야생은 안전하게"><span aria-live="polite" class="typing-title" id="typingTitle"></span></h1>
+<p class="hero-desc" data-en="The best way to love a quokka is not to touch or feed it, but to respect its natural behavior from a safe distance. Protect its smile through four small promises." data-i18n="k5" data-ko="쿼카를 사랑하는 가장 좋은 방법은 만지거나 먹이를 주는 것이 아니라, 자연스러운 모습을 안전한 거리에서 존중하는 것입니다. 네 가지 작은 약속으로 쿼카의 미소를 오래 지켜주세요.">
+            쿼카를 사랑하는 가장 좋은 방법은 만지거나 먹이를 주는 것이 아니라,
+            자연스러운 모습을 안전한 거리에서 존중하는 것입니다.
+            네 가지 작은 약속으로 쿼카의 미소를 오래 지켜주세요.
           </p>
 <div class="hero-actions">
-<a class="btn btn-primary" data-en="Explore goods ideas" data-i18n="k8" data-ko="굿즈 아이디어 보기" href="#goods">굿즈 아이디어 보기</a>
-<a class="btn btn-soft" data-en="Back to home" data-i18n="k9" data-ko="메인으로 돌아가기" href="./index.html">메인으로 돌아가기</a>
+<a class="btn btn-primary" data-en="Join the campaign" data-i18n="k6" data-ko="캠페인 참여하기" href="#join">캠페인 참여하기</a>
+<a class="btn btn-soft" data-en="View the promises" data-i18n="k7" data-ko="약속 먼저 보기" href="#promise">약속 먼저 보기</a>
 </div>
 </div>
-<div class="hero-card">
-<div class="hero-card-icon">🧸</div>
-<h2>Smile Goods Collection</h2>
-<p data-en="A warm collection that brings the quokka’s smile to cards, fashion, lifestyle items, and scented goods." data-i18n="k10" data-ko="쿼카의 웃는 얼굴을 카드, 패션, 생활용품, 향기 굿즈로 확장한 따뜻한 굿즈 라인업입니다.">
-            쿼카의 웃는 얼굴을 카드, 패션, 생활용품, 향기 굿즈로 확장한
-            따뜻한 굿즈 라인업입니다.
+<aside aria-label="쿼카 보호 상태와 캠페인 핵심 정보" class="hero-card">
+<div class="status-chip" data-en="● A vulnerable species needing protection" data-i18n="k8" data-ko="● 보호가 필요한 취약종">● 보호가 필요한 취약종</div>
+<h2 data-en="From cuteness to protective action" data-i18n="k9" data-ko="귀여움에서 보호 행동으로">귀여움에서 보호 행동으로</h2>
+<p data-en="The IUCN Red List classifies the quokka as Vulnerable and assesses its population trend as decreasing." data-i18n="k10" data-ko="쿼카는 IUCN 적색목록에서 취약종(Vulnerable)으로 분류되며, 개체군 추세는 감소로 평가됩니다.">
+            쿼카는 IUCN 적색목록에서 취약종(Vulnerable)으로 분류되며,
+            개체군 추세는 감소로 평가됩니다.
           </p>
+<div class="hero-facts">
+<div class="hero-fact">
+<span>🤲</span>
+<span data-en="Do not touch or pet" data-i18n="k11" data-ko="만지거나 쓰다듬지 않기">만지거나 쓰다듬지 않기</span>
 </div>
+<div class="hero-fact">
+<span>🥕</span>
+<span data-en="Do not give food or water" data-i18n="k12" data-ko="먹이와 물을 주지 않기">먹이와 물을 주지 않기</span>
+</div>
+<div class="hero-fact">
+<span>📷</span>
+<span data-en="Observe naturally from a safe distance" data-i18n="k13" data-ko="거리를 지키며 자연스럽게 관찰하기">거리를 지키며 자연스럽게 관찰하기</span>
+</div>
+</div>
+<div aria-live="polite" class="live-stats">
+<div class="live-stat">
+<strong data-en="0 times" data-i18n="k14" data-ko="0회" id="keeperCount">0회</strong>
+<span data-en="Promises completed in this browser" data-i18n="k15" data-ko="이 브라우저의 약속 완료">이 브라우저의 약속 완료</span>
+</div>
+<div class="live-stat">
+<strong data-en="Today" data-i18n="k16" data-ko="오늘" id="todayLabel">오늘</strong>
+<span data-en="Current campaign date" data-i18n="k17" data-ko="현재 캠페인 날짜">현재 캠페인 날짜</span>
+</div>
+</div>
+</aside>
 </div>
 </section>
-<!-- Goods Cards -->
-<section id="goods">
+<!-- Promise -->
+<section id="promise">
 <div class="page">
 <div class="section-head">
-<span class="section-label" data-en="Goods lineup" data-i18n="k11" data-ko="굿즈 라인업">굿즈 라인업</span>
-<h2 data-en="8 quokka goods ideas" data-i18n="k12" data-ko="쿼카 굿즈 아이디어 8가지">쿼카 굿즈 아이디어 8가지</h2>
-<p data-en="These products attract attention through cuteness and keep the quokka’s message of happiness present in everyday life." data-i18n="k13" data-ko="귀여움으로 관심을 만들고, 일상에서 쿼카의 행복 메시지를 계속 떠올리게 하는 제품들입니다.">
-            귀여움으로 관심을 만들고, 일상에서 쿼카의 행복 메시지를 계속 떠올리게 하는 제품들입니다.
+<span class="section-label" data-en="Our four promises" data-i18n="k18" data-ko="우리의 네 가지 약속">우리의 네 가지 약속</span>
+<h2 data-en="The right way to care for quokkas" data-i18n="k19" data-ko="쿼카를 위한 올바른 관심">쿼카를 위한 올바른 관심</h2>
+<p data-en="Official wildlife guidance is summarized into four everyday actions that are easy to remember." data-i18n="k20" data-ko="공식 야생동물 보호 안내를 일상에서 기억하기 쉬운 네 가지 행동으로 정리했습니다.">
+            공식 야생동물 보호 안내를 일상에서 기억하기 쉬운 네 가지 행동으로 정리했습니다.
           </p>
 </div>
-<div aria-label="굿즈 검색과 필터" class="goods-tools">
-<label class="section-label" data-en="Find your goods" data-i18n="k14" data-ko="원하는 굿즈 찾기" for="goodsSearch" style="margin: 0;">원하는 굿즈 찾기</label>
-<input autocomplete="off" class="goods-search" id="goodsSearch" placeholder="예: 인형, 수면, 티셔츠" type="search"/>
-<div class="filter-row" id="filterRow">
-<button class="filter-btn active" data-en="All" data-filter="all" data-i18n="k15" data-ko="전체" type="button">전체</button>
-<button class="filter-btn" data-en="Intro" data-filter="guide" data-i18n="k16" data-ko="소개" type="button">소개</button>
-<button class="filter-btn" data-en="Fashion" data-filter="fashion" data-i18n="k17" data-ko="패션" type="button">패션</button>
-<button class="filter-btn" data-en="Healing" data-filter="healing" data-i18n="k18" data-ko="힐링" type="button">힐링</button>
-<button class="filter-btn" data-en="Lifestyle" data-filter="life" data-i18n="k19" data-ko="생활" type="button">생활</button>
-<span class="goods-result-count" data-en="8 items" data-i18n="k20" data-ko="8개 굿즈" id="goodsResultCount">8개 굿즈</span>
-</div>
-</div>
-<div class="goods-grid">
-<article class="goods-card" data-category="guide">
-<div class="goods-icon">📘</div>
-<h3 data-en="Quokka introduction cards" data-i18n="k21" data-ko="쿼카 소개서">쿼카 소개서</h3>
-<p data-en="A compact card set introducing quokka traits, charm, and protection messages—perfect for a first encounter." data-i18n="k22" data-ko="쿼카의 특징, 매력, 보호 메시지를 카드형으로 담은 작은 소개서입니다. 첫 만남용 굿즈로 좋습니다.">
-              쿼카의 특징, 매력, 보호 메시지를 카드형으로 담은 작은 소개서입니다.
-              첫 만남용 굿즈로 좋습니다.
+<div class="promise-grid">
+<article class="promise-card">
+<div class="promise-number">01</div>
+<h3 data-en="Do not touch" data-i18n="k21" data-ko="만지지 않기">만지지 않기</h3>
+<p data-en="Even when it approaches, it is still wildlife. Do not reach out or pet it; leave room for it to move freely." data-i18n="k22" data-ko="친근하게 다가오더라도 야생동물입니다. 손을 뻗거나 쓰다듬지 않고, 쿼카가 스스로 이동할 공간을 남겨주세요.">
+              친근하게 다가오더라도 야생동물입니다. 손을 뻗거나 쓰다듬지 않고,
+              쿼카가 스스로 이동할 공간을 남겨주세요.
             </p>
-<span class="goods-tag" data-en="Introduction cards" data-i18n="k23" data-ko="카드형 소개 굿즈">카드형 소개 굿즈</span>
+<span class="promise-tag">Respect their space</span>
 </article>
-<article class="goods-card" data-category="healing">
-<div class="goods-icon">🧸</div>
-<h3 data-en="Quokka plush" data-i18n="k24" data-ko="쿼카 인형">쿼카 인형</h3>
-<p data-en="A signature plush featuring a small round face and smiling expression, ideal for a desk or bedside." data-i18n="k25" data-ko="둥글고 작은 얼굴, 웃는 표정을 살린 대표 굿즈입니다. 책상 위나 침대 옆에 두기 좋습니다.">
-              둥글고 작은 얼굴, 웃는 표정을 살린 대표 굿즈입니다.
-              책상 위나 침대 옆에 두기 좋습니다.
+<article class="promise-card">
+<div class="promise-number">02</div>
+<h3 data-en="Do not feed or give water" data-i18n="k23" data-ko="먹이·물 주지 않기">먹이·물 주지 않기</h3>
+<p data-en="Human food and water can disrupt natural foraging. Let quokkas find food on their own." data-i18n="k24" data-ko="사람이 주는 음식과 물은 자연스러운 먹이 활동을 방해할 수 있습니다. 쿼카가 스스로 먹이를 찾도록 그대로 두세요.">
+              사람이 주는 음식과 물은 자연스러운 먹이 활동을 방해할 수 있습니다.
+              쿼카가 스스로 먹이를 찾도록 그대로 두세요.
             </p>
-<span class="goods-tag" data-en="Signature character item" data-i18n="k26" data-ko="대표 캐릭터 굿즈">대표 캐릭터 굿즈</span>
+<span class="promise-tag">Let wildlife forage</span>
 </article>
-<article class="goods-card" data-category="fashion">
-<div class="goods-icon">👕</div>
-<h3 data-en="Quokka T-shirt" data-i18n="k27" data-ko="쿼카 티셔츠">쿼카 티셔츠</h3>
-<p data-en="An easy everyday T-shirt with a small smiling quokka graphic and catchphrase." data-i18n="k28" data-ko="작게 웃는 쿼카 그래픽과 캐치프레이즈를 넣은 데일리 티셔츠입니다. 부담 없이 입기 좋습니다.">
-              작게 웃는 쿼카 그래픽과 캐치프레이즈를 넣은 데일리 티셔츠입니다.
-              부담 없이 입기 좋습니다.
+<article class="promise-card">
+<div class="promise-number">03</div>
+<h3 data-en="Keep a safe distance" data-i18n="k25" data-ko="안전거리 지키기">안전거리 지키기</h3>
+<p data-en="Do not chase or surround a quokka for photos. If one approaches, step back and observe quietly." data-i18n="k26" data-ko="사진을 찍을 때도 쫓아가거나 둘러싸지 않습니다. 쿼카가 가까이 오면 한 걸음 물러나 조용히 관찰하세요.">
+              사진을 찍을 때도 쫓아가거나 둘러싸지 않습니다.
+              쿼카가 가까이 오면 한 걸음 물러나 조용히 관찰하세요.
             </p>
-<span class="goods-tag" data-en="Daily fashion" data-i18n="k29" data-ko="데일리 패션">데일리 패션</span>
+<span class="promise-tag">Observe, do not chase</span>
 </article>
-<article class="goods-card" data-category="fashion">
-<div class="goods-icon">🧥</div>
-<h3 data-en="Quokka hoodie" data-i18n="k30" data-ko="쿼카 후드">쿼카 후드</h3>
-<p data-en="A cozy hoodie with quokka embroidery or a small patch that carries the warm brand image." data-i18n="k31" data-ko="포근한 후드에 쿼카 자수나 작은 와펜을 넣어 따뜻한 브랜드 이미지를 전달합니다.">
-              포근한 후드에 쿼카 자수나 작은 와펜을 넣어 따뜻한 브랜드 이미지를 전달합니다.
+<article class="promise-card">
+<div class="promise-number">04</div>
+<h3 data-en="Use designated paths" data-i18n="k27" data-ko="지정된 길 이용하기">지정된 길 이용하기</h3>
+<p data-en="Use designated paths to protect habitat and vegetation, and leave no litter or trace behind." data-i18n="k28" data-ko="서식지와 식생을 보호할 수 있도록 정해진 길을 이용하고, 쓰레기와 흔적을 남기지 않는 방문자가 되어주세요.">
+              서식지와 식생을 보호할 수 있도록 정해진 길을 이용하고,
+              쓰레기와 흔적을 남기지 않는 방문자가 되어주세요.
             </p>
-<span class="goods-tag" data-en="Cozy apparel" data-i18n="k32" data-ko="포근한 의류">포근한 의류</span>
-</article>
-<article class="goods-card" data-category="healing">
-<div class="goods-icon">🛏️</div>
-<h3 data-en="Quokka hug pillow" data-i18n="k33" data-ko="쿼카 안아주기 베개">쿼카 안아주기 베개</h3>
-<p data-en="A long cushion shaped to feel like hugging a quokka, suited for relaxation and sleep support." data-i18n="k34" data-ko="쿼카를 품에 안는 듯한 형태의 롱쿠션입니다. 힐링과 수면 보조 굿즈로 확장하기 좋습니다.">
-              쿼카를 품에 안는 듯한 형태의 롱쿠션입니다.
-              힐링과 수면 보조 굿즈로 확장하기 좋습니다.
-            </p>
-<span class="goods-tag" data-en="Healing lifestyle item" data-i18n="k35" data-ko="힐링 생활용품">힐링 생활용품</span>
-</article>
-<article class="goods-card" data-category="life">
-<div class="goods-icon">🌿</div>
-<h3 data-en="Quokka-inspired scent pouch" data-i18n="k36" data-ko="쿼카 냄새를 담은 봉지">쿼카 냄새를 담은 봉지</h3>
-<p data-en="A scent pouch inspired not by an animal smell, but by forest air, sunlight, and soft fur." data-i18n="k37" data-ko="실제 동물 냄새가 아니라 숲, 햇살, 포근한 털 느낌을 상상한 향기 포켓입니다. 가방이나 방에 둘 수 있습니다.">
-              실제 동물 냄새가 아니라 숲, 햇살, 포근한 털 느낌을 상상한 향기 포켓입니다.
-              가방이나 방에 둘 수 있습니다.
-            </p>
-<span class="goods-tag" data-en="Imagined scent item" data-i18n="k38" data-ko="상상 향기 굿즈">상상 향기 굿즈</span>
-</article>
-<article class="goods-card" data-category="life">
-<div class="goods-icon">🥿</div>
-<h3 data-en="Quokka slippers" data-i18n="k39" data-ko="쿼카 슬리퍼">쿼카 슬리퍼</h3>
-<p data-en="Indoor slippers featuring a quokka face, bringing cheerful cuteness into the home." data-i18n="k40" data-ko="발등 부분에 쿼카 얼굴을 넣은 실내용 슬리퍼입니다. 집에서도 귀여운 행복감을 느끼게 합니다.">
-              발등 부분에 쿼카 얼굴을 넣은 실내용 슬리퍼입니다.
-              집에서도 귀여운 행복감을 느끼게 합니다.
-            </p>
-<span class="goods-tag" data-en="Home lifestyle item" data-i18n="k41" data-ko="홈 라이프 굿즈">홈 라이프 굿즈</span>
-</article>
-<article class="goods-card" data-category="healing">
-<div class="goods-icon">😴</div>
-<h3 data-en="Quokka sleep mask" data-i18n="k42" data-ko="쿼카 안대">쿼카 안대</h3>
-<p data-en="A cute sleep mask that makes the quokka look as though it is smiling when your eyes are closed." data-i18n="k43" data-ko="눈을 감으면 쿼카가 웃고 있는 듯한 귀여운 수면 안대입니다. 휴식과 힐링 콘셉트에 잘 맞습니다.">
-              눈을 감으면 쿼카가 웃고 있는 듯한 귀여운 수면 안대입니다.
-              휴식과 힐링 콘셉트에 잘 맞습니다.
-            </p>
-<span class="goods-tag" data-en="Sleep and healing item" data-i18n="k44" data-ko="수면 힐링 굿즈">수면 힐링 굿즈</span>
+<span class="promise-tag">Leave no trace</span>
 </article>
 </div>
-<div class="empty-result" data-en="No goods match your search. Try another keyword." data-i18n="k45" data-ko="검색 조건에 맞는 굿즈가 없어요. 다른 검색어를 입력해 보세요." id="emptyResult">검색 조건에 맞는 굿즈가 없어요. 다른 검색어를 입력해 보세요.</div>
 </div>
 </section>
-<!-- Story -->
-<section id="story">
+<!-- Join -->
+<section class="join-section" id="join">
 <div class="page">
-<div class="idea-box">
-<div class="idea-quote">
-<strong data-en="Cuteness is the entrance, happiness is the experience, and protection is the message." data-i18n="k46" data-ko="귀여움은 입구, 행복은 경험, 보호는 메시지.">귀여움은 입구, 행복은 경험, 보호는 메시지.</strong>
-<span data-en="Goods are more than products—they keep the quokka’s warm image present in daily life." data-i18n="k47" data-ko="굿즈는 단순히 상품을 파는 것이 아니라 쿼카의 따뜻한 이미지를 일상 속에서 기억하게 만드는 장치입니다.">
-              굿즈는 단순히 상품을 파는 것이 아니라 쿼카의 따뜻한 이미지를 일상 속에서 기억하게 만드는 장치입니다.
-            </span>
+<div class="section-head">
+<span class="section-label" data-en="Campaign participation" data-i18n="k29" data-ko="캠페인 참여">캠페인 참여</span>
+<h2 data-en="Check all four promises" data-i18n="k30" data-ko="네 가지 약속에 체크해 주세요">네 가지 약속에 체크해 주세요</h2>
+<p data-en="This front-end demo sends no personal information to a server. Participation data is stored only in this browser’s localStorage." data-i18n="k31" data-ko="개인정보를 서버로 전송하지 않는 프론트엔드 데모입니다. 입력한 참여 정보는 현재 브라우저의 localStorage에만 저장됩니다.">
+            개인정보를 서버로 전송하지 않는 프론트엔드 데모입니다.
+            입력한 참여 정보는 현재 브라우저의 localStorage에만 저장됩니다.
+          </p>
 </div>
-<div class="idea-text">
-<h2 data-en="Goods direction" data-i18n="k48" data-ko="굿즈 방향성">굿즈 방향성</h2>
-<p data-en="Rather than feeling flashy or cold, the goods use warm yellow and soft brown to stay gentle and welcoming." data-i18n="k49" data-ko="쿼카 굿즈는 너무 화려하거나 차갑게 보이기보다, 웜 옐로우와 소프트 브라운을 중심으로 부드럽고 따뜻한 느낌을 유지합니다.">
-              쿼카 굿즈는 너무 화려하거나 차갑게 보이기보다,
-              웜 옐로우와 소프트 브라운을 중심으로 부드럽고 따뜻한 느낌을 유지합니다.
-            </p>
-<p data-en="Connecting each item to smiles, comfort, rest, and protection turns character merchandise into meaningful brand goods." data-i18n="k50" data-ko="제품마다 “웃음”, “포근함”, “휴식”, “보호”라는 감정을 연결하면 단순한 캐릭터 상품이 아니라 브랜드 메시지가 있는 굿즈가 됩니다.">
-              제품마다 “웃음”, “포근함”, “휴식”, “보호”라는 감정을 연결하면
-              단순한 캐릭터 상품이 아니라 브랜드 메시지가 있는 굿즈가 됩니다.
-            </p>
-<div class="mini-tags">
-<span data-en="#Warm" data-i18n="k51" data-ko="#따뜻한">#따뜻한</span>
-<span data-en="#Cute" data-i18n="k52" data-ko="#귀여운">#귀여운</span>
-<span data-en="#Hopeful" data-i18n="k53" data-ko="#희망적인">#희망적인</span>
-<span data-en="#HealingGoods" data-i18n="k54" data-ko="#힐링굿즈">#힐링굿즈</span>
-<span data-en="#QuokkaBrand" data-i18n="k55" data-ko="#쿼카브랜드">#쿼카브랜드</span>
+<div class="join-box">
+<div class="join-message">
+<div>
+<h2 data-en="Small actions protect the quokka’s tomorrow." data-i18n="k32" data-ko="작은 행동이 쿼카의 내일을 지켜요.">작은 행동이<br/>쿼카의 내일을 지켜요.</h2>
+<p data-en="Select all four items to complete your promise card. You can then share the campaign message with friends." data-i18n="k33" data-ko="네 가지 항목을 모두 선택하면 캠페인 약속 카드가 완성됩니다. 완료 후 친구에게 캠페인 문구를 공유할 수도 있습니다.">
+                네 가지 항목을 모두 선택하면 캠페인 약속 카드가 완성됩니다.
+                완료 후 친구에게 캠페인 문구를 공유할 수도 있습니다.
+              </p>
 </div>
+<div class="progress-wrap">
+<div class="progress-label">
+<span data-en="My promise progress" data-i18n="k34" data-ko="나의 약속 진행도">나의 약속 진행도</span>
+<strong data-en="0 / 4" data-i18n="k35" data-ko="0 / 4" id="progressText">0 / 4</strong>
+</div>
+<div aria-label="캠페인 약속 진행도" aria-valuemax="4" aria-valuemin="0" aria-valuenow="0" class="progress-track" id="progressTrack" role="progressbar">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+</div>
+</div>
+<form class="pledge-form" id="pledgeForm">
+<h3 class="form-title" data-en="Smile Keeper Promise" data-i18n="k36" data-ko="Smile Keeper 약속서">Smile Keeper 약속서</h3>
+<p class="form-desc" data-en="Check your nickname and four promises, then press the join button." data-i18n="k37" data-ko="닉네임과 네 가지 약속을 확인하고 참여 버튼을 눌러주세요.">닉네임과 네 가지 약속을 확인하고 참여 버튼을 눌러주세요.</p>
+<div class="name-field">
+<label data-en="Nickname" data-i18n="k38" data-ko="닉네임" for="nickname">닉네임</label>
+<input autocomplete="nickname" id="nickname" maxlength="20" name="nickname" placeholder="예: 행복한 쿼카" required="" type="text"/>
+</div>
+<div class="check-list">
+<label class="check-item">
+<input name="promise" type="checkbox" value="touch"/>
+<span data-en="I will not touch quokkas or other wildlife." data-i18n="k39" data-ko="쿼카와 야생동물을 만지지 않겠습니다.">쿼카와 야생동물을 만지지 않겠습니다.</span>
+</label>
+<label class="check-item">
+<input name="promise" type="checkbox" value="feed"/>
+<span data-en="I will not give food or water." data-i18n="k40" data-ko="먹이와 물을 주지 않겠습니다.">먹이와 물을 주지 않겠습니다.</span>
+</label>
+<label class="check-item">
+<input name="promise" type="checkbox" value="distance"/>
+<span data-en="I will observe quietly from a safe distance." data-i18n="k41" data-ko="안전한 거리를 두고 조용히 관찰하겠습니다.">안전한 거리를 두고 조용히 관찰하겠습니다.</span>
+</label>
+<label class="check-item">
+<input name="promise" type="checkbox" value="path"/>
+<span data-en="I will use designated paths and leave no trace." data-i18n="k42" data-ko="지정된 길을 이용하고 흔적을 남기지 않겠습니다.">지정된 길을 이용하고 흔적을 남기지 않겠습니다.</span>
+</label>
+</div>
+<div class="form-actions">
+<button class="btn btn-primary" data-en="Make the promise and join" data-i18n="k43" data-ko="약속하고 참여하기" type="submit">약속하고 참여하기</button>
+<button class="btn btn-soft" data-en="Reset" data-i18n="k44" data-ko="다시 작성하기" id="resetBtn" type="button">다시 작성하기</button>
+</div>
+<p aria-live="polite" class="draft-status" id="draftStatus"></p>
+<p class="form-note" data-en="This is a learning demo, not an official donation or petition page run by a conservation organization." data-i18n="k45" data-ko="이 페이지는 학습용 데모이며 실제 보호단체의 공식 모금·서명 페이지가 아닙니다.">
+              이 페이지는 학습용 데모이며 실제 보호단체의 공식 모금·서명 페이지가 아닙니다.
+            </p>
+</form>
+<div aria-live="polite" class="result-card" id="resultCard">
+<div class="result-icon">🌱</div>
+<h3 data-en="Campaign joined!" data-i18n="k46" data-ko="캠페인 참여 완료!" id="resultTitle">캠페인 참여 완료!</h3>
+<p data-en="Your four promises have been saved. Remember them whenever you meet a quokka." data-i18n="k47" data-ko="네 가지 약속이 저장되었습니다. 쿼카를 만날 때 오늘의 약속을 기억해 주세요." id="resultMessage">
+              네 가지 약속이 저장되었습니다. 쿼카를 만날 때 오늘의 약속을 기억해 주세요.
+            </p>
+<div class="result-actions">
+<button class="btn btn-primary" data-en="Share campaign" data-i18n="k48" data-ko="캠페인 공유하기" id="shareCampaignBtn" type="button">캠페인 공유하기</button>
+<button class="btn btn-soft" data-en="Review promises" data-i18n="k49" data-ko="약속 다시 보기" id="editPledgeBtn" type="button">약속 다시 보기</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sources -->
+<section id="sources">
+<div class="page">
+<div class="source-box">
+<div>
+<span class="section-label" data-en="Verified protection information" data-i18n="k50" data-ko="확인된 보호 정보">확인된 보호 정보</span>
+<h2 data-en="Built from official guidance." data-i18n="k51" data-ko="공식 안내를 바탕으로 만들었어요.">공식 안내를 바탕으로 만들었어요.</h2>
+<p data-en="Rottnest Island Authority advises visitors not to touch or give food or water to wildlife, including quokkas, and to observe from an appropriate distance." data-i18n="k52" data-ko="Rottnest Island Authority는 쿼카를 포함한 야생동물에게 먹이·물 주기와 접촉을 피하고, 적절한 거리에서 관찰하도록 안내합니다.">
+              Rottnest Island Authority는 쿼카를 포함한 야생동물에게
+              먹이·물 주기와 접촉을 피하고, 적절한 거리에서 관찰하도록 안내합니다.
+            </p>
+<p data-en="The IUCN Red List lists the quokka as Vulnerable with a decreasing population trend." data-i18n="k53" data-ko="IUCN 적색목록에는 쿼카가 취약종(Vulnerable), 감소 추세로 표시되어 있습니다.">
+              IUCN 적색목록에는 쿼카가 취약종(Vulnerable), 감소 추세로 표시되어 있습니다.
+            </p>
+</div>
+<div class="source-links">
+<a class="source-link" href="https://www.rottnestisland.com/learn/nature-wildlife/protect-our-wildlife" rel="noopener noreferrer" target="_blank">
+<span data-en="Rottnest Island wildlife protection guide" data-i18n="k54" data-ko="Rottnest Island 야생동물 보호 안내">Rottnest Island 야생동물 보호 안내</span>
+<strong>↗</strong>
+</a>
+<a class="source-link" href="https://www.rottnestisland.com/see-do/wildlife-nature/quokkas" rel="noopener noreferrer" target="_blank">
+<span data-en="Rottnest Island quokka guide" data-i18n="k55" data-ko="Rottnest Island 쿼카 안내">Rottnest Island 쿼카 안내</span>
+<strong>↗</strong>
+</a>
+<a class="source-link" href="https://www.iucnredlist.org/search?searchType=species&amp;taxonomies=100245" rel="noopener noreferrer" target="_blank">
+<span data-en="IUCN Red List quokka search" data-i18n="k56" data-ko="IUCN Red List 쿼카 검색">IUCN Red List 쿼카 검색</span>
+<strong>↗</strong>
+</a>
 </div>
 </div>
 </div>
 </section>
 <!-- CTA -->
-<section class="cta" id="next">
+<section class="cta">
 <div class="page">
 <div class="cta-box">
-<h2 data-en="The next step is a detailed goods page." data-i18n="k56" data-ko="다음 단계는 굿즈 상세 페이지입니다.">다음 단계는 굿즈 상세 페이지입니다.</h2>
-<p data-en="Each item can expand into a detail page with pricing, descriptions, usage scenes, and a purchase button. For now, the brand mood and lineup are established." data-i18n="k57" data-ko="각 굿즈를 클릭했을 때 가격, 설명, 사용 장면, 구매 버튼이 나오는 상세 페이지로 확장할 수 있습니다. 지금은 브랜드 분위기와 굿즈 라인업을 먼저 잡은 상태입니다.">
-            각 굿즈를 클릭했을 때 가격, 설명, 사용 장면, 구매 버튼이 나오는 상세 페이지로 확장할 수 있습니다.
-            지금은 브랜드 분위기와 굿즈 라인업을 먼저 잡은 상태입니다.
+<h2 data-en="Carry the protection message into goods and stories." data-i18n="k57" data-ko="보호의 메시지를 굿즈와 이야기로 이어가요.">보호의 메시지를 굿즈와 이야기로 이어가요.</h2>
+<p data-en="After remembering the campaign promises, explore goods ideas that bring the quokka’s smile into everyday life." data-i18n="k58" data-ko="캠페인의 약속을 기억했다면, 이제 쿼카의 미소를 일상에 전하는 굿즈 아이디어도 살펴보세요.">
+            캠페인의 약속을 기억했다면, 이제 쿼카의 미소를 일상에 전하는
+            굿즈 아이디어도 살펴보세요.
           </p>
 <div class="cta-actions">
-<a class="btn btn-light" data-en="Go to home" data-i18n="k58" data-ko="메인 페이지로 이동" href="./index.html">메인 페이지로 이동</a>
-<button class="btn btn-outline" data-en="Save ideas" data-i18n="k59" data-ko="아이디어 저장하기" id="ideaBtn" type="button">아이디어 저장하기</button>
+<a class="btn btn-light" data-en="Explore goods ideas" data-i18n="k59" data-ko="굿즈 아이디어 보기" href="./goods.html">굿즈 아이디어 보기</a>
+<a class="btn btn-outline" data-en="Back to home" data-i18n="k60" data-ko="메인으로 돌아가기" href="./index.html">메인으로 돌아가기</a>
 </div>
 </div>
 </div>
@@ -1273,247 +272,13 @@ into everyday goods" data-title-ko="쿼카의 미소를
 <footer class="footer">
 <div class="page footer-inner">
 <p>© 2026 Quokka Smile Project</p>
-<p>Goods Idea Page · Vanilla HTML/CSS/JS</p>
+<p>Campaign Page · Vanilla HTML/CSS/JS</p>
 </div>
 </footer>
-<div class="toast" data-en="Your ideas are ready ☺" data-i18n="k60" data-ko="아이디어가 준비됐어요 ☺" id="toast">아이디어가 준비됐어요 ☺</div>
-<script>
-    const menuBtn = document.querySelector("#menuBtn");
-    const navLinks = document.querySelector("#navLinks");
-    const navItems = document.querySelectorAll(".nav-links a");
-    const ideaBtn = document.querySelector("#ideaBtn");
-    const toast = document.querySelector("#toast");
+<div class="toast" data-en="Your campaign message is ready ☺" data-i18n="k61" data-ko="캠페인 메시지가 준비됐어요 ☺" id="toast">캠페인 메시지가 준비됐어요 ☺</div>
 
-    function closeMenu() {
-      menuBtn.classList.remove("active");
-      navLinks.classList.remove("open");
-      menuBtn.setAttribute("aria-expanded", "false");
-      menuBtn.setAttribute("aria-label", "메뉴 열기");
-    }
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
 
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 1800);
-    }
-
-    menuBtn.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-
-      menuBtn.classList.toggle("active", isOpen);
-      menuBtn.setAttribute("aria-expanded", String(isOpen));
-      menuBtn.setAttribute("aria-label", isOpen ? "메뉴 닫기" : "메뉴 열기");
-    });
-
-    navItems.forEach((item) => {
-      item.addEventListener("click", closeMenu);
-    });
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 700) {
-        closeMenu();
-      }
-    });
-
-    ideaBtn.addEventListener("click", () => {
-      showToast("굿즈 아이디어 라인업이 완성됐어요 🎁");
-    });
-  </script>
-<script>
-    (() => {
-      const root = document.documentElement;
-      const themeToggle = document.querySelector("#themeToggle");
-      const THEME_KEY = "quokkaSmileTheme";
-
-      function setTheme(theme, persist = true) {
-        root.dataset.theme = theme;
-        root.style.colorScheme = theme;
-
-        if (persist) {
-          try {
-            localStorage.setItem(THEME_KEY, theme);
-          } catch (error) {
-            // 저장을 막은 브라우저에서도 화면 전환은 유지합니다.
-          }
-        }
-
-        if (themeToggle) {
-          const isDark = theme === "dark";
-          themeToggle.setAttribute("aria-pressed", String(isDark));
-          themeToggle.setAttribute("aria-label", isDark ? "라이트 모드로 변경" : "다크 모드로 변경");
-          themeToggle.querySelector(".theme-icon").textContent = isDark ? "☀️" : "🌙";
-          themeToggle.querySelector(".theme-text").textContent = isDark ? "라이트 모드" : "다크 모드";
-        }
-      }
-
-      setTheme(root.dataset.theme || "light", false);
-
-      themeToggle?.addEventListener("click", () => {
-        setTheme(root.dataset.theme === "dark" ? "light" : "dark");
-      });
-
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
-      systemTheme.addEventListener?.("change", (event) => {
-        try {
-          if (!localStorage.getItem(THEME_KEY)) {
-            setTheme(event.matches ? "dark" : "light", false);
-          }
-        } catch (error) {
-          setTheme(event.matches ? "dark" : "light", false);
-        }
-      });
-
-      const revealTargets = document.querySelectorAll(
-        "main section, .card, .goods-card, .promise-card, .intro-box, .idea-box, .source-box"
-      );
-
-      revealTargets.forEach((target, index) => {
-        target.dataset.reveal = "";
-        target.style.transitionDelay = `${Math.min(index % 5, 4) * 55}ms`;
-      });
-
-      if ("IntersectionObserver" in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("revealed");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12 });
-
-        revealTargets.forEach((target) => revealObserver.observe(target));
-      } else {
-        revealTargets.forEach((target) => target.classList.add("revealed"));
-      }
-
-      const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-      const sections = sectionLinks
-        .map((link) => document.querySelector(link.getAttribute("href")))
-        .filter(Boolean);
-
-      if (sections.length && "IntersectionObserver" in window) {
-        const sectionObserver = new IntersectionObserver((entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-          if (!visible) return;
-
-          sectionLinks.forEach((link) => {
-            link.classList.toggle("active-section", link.getAttribute("href") === `#${visible.target.id}`);
-          });
-        }, { rootMargin: "-25% 0px -60%", threshold: [0.05, 0.25, 0.5] });
-
-        sections.forEach((section) => sectionObserver.observe(section));
-      }
-    })();
-  </script>
-<script>
-    (() => {
-      const searchInput = document.querySelector("#goodsSearch");
-      const filterButtons = [...document.querySelectorAll(".filter-btn")];
-      const cards = [...document.querySelectorAll(".goods-card")];
-      const resultCount = document.querySelector("#goodsResultCount");
-      const emptyResult = document.querySelector("#emptyResult");
-      let activeFilter = "all";
-
-      function filterGoods() {
-        const keyword = searchInput.value.trim().toLowerCase();
-        let visibleCount = 0;
-
-        cards.forEach((card) => {
-          const categoryMatch = activeFilter === "all" || card.dataset.category === activeFilter;
-          const keywordMatch = !keyword || card.textContent.toLowerCase().includes(keyword);
-          const isVisible = categoryMatch && keywordMatch;
-          card.classList.toggle("is-hidden", !isVisible);
-          if (isVisible) visibleCount += 1;
-        });
-
-        resultCount.textContent = `${visibleCount}개 굿즈`;
-        emptyResult.classList.toggle("show", visibleCount === 0);
-      }
-
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          activeFilter = button.dataset.filter;
-          filterButtons.forEach((item) => item.classList.toggle("active", item === button));
-          filterGoods();
-        });
-      });
-
-      searchInput.addEventListener("input", filterGoods);
-      filterGoods();
-    })();
-  </script>
-<script>
-    (() => {
-      const LANGUAGE_KEY = "quokkaSmileLanguage";
-      const languageToggle = document.querySelector("#languageToggle");
-      const typingTitle = document.querySelector("#typingTitle");
-      const titleCopy = {"ko": "쿼카의 미소를\n일상 속 굿즈로", "en": "Bring the quokka’s smile\ninto everyday goods"};
-      const pageTitleCopy = {"ko": "쿼카 굿즈 아이디어", "en": "Quokka Goods Ideas"};
-      let typingTimer;
-
-      function getLanguage() {
-        try { return localStorage.getItem(LANGUAGE_KEY) || "ko"; }
-        catch (error) { return "ko"; }
-      }
-
-      function typeTitle(text) {
-        if (!typingTitle) return;
-        clearTimeout(typingTimer);
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (reduceMotion) { typingTitle.textContent = text; return; }
-        typingTitle.textContent = "";
-        let index = 0;
-        const write = () => {
-          typingTitle.textContent = text.slice(0, index);
-          index += 1;
-          if (index <= text.length) typingTimer = setTimeout(write, text.charCodeAt(index - 1) === 10 ? 180 : 55);
-        };
-        write();
-      }
-
-      function applyLanguage(language, persist = true) {
-        const lang = language === "en" ? "en" : "ko";
-        document.documentElement.lang = lang;
-        if (persist) { try { localStorage.setItem(LANGUAGE_KEY, lang); } catch (error) {} }
-        document.querySelectorAll("[data-i18n]").forEach((element) => {
-          const value = element.dataset[lang];
-          if (value) element.textContent = value;
-        });
-        document.title = pageTitleCopy[lang];
-        if (languageToggle) {
-          const isEnglish = lang === "en";
-          languageToggle.setAttribute("aria-pressed", String(isEnglish));
-          languageToggle.setAttribute("aria-label", isEnglish ? "한국어로 변경" : "Switch to English");
-          languageToggle.querySelector(".language-text").textContent = isEnglish ? "KO" : "EN";
-        }
-        const themeText = document.querySelector("#themeToggle .theme-text");
-        const themeToggle = document.querySelector("#themeToggle");
-        if (themeText && themeToggle) {
-          const dark = document.documentElement.dataset.theme === "dark";
-          themeText.textContent = lang === "en" ? (dark ? "Light mode" : "Dark mode") : (dark ? "라이트 모드" : "다크 모드");
-          themeToggle.setAttribute("aria-label", lang === "en" ? (dark ? "Switch to light mode" : "Switch to dark mode") : (dark ? "라이트 모드로 변경" : "다크 모드로 변경"));
-        }
-        typeTitle(titleCopy[lang]);
-        window.dispatchEvent(new CustomEvent("quokka-language-change", { detail: { language: lang } }));
-      }
-
-      languageToggle?.addEventListener("click", () => applyLanguage(getLanguage() === "ko" ? "en" : "ko"));
-      document.querySelector("#themeToggle")?.addEventListener("click", () => setTimeout(() => applyLanguage(getLanguage(), false), 0));
-      applyLanguage(getLanguage(), false);
-    })();
-    </script><script>
-window.addEventListener("quokka-language-change", (event) => {
-  const lang = event.detail.language;
-  const input = document.querySelector("#goodsSearch");
-  if (input) input.placeholder = lang === "en" ? input.dataset.placeholderEn : input.dataset.placeholderKo;
-  input?.dispatchEvent(new Event("input"));
-});
-</script></body>
+<script src="./assets/js/campaign.js" defer></script>
+</body>
 </html>
